@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="Remove and Analyze Outliers — PomaOutliers" />
-<meta property="og:description" content="blabla" />
+<meta property="og:description" content="This function allows users to analyze outliers by different plots and remove them from an MSnSet object." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,7 +137,7 @@
     </div>
 
     <div class="ref-description">
-    <p>blabla</p>
+    <p>This function allows users to analyze outliers by different plots and remove them from an MSnSet object.</p>
     </div>
 
     <pre class="usage"><span class='fu'>PomaOutliers</span>(
@@ -145,7 +145,7 @@
   <span class='kw'>do</span> <span class='kw'>=</span> <span class='st'>"clean"</span>,
   <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"median"</span>,
-  <span class='kw'>iqr</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
+  <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
@@ -162,25 +162,25 @@
     </tr>
     <tr>
       <th>method</th>
-      <td><p>blabla</p></td>
+      <td><p>Distance measure method to perform MDS. Options are "euclidean", "maximum", "manhattan", "canberra" and "minkowski". See <code>?dist()</code>.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>blabla</p></td>
+      <td><p>Type of outliers analysis to perform. Options are "median" (default) and "centroid". See <code><a href='https://rdrr.io/pkg/vegan/man/betadisper.html'>vegan::betadisper</a></code>.</p></td>
     </tr>
     <tr>
-      <th>iqr</th>
-      <td><p>blabla</p></td>
+      <th>coef</th>
+      <td><p>This value corresponds to the classical 1.5 in \(Q3 + 1.5*IQR\) formula to detect outliers. By changing this value, the permissiveness in outlier detection will change.</p></td>
     </tr>
     <tr>
       <th>labels</th>
-      <td><p>blabla</p></td>
+      <td><p>Logical indicating if sample IDs should to be plotted or not.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A MSnSet object with cleaned data or different plots for the detailed analysis of outliers (depending on "do" parameter).</p>
+    <p>A MSnSet object with cleaned data or different exploratory plots for the detailed analysis of outliers (depending on "do" parameter).</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Pol Castellano-Escuder</p>

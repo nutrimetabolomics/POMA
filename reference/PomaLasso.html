@@ -140,7 +140,7 @@
     <p>PomaLasso() is an implementation of the lasso, ridge and elasticnet regression from <code>glmnet</code> package for binary outcomes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaLasso</span>(<span class='no'>data</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ntest</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>PomaLasso</span>(<span class='no'>data</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ntest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,7 +155,7 @@
     </tr>
     <tr>
       <th>ntest</th>
-      <td><p>Numeric indicating the percentage of observations that will be used as test set. Default is a 20 percent of observations.</p></td>
+      <td><p>Numeric indicating the percentage of observations that will be used as test set. Default is NULL (no test set).</p></td>
     </tr>
     <tr>
       <th>nfolds</th>
