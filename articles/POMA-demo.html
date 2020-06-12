@@ -92,7 +92,7 @@
       <h1 data-toc-skip>POMA Workflow Overview</h1>
                         <h4 class="author">Pol Castellano-Escuder</h4>
             
-            <h4 class="date">2020-06-11</h4>
+            <h4 class="date">2020-06-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-demo.Rmd"><code>vignettes/POMA-demo.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-demo.Rmd</code></div>
@@ -152,7 +152,7 @@
 <span class="co">## experimentData: use 'experimentData(object)'</span>
 <span class="co">## Annotation:  </span>
 <span class="co">## - - - Processing information - - -</span>
-<span class="co">## Imputed (knn): Thu Jun 11 16:12:45 2020 </span>
+<span class="co">## Imputed (knn): Fri Jun 12 22:08:54 2020 </span>
 <span class="co">##  MSnbase version: 2.14.2</span></pre></body></html></div>
 <p><em>Note that the object has been updated with imputation information.</em></p>
 </div>
@@ -174,8 +174,8 @@
 <span class="co">## experimentData: use 'experimentData(object)'</span>
 <span class="co">## Annotation:  </span>
 <span class="co">## - - - Processing information - - -</span>
-<span class="co">## Imputed (knn): Thu Jun 11 16:12:45 2020 </span>
-<span class="co">## Normalised (log_pareto): Thu Jun 11 16:12:45 2020 </span>
+<span class="co">## Imputed (knn): Fri Jun 12 22:08:54 2020 </span>
+<span class="co">## Normalised (log_pareto): Fri Jun 12 22:08:54 2020 </span>
 <span class="co">##  MSnbase version: 2.14.2</span></pre></body></html></div>
 <p><em>Note that the object has been updated with normalization information.</em></p>
 <div id="normalization-effect" class="section level3">
@@ -220,20 +220,20 @@
 <span class="no">ttest_res</span> <span class="kw">%&gt;%</span>
   <span class="fu">rownames_to_column</span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
-<span class="co">##   rowname mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means</span>
-<span class="co">## 1       1         -0.44     0.12            -0.273                0.56</span>
-<span class="co">## 2       2         -0.52     0.14            -0.269                0.66</span>
-<span class="co">## 3       3         -0.31     0.08            -0.258                0.39</span>
-<span class="co">## 4       4         -0.09     0.02            -0.222                0.11</span>
-<span class="co">## 5       5         -0.33     0.09            -0.273                0.42</span>
-<span class="co">## 6       6         -0.15     0.04            -0.267                0.19</span>
-<span class="co">##         pvalue   adj_pvalue</span>
-<span class="co">## 1 7.189501e-07 2.156850e-06</span>
-<span class="co">## 2 6.752457e-03 8.807553e-03</span>
-<span class="co">## 3 1.705051e-03 2.435787e-03</span>
-<span class="co">## 4 6.201234e-01 6.415069e-01</span>
-<span class="co">## 5 1.468845e-04 2.754085e-04</span>
-<span class="co">## 6 2.742384e-01 2.938269e-01</span></pre></body></html></div>
+<span class="co">##              rowname mean_Controls mean_DMD Fold_Change_Ratio</span>
+<span class="co">## 1 x1_methylhistidine         -0.44     0.12            -0.273</span>
+<span class="co">## 2 x3_methylhistidine         -0.52     0.14            -0.269</span>
+<span class="co">## 3            alanine         -0.31     0.08            -0.258</span>
+<span class="co">## 4           arginine         -0.09     0.02            -0.222</span>
+<span class="co">## 5         asparagine         -0.33     0.09            -0.273</span>
+<span class="co">## 6      aspartic_acid         -0.15     0.04            -0.267</span>
+<span class="co">##   Difference_Of_Means       pvalue    pvalueAdj</span>
+<span class="co">## 1                0.56 7.189501e-07 2.156850e-06</span>
+<span class="co">## 2                0.66 6.752457e-03 8.807553e-03</span>
+<span class="co">## 3                0.39 1.705051e-03 2.435787e-03</span>
+<span class="co">## 4                0.11 6.201234e-01 6.415069e-01</span>
+<span class="co">## 5                0.42 1.468845e-04 2.754085e-04</span>
+<span class="co">## 6                0.19 2.742384e-01 2.938269e-01</span></pre></body></html></div>
 </div>
 <div id="limma" class="section level3">
 <h3 class="hasAnchor">
