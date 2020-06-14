@@ -151,7 +151,7 @@
   <span class='kw'>high</span> <span class='kw'>=</span> <span class='st'>"#EA8620"</span>,
   <span class='kw'>label_size</span> <span class='kw'>=</span> <span class='fl'>12</span>,
   <span class='kw'>corr_type</span> <span class='kw'>=</span> <span class='st'>"cor"</span>,
-  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.7</span>
+  <span class='kw'>coeff</span> <span class='kw'>=</span> <span class='fl'>0.7</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -198,7 +198,7 @@
       <td><p>Type of network to be made with correlation matrix. Options are "cor" (for global correlations) and "glasso" (for gaussian graphical model). Default is "cor". See <code>glasso</code> R package for the second option.</p></td>
     </tr>
     <tr>
-      <th>threshold</th>
+      <th>coeff</th>
       <td><p>Numeric indicatin correlation coefficient. Edges with absolute weight below this value will be removed from the network. If "corr_type" is set to "glasso", this parameter indicates the regularization parameter for lasso (rho = 0 means no regularization). See <code><a href='https://rdrr.io/pkg/glasso/man/glasso.html'>glasso::glasso()</a></code>.</p></td>
     </tr>
     </table>
