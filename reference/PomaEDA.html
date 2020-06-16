@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Collettion of Imputation Methods for Mass Spectrometry Data — PomaImpute • POMA</title>
+<title>Automatic Exploratory Data Analysis PDF Report — PomaEDA • POMA</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Collettion of Imputation Methods for Mass Spectrometry Data — PomaImpute" />
-<meta property="og:description" content="PomaImpute() offers different methods to impute missing values in MS data." />
+<meta property="og:title" content="Automatic Exploratory Data Analysis PDF Report — PomaEDA" />
+<meta property="og:description" content="This function automatically generates a PDF report with different exploratory plots and tables from an MSnSet object." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -131,21 +131,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Collettion of Imputation Methods for Mass Spectrometry Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pcastellanoescuder/POMA/blob/master/R/PomaImpute.R'><code>R/PomaImpute.R</code></a></small>
-    <div class="hidden name"><code>PomaImpute.Rd</code></div>
+    <h1>Automatic Exploratory Data Analysis PDF Report</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pcastellanoescuder/POMA/blob/master/R/PomaEDA.R'><code>R/PomaEDA.R</code></a></small>
+    <div class="hidden name"><code>PomaEDA.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>PomaImpute() offers different methods to impute missing values in MS data.</p>
+    <p>This function automatically generates a PDF report with different exploratory plots and tables from an MSnSet object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaImpute</span>(
+    <pre class="usage"><span class='fu'>PomaEDA</span>(
   <span class='kw'>data</span>,
-  ZerosAsNA = <span class='fl'>FALSE</span>,
-  RemoveNA = <span class='fl'>TRUE</span>,
-  cutoff = <span class='fl'>20</span>,
-  method = <span class='st'>"knn"</span>
+  imputation = <span class='st'>"knn"</span>,
+  normalization = <span class='st'>"log_pareto"</span>,
+  clean_outliers = <span class='fl'>TRUE</span>,
+  coeff_outliers = <span class='fl'>1.5</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -156,29 +156,26 @@
       <td><p>A MSnSet object. First <code>pData</code> column must be the subject group/type.</p></td>
     </tr>
     <tr>
-      <th>ZerosAsNA</th>
-      <td><p>Logical that indicates if the zeros in the data are missing values. Default is FALSE.</p></td>
+      <th>imputation</th>
+      <td><p>Imputation method. Options are "none", "half_min", "median", "mean", "min" and "knn" (default). If "none", all missing values will be replaced by zero.</p></td>
     </tr>
     <tr>
-      <th>RemoveNA</th>
-      <td><p>Logical that indicates if those features with more than selected cutoff missing values in each group have to be removed. Default is TRUE.</p></td>
+      <th>normalization</th>
+      <td><p>Normalization method. Options are "none", "auto_scaling", "level_scaling", "log_scaling", "log_transformation", "vast_scaling" and "log_pareto" (default).</p></td>
     </tr>
     <tr>
-      <th>cutoff</th>
-      <td><p>Numeric that indicates the percentage of missing values allowed in each group. If one of the groups have less missing values than selected cutoff value, these feature will not be removed.</p></td>
+      <th>clean_outliers</th>
+      <td><p>Logical. If it's set to TRUE, outliers will be removed from EDA.</p></td>
     </tr>
     <tr>
-      <th>method</th>
-      <td><p>Imputation method. Options are: "none", "half_min", "median", "mean", "min", "knn" and "rf". If "none", all missing values will be replaced by zero.</p></td>
+      <th>coeff_outliers</th>
+      <td><p>This value corresponds to the classical 1.5 in \(Q3 + 1.5*IQR\) formula to detect outliers. By changing this value, the permissiveness in outlier detection will change.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A MSnSet object with cleaned data.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Armitage, E. G., Godzien, J., Alonso‐Herranz, V., López‐Gonzálvez, Á., &amp; Barbas, C. (2015). Missing value imputation strategies for metabolomics data. Electrophoresis, 36(24), 3050-3060.</p>
+    <p>An exploratory data analysis PDF report.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Pol Castellano-Escuder</p>
