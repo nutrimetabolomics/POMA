@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Normalization • POMA</title>
+<title>POMA Normalization Methods • POMA</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Normalization">
+<script src="../pkgdown.js"></script><meta property="og:title" content="POMA Normalization Methods">
 <meta property="og:description" content="POMA">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -64,9 +64,12 @@
       <a href="../articles/POMA-demo.html">POMA Workflow Overview</a>
     </li>
     <li>
-      <a href="../articles/POMA-normalization.html">Normalization</a>
+      <a href="../articles/POMA-normalization.html">POMA Normalization Methods</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -89,9 +92,12 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Normalization</h1>
+      <h1 data-toc-skip>POMA Normalization Methods</h1>
                         <h4 class="author">Pol Castellano-Escuder</h4>
-            
+            <address class="author_afil">
+      University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
+      </address>
+                  
             <h4 class="date">2020-06-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-normalization.Rmd"><code>vignettes/POMA-normalization.Rmd</code></a></small>
@@ -101,54 +107,48 @@
 
     
     
-<div id="load-poma" class="section level1">
+<div id="load-packages" class="section level1">
 <h1 class="hasAnchor">
-<a href="#load-poma" class="anchor"></a>Load POMA</h1>
+<a href="#load-packages" class="anchor"></a>Load Packages</h1>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/pcastellanoescuder/POMA">POMA</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">Biobase</span>) <span class="co"># to subset example data</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>) <span class="co"># to tune POMA default plots</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://patchwork.data-imaginist.com">patchwork</a></span>) <span class="co"># to show plots together</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span>) <span class="co"># it's just tidyverse;)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span>) <span class="co"># no need explanation;)</span>
 </pre></div>
 </div>
-<div id="load-data" class="section level1">
+<div id="load-data-and-imputation" class="section level1">
 <h1 class="hasAnchor">
-<a href="#load-data" class="anchor"></a>Load Data</h1>
-<p>Let’s create a smaller <code>MSnSet</code> object to better explore normalization effects.</p>
+<a href="#load-data-and-imputation" class="anchor"></a>Load Data and Imputation</h1>
+<p>Let’s create a cleaned <code>MSnSet</code> object from example <code>st000336</code> data to explore normalization effects.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="co"># load example data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"st000284"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"st000336"</span>)
 
-<span class="co"># subset example data</span>
-<span class="kw">my_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">st000284</span>))[<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">120</span><span class="op">:</span><span class="fl">127</span>) ,]
-
-<span class="kw">my_target</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/phenoData.html">pData</a></span>(<span class="kw">st000284</span>)[<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">120</span><span class="op">:</span><span class="fl">127</span>) ,]
-<span class="kw">my_target</span> <span class="op">&lt;-</span> <span class="kw">my_target</span> <span class="op">%&gt;%</span> <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)
-
-<span class="co"># create a smaller MSnSet object from example data</span>
-<span class="kw">example_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaMSnSetClass.html">PomaMSnSetClass</a></span>(features = <span class="kw">my_features</span>, target = <span class="kw">my_target</span>)
+<span class="co"># imputation using the default method KNN</span>
+<span class="kw">example_data</span> <span class="op">&lt;-</span> <span class="kw">st000336</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/PomaImpute.html">PomaImpute</a></span>()
+<span class="co">## Warning in PomaImpute(.): method argument is empty! KNN will be used</span>
 <span class="kw">example_data</span>
 <span class="co">## MSnSet (storageMode: lockedEnvironment)</span>
-<span class="co">## assayData: 113 features, 16 samples </span>
+<span class="co">## assayData: 30 features, 57 samples </span>
 <span class="co">##   element names: exprs </span>
 <span class="co">## protocolData: none</span>
 <span class="co">## phenoData</span>
-<span class="co">##   sampleNames: sample_109 sample_11 ... sample_56 (16 total)</span>
-<span class="co">##   varLabels: factors age_at_consent ... alcohol_consumption (5 total)</span>
+<span class="co">##   sampleNames: DMD004.1.U02 DMD005.1.U02 ... DMD173.1.U02 (57 total)</span>
+<span class="co">##   varLabels: Group steroids</span>
 <span class="co">##   varMetadata: labelDescription</span>
 <span class="co">## featureData: none</span>
 <span class="co">## experimentData: use 'experimentData(object)'</span>
 <span class="co">## Annotation:  </span>
 <span class="co">## - - - Processing information - - -</span>
+<span class="co">## Imputed (knn): Wed Jun 17 16:51:53 2020 </span>
 <span class="co">##  MSnbase version: 2.14.2</span>
 </pre></div>
 </div>
-<div id="normalization-in-poma" class="section level1">
+<div id="normalization" class="section level1">
 <h1 class="hasAnchor">
-<a href="#normalization-in-poma" class="anchor"></a>Normalization in <code>POMA</code>
-</h1>
-<p><em>We can skip the imputation step because example data doesn’t has missing values.</em></p>
+<a href="#normalization" class="anchor"></a>Normalization</h1>
 <p>Here we will evaluate ALL normalization methods that POMA offers on the same <code>MSnSet</code> object to compare them.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="kw">none</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="kw">example_data</span>, method = <span class="st">"none"</span>, round = <span class="fl">3</span>)
@@ -165,19 +165,19 @@
 <p>When we check for the dimension of the data after normalization we can see that ALL methods have the same effect on data dimension. <code>PomaNorm</code> <strong>only</strong> change the data dimension when the data has <strong>features that only have zeros</strong> and when the data has <strong>features with 0 variance</strong>. Only in these two cases <code>PomaNorm</code> will remove features of the data, changing the data dimensions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">none</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">auto_scaling</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">level_scaling</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">log_scaling</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">log_transformation</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">vast_scaling</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">Biobase</span>::<span class="fu"><a href="https://rdrr.io/pkg/Biobase/man/exprs.html">exprs</a></span>(<span class="kw">log_pareto</span>))
-<span class="co">## [1] 113  16</span>
+<span class="co">## [1] 30 57</span>
 </pre></div>
 </div>
 <div id="normalization-effect-on-samples" class="section level2">
@@ -278,6 +278,88 @@
 </pre></div>
 <p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-1.png" width="2000" style="display: block; margin: auto;"></p>
 </div>
+</div>
+<div id="session-information" class="section level1">
+<h1 class="hasAnchor">
+<a href="#session-information" class="anchor"></a>Session Information</h1>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()
+<span class="co">## R version 4.0.1 (2020-06-06)</span>
+<span class="co">## Platform: x86_64-apple-darwin17.0 (64-bit)</span>
+<span class="co">## Running under: macOS Catalina 10.15.5</span>
+<span class="co">## </span>
+<span class="co">## Matrix products: default</span>
+<span class="co">## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib</span>
+<span class="co">## LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib</span>
+<span class="co">## </span>
+<span class="co">## locale:</span>
+<span class="co">## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span>
+<span class="co">## </span>
+<span class="co">## attached base packages:</span>
+<span class="co">## [1] parallel  stats     graphics  grDevices utils     datasets  methods  </span>
+<span class="co">## [8] base     </span>
+<span class="co">## </span>
+<span class="co">## other attached packages:</span>
+<span class="co">##  [1] forcats_0.5.0       stringr_1.4.0       dplyr_1.0.0        </span>
+<span class="co">##  [4] purrr_0.3.4         readr_1.3.1         tidyr_1.1.0        </span>
+<span class="co">##  [7] tibble_3.0.1        tidyverse_1.3.0     patchwork_1.0.0    </span>
+<span class="co">## [10] ggplot2_3.3.1       Biobase_2.48.0      BiocGenerics_0.34.0</span>
+<span class="co">## [13] POMA_0.99.0         BiocStyle_2.16.0   </span>
+<span class="co">## </span>
+<span class="co">## loaded via a namespace (and not attached):</span>
+<span class="co">##   [1] readxl_1.3.1          backports_1.1.8       circlize_0.4.10      </span>
+<span class="co">##   [4] plyr_1.8.6            igraph_1.2.5          lazyeval_0.2.2       </span>
+<span class="co">##   [7] splines_4.0.1         gmp_0.6-0             BiocParallel_1.22.0  </span>
+<span class="co">##  [10] digest_0.6.25         foreach_1.5.0         htmltools_0.5.0      </span>
+<span class="co">##  [13] viridis_0.5.1         fansi_0.4.1           magrittr_1.5         </span>
+<span class="co">##  [16] memoise_1.1.0         cluster_2.1.0         doParallel_1.0.15    </span>
+<span class="co">##  [19] limma_3.44.3          recipes_0.1.12        ComplexHeatmap_2.4.2 </span>
+<span class="co">##  [22] graphlayouts_0.7.0    modelr_0.1.8          gower_0.2.1          </span>
+<span class="co">##  [25] matrixStats_0.56.0    rARPACK_0.11-0        pkgdown_1.5.1.9000   </span>
+<span class="co">##  [28] colorspace_1.4-1      rvest_0.3.5           blob_1.2.1           </span>
+<span class="co">##  [31] ggrepel_0.8.2         haven_2.3.1           xfun_0.14            </span>
+<span class="co">##  [34] crayon_1.3.4          jsonlite_1.6.1        impute_1.62.0        </span>
+<span class="co">##  [37] survival_3.1-12       iterators_1.0.12      glue_1.4.1           </span>
+<span class="co">##  [40] polyclip_1.10-0       gtable_0.3.0          ipred_0.9-9          </span>
+<span class="co">##  [43] zlibbioc_1.34.0       GetoptLong_1.0.0      RankProd_3.14.0      </span>
+<span class="co">##  [46] shape_1.4.4           Rmpfr_0.8-1           scales_1.1.1         </span>
+<span class="co">##  [49] vsn_3.56.0            DBI_1.1.0             Rcpp_1.0.4.6         </span>
+<span class="co">##  [52] mzR_2.22.0            viridisLite_0.3.0     clue_0.3-57          </span>
+<span class="co">##  [55] preprocessCore_1.50.0 clisymbols_1.2.0      stats4_4.0.1         </span>
+<span class="co">##  [58] lava_1.6.7            prodlim_2019.11.13    glmnet_4.0-2         </span>
+<span class="co">##  [61] htmlwidgets_1.5.1     httr_1.4.1            RColorBrewer_1.1-2   </span>
+<span class="co">##  [64] ellipsis_0.3.1        pkgconfig_2.0.3       XML_3.99-0.3         </span>
+<span class="co">##  [67] farver_2.0.3          dbplyr_1.4.4          nnet_7.3-14          </span>
+<span class="co">##  [70] caret_6.0-86          labeling_0.3          tidyselect_1.1.0     </span>
+<span class="co">##  [73] rlang_0.4.6           reshape2_1.4.4        ggcorrplot_0.1.3     </span>
+<span class="co">##  [76] cellranger_1.1.0      munsell_0.5.0         tools_4.0.1          </span>
+<span class="co">##  [79] cli_2.0.2             generics_0.0.2        broom_0.5.6          </span>
+<span class="co">##  [82] evaluate_0.14         mzID_1.26.0           yaml_2.2.1           </span>
+<span class="co">##  [85] ModelMetrics_1.2.2.2  knitr_1.28            fs_1.4.1             </span>
+<span class="co">##  [88] tidygraph_1.2.0       randomForest_4.6-14   ggraph_2.0.3         </span>
+<span class="co">##  [91] ncdf4_1.17            glasso_1.11           nlme_3.1-148         </span>
+<span class="co">##  [94] xml2_1.3.2            rstudioapi_0.11       compiler_4.0.1       </span>
+<span class="co">##  [97] plotly_4.9.2.1        png_0.1-7             affyio_1.58.0        </span>
+<span class="co">## [100] reprex_0.3.0          tweenr_1.0.1          stringi_1.4.6        </span>
+<span class="co">## [103] desc_1.2.0            RSpectra_0.16-0       MSnbase_2.14.2       </span>
+<span class="co">## [106] lattice_0.20-41       ProtGenerics_1.20.0   Matrix_1.2-18        </span>
+<span class="co">## [109] permute_0.9-5         vegan_2.5-6           vctrs_0.3.1          </span>
+<span class="co">## [112] pillar_1.4.4          lifecycle_0.2.0       BiocManager_1.30.10  </span>
+<span class="co">## [115] MALDIquant_1.19.3     GlobalOptions_0.1.2   data.table_1.12.8    </span>
+<span class="co">## [118] corpcor_1.6.9         R6_2.4.1              pcaMethods_1.80.0    </span>
+<span class="co">## [121] affy_1.66.0           bookdown_0.19         gridExtra_2.3        </span>
+<span class="co">## [124] IRanges_2.22.2        codetools_0.2-16      MASS_7.3-51.6        </span>
+<span class="co">## [127] assertthat_0.2.1      rprojroot_1.3-2       rjson_0.2.20         </span>
+<span class="co">## [130] withr_2.2.0           S4Vectors_0.26.1      hms_0.5.3            </span>
+<span class="co">## [133] mgcv_1.8-31           mixOmics_6.12.1       grid_4.0.1           </span>
+<span class="co">## [136] rpart_4.1-15          timeDate_3043.102     class_7.3-17         </span>
+<span class="co">## [139] rmarkdown_2.2.6       ggforce_0.3.1         pROC_1.16.2          </span>
+<span class="co">## [142] lubridate_1.7.9       ellipse_0.4.2</span>
+</pre></div>
+</div>
+<div id="references" class="section level1">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
 </div>
   </div>
 
