@@ -89,7 +89,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="POMA-demo_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>POMA Workflow Overview</h1>
@@ -98,7 +98,7 @@
       University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
       </address>
                   
-            <h4 class="date">2020-06-17</h4>
+            <h4 class="date">2020-06-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-demo.Rmd"><code>vignettes/POMA-demo.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-demo.Rmd</code></div>
@@ -165,7 +165,7 @@
 <span class="co">## experimentData: use 'experimentData(object)'</span>
 <span class="co">## Annotation:  </span>
 <span class="co">## - - - Processing information - - -</span>
-<span class="co">## Imputed (knn): Wed Jun 17 16:51:33 2020 </span>
+<span class="co">## Imputed (knn): Thu Jun 18 12:30:14 2020 </span>
 <span class="co">##  MSnbase version: 2.14.2</span>
 </pre></div>
 <p><em>Note that the object has been updated with imputation information.</em></p>
@@ -189,8 +189,8 @@
 <span class="co">## experimentData: use 'experimentData(object)'</span>
 <span class="co">## Annotation:  </span>
 <span class="co">## - - - Processing information - - -</span>
-<span class="co">## Imputed (knn): Wed Jun 17 16:51:33 2020 </span>
-<span class="co">## Normalised (log_pareto): Wed Jun 17 16:51:34 2020 </span>
+<span class="co">## Imputed (knn): Thu Jun 18 12:30:14 2020 </span>
+<span class="co">## Normalised (log_pareto): Thu Jun 18 12:30:14 2020 </span>
 <span class="co">##  MSnbase version: 2.14.2</span>
 </pre></div>
 <p><em>Note that the object has been updated with normalization information.</em></p>
@@ -295,13 +295,13 @@
 </pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="kw">multiv_pca</span><span class="op">$</span><span class="kw">score_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
-<span class="co">##                  PC1     PC2     PC3     PC4     PC5</span>
-<span class="co">## DMD004.1.U02 -2.5649  0.6355  0.7245  0.6534  0.2842</span>
-<span class="co">## DMD005.1.U02 -2.0100  0.5094  1.0782  0.7221  0.5130</span>
-<span class="co">## DMD007.1.U02 -1.3740 -0.8677  0.7206  0.1952 -0.1432</span>
-<span class="co">## DMD119.2.U02 -1.0940  0.6831 -0.4605  1.7888 -1.2811</span>
-<span class="co">## DMD137.1.U02 -1.0536 -1.0586  0.7100  0.3621  0.5450</span>
-<span class="co">## DMD148.2.U02 -2.8552  0.0986  0.4502 -0.2186 -0.0318</span>
+<span class="co">##       PC1     PC2     PC3     PC4     PC5</span>
+<span class="co">## 1 -2.5649  0.6355  0.7245  0.6534  0.2842</span>
+<span class="co">## 2 -2.0100  0.5094  1.0782  0.7221  0.5130</span>
+<span class="co">## 3 -1.3740 -0.8677  0.7206  0.1952 -0.1432</span>
+<span class="co">## 4 -1.0940  0.6831 -0.4605  1.7888 -1.2811</span>
+<span class="co">## 5 -1.0536 -1.0586  0.7100  0.3621  0.5450</span>
+<span class="co">## 6 -2.8552  0.0986  0.4502 -0.2186 -0.0318</span>
 </pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit">
 <span class="kw">p5</span> <span class="op">&lt;-</span> <span class="kw">multiv_pca</span><span class="op">$</span><span class="kw">screeplot</span> <span class="op">+</span>
@@ -319,14 +319,14 @@
 <h2 class="hasAnchor">
 <a href="#random-forest" class="anchor"></a>Random Forest</h2>
 <div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="kw">rf_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaRandForest.html">PomaRandForest</a></span>(<span class="kw">normalized</span>, folds = <span class="fl">3</span>, nvar = <span class="fl">10</span>)
+<span class="kw">rf_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaRandForest.html">PomaRandForest</a></span>(<span class="kw">normalized</span>, ntest = <span class="fl">15</span>, nvar = <span class="fl">10</span>)
 </pre></div>
 <p>Confusion matrix of the random forest model:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="kw">rf_res</span><span class="op">$</span><span class="kw">confusion_matrix</span>
 <span class="co">##          Controls DMD class.error</span>
-<span class="co">## Controls        1   2      0.6667</span>
-<span class="co">## DMD             1  15      0.0625</span>
+<span class="co">## Controls        1   1         0.5</span>
+<span class="co">## DMD             0   6         0.0</span>
 </pre></div>
 <p>Top 10 best predictors:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">

@@ -149,11 +149,13 @@
   components = <span class='fl'>5</span>,
   center = <span class='fl'>FALSE</span>,
   scale = <span class='fl'>FALSE</span>,
+  labels = <span class='fl'>FALSE</span>,
   load_length = <span class='fl'>1</span>,
   ellipse = <span class='fl'>TRUE</span>,
   validation = <span class='st'>"Mfold"</span>,
   folds = <span class='fl'>5</span>,
   nrepeat = <span class='fl'>10</span>,
+  vip = <span class='fl'>1.5</span>,
   num_features = <span class='fl'>10</span>
 )</pre>
 
@@ -181,6 +183,10 @@
       <td><p>Logical that indicates whether the variables should be scaled to have unit variance before the analysis takes place. Default is FALSE.</p></td>
     </tr>
     <tr>
+      <th>labels</th>
+      <td><p>Logical indicating if sample names should be plotted or not.</p></td>
+    </tr>
+    <tr>
       <th>load_length</th>
       <td><p>Numeric between 1 and 2. Define the length of biplot loadings. Default is 1.</p></td>
     </tr>
@@ -199,6 +205,10 @@
     <tr>
       <th>nrepeat</th>
       <td><p>(Only for "plsda" and "splsda" methods) Numeric. Number of iterations for the validation method selected.</p></td>
+    </tr>
+    <tr>
+      <th>vip</th>
+      <td><p>(Only for "plsda" method) Numeric indicating VIP cutoff to select features that will be displayed in vip plot.</p></td>
     </tr>
     <tr>
       <th>num_features</th>

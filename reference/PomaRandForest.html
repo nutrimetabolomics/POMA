@@ -145,7 +145,7 @@
 
     <pre class="usage"><span class='fu'>PomaRandForest</span>(
   <span class='kw'>data</span>,
-  folds = <span class='fl'>3</span>,
+  ntest = <span class='fl'>20</span>,
   ntree = <span class='fl'>500</span>,
   mtry = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span>(<span class='kw'>Biobase</span>::<span class='fu'><a href='https://rdrr.io/pkg/Biobase/man/exprs.html'>exprs</a></span>(<span class='kw'>data</span>))))),
   nodesize = <span class='fl'>1</span>,
@@ -160,8 +160,8 @@
       <td><p>A MSnSet object. First <code>pData</code> column must be the subject group/type.</p></td>
     </tr>
     <tr>
-      <th>folds</th>
-      <td><p>Number of observations that will be used as test dataset. For example, if folds = 3, 1/3 of dataset will be used as train dataset.</p></td>
+      <th>ntest</th>
+      <td><p>Numeric indicating the percentage of observations that will be used as test set. Default is 20% of observations.</p></td>
     </tr>
     <tr>
       <th>ntree</th>
