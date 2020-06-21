@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.8</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
     <p>PomaImpute() offers different methods to impute missing values in MS data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaImpute.html'>PomaImpute</a></span>(
+    <pre class="usage"><span class='fu'>PomaImpute</span>(
   <span class='kw'>data</span>,
   ZerosAsNA = <span class='fl'>FALSE</span>,
   RemoveNA = <span class='fl'>TRUE</span>,
@@ -187,10 +187,9 @@
     <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/pcastellanoescuder/POMA'>POMA</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaImpute.html'>PomaImpute</a></span>(<span class='kw'>st000336</span>, method = <span class='st'>"knn"</span>)</div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
+<span class='fu'>PomaImpute</span>(<span class='kw'>st000336</span>, method = <span class='st'>"knn"</span>)</div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
 #&gt; assayData: 30 features, 57 samples 
 #&gt;   element names: exprs 
 #&gt; protocolData: none
@@ -202,7 +201,7 @@
 #&gt; experimentData: use 'experimentData(object)'
 #&gt; Annotation:  
 #&gt; - - - Processing information - - -
-#&gt; Imputed (knn): Sun Jun 21 18:37:01 2020 
+#&gt; Imputed (knn): Sun Jun 21 19:01:35 2020 
 #&gt;  MSnbase version: 2.14.2 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

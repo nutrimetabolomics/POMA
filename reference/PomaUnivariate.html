@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.8</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
     <p>PomaUnivariate() allows users to perform different univariate statistical analysis on MS data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaUnivariate.html'>PomaUnivariate</a></span>(
+    <pre class="usage"><span class='fu'>PomaUnivariate</span>(
   <span class='kw'>data</span>,
   covariates = <span class='fl'>FALSE</span>,
   method = <span class='st'>"ttest"</span>,
@@ -189,16 +189,15 @@
     <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/pcastellanoescuder/POMA'>POMA</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
 
 <span class='co'># ttest</span>
 <span class='kw'>st000336</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaImpute.html'>PomaImpute</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaNorm.html'>PomaNorm</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaOutliers.html'>PomaOutliers</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaUnivariate.html'>PomaUnivariate</a></span>(method = <span class='st'>"ttest"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                    mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means
+  <span class='fu'>PomaImpute</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaNorm</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaOutliers</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaUnivariate</span>(method = <span class='st'>"ttest"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                    mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means
 #&gt; x1_methylhistidine         -0.40     0.16            -0.400                0.56
 #&gt; x3_methylhistidine         -0.42     0.19            -0.452                0.61
 #&gt; alanine                    -0.32     0.11            -0.344                0.43
@@ -262,10 +261,10 @@
 #&gt; succinate          6.246847e-03 7.496217e-03</div><div class='input'>
 <span class='co'># ANOVA</span>
 <span class='kw'>st000284</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaImpute.html'>PomaImpute</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaNorm.html'>PomaNorm</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaOutliers.html'>PomaOutliers</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaUnivariate.html'>PomaUnivariate</a></span>(method = <span class='st'>"anova"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No missing values detected in your data</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                mean_CRC mean_Healthy mean_Polyp       pvalue
+  <span class='fu'>PomaImpute</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaNorm</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaOutliers</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaUnivariate</span>(method = <span class='st'>"anova"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No missing values detected in your data</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                mean_CRC mean_Healthy mean_Polyp       pvalue
 #&gt; x1_methyladenosine                 0.06        -0.06      -0.04 4.536408e-02
 #&gt; x1_methylhistamine                -0.04         0.01       0.07 1.580891e-01
 #&gt; x2_aminoadipate                   -0.15         0.00      -0.03 5.326932e-02
