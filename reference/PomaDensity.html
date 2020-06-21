@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.6</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
     <p>PomaDensity() generates a density plot of not normalized and normalized MS data. This plot can help in the comparison between pre and post normalized data and in the "validation" of the normalization process.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaDensity</span>(<span class='kw'>data</span>, group = <span class='st'>"samples"</span>, feature_name = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaDensity.html'>PomaDensity</a></span>(<span class='kw'>data</span>, group = <span class='st'>"samples"</span>, feature_name = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,6 +169,17 @@
 
     <p>Pol Castellano-Escuder</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/pcastellanoescuder/POMA'>POMA</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
+
+<span class='co'># samples</span>
+<span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaDensity.html'>PomaDensity</a></span>(<span class='kw'>st000284</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: group argument is empty! samples will be used</span></div><div class='output co'>#&gt; <span class='message'>Using ID, Group as id variables</span></div><div class='img'><img src='PomaDensity-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># features</span>
+<span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaDensity.html'>PomaDensity</a></span>(<span class='kw'>st000284</span>, group = <span class='st'>"features"</span>)</div><div class='output co'>#&gt; <span class='message'>Using Group as id variables</span></div><div class='img'><img src='PomaDensity-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># concrete features</span>
+<span class='fu'><a href='https://rdrr.io/pkg/POMA/man/PomaDensity.html'>PomaDensity</a></span>(<span class='kw'>st000284</span>, group = <span class='st'>"features"</span>, 
+            feature_name = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ornithine"</span>, <span class='st'>"orotate"</span>))</div><div class='output co'>#&gt; <span class='message'>Using Group as id variables</span></div><div class='img'><img src='PomaDensity-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
