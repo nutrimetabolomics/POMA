@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.16</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -61,10 +61,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/POMA-demo.html">POMA Workflow Overview</a>
+      <a href="../articles/POMA-demo.html">`POMA` Demo
+</a>
     </li>
     <li>
-      <a href="../articles/POMA-normalization.html">POMA Normalization Methods</a>
+      <a href="../articles/POMA-normalization.html">`POMA` Normalization
+</a>
     </li>
   </ul>
 </li>
@@ -74,7 +76,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/pcastellanoescuder/POMA/">
+  <a href="https://github.com/pcastellanoescuder/POMA">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -89,7 +91,7 @@
 
       
 
-      </header><script src="POMA-demo_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>POMA Workflow Overview</h1>
@@ -98,7 +100,7 @@
       University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
       </address>
                   
-            <h4 class="date">2020-06-21</h4>
+            <h4 class="date">2020-06-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-demo.Rmd"><code>vignettes/POMA-demo.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-demo.Rmd</code></div>
@@ -111,27 +113,19 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>Run the following code to install the Bioconductor version of package. <strong><code>POMA</code> is not yet in Bioconductor! Hope very soon…</strong></p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("BiocManager")</span>
-<span class="kw">BiocManager</span>::<span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"POMA"</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># install.packages("BiocManager")</span>
+<span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"POMA"</span>)</pre></body></html></div>
 <p>Alternatively, you can install the latest development version of <code>POMA</code> from Github.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"pcastellanoescuder/POMA"</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># install.packages("devtools")</span>
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"pcastellanoescuder/POMA"</span>)</pre></body></html></div>
 </div>
 <div id="load-poma" class="section level1">
 <h1 class="hasAnchor">
 <a href="#load-poma" class="anchor"></a>Load POMA</h1>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/pcastellanoescuder/POMA">POMA</a></span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">POMA</span>)</pre></body></html></div>
 <p>You can also load some additional packages that will be very useful in this vignette.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://ggraph.data-imaginist.com">ggraph</a></span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggraph</span>)</pre></body></html></div>
 </div>
 <div id="the-poma-workflow" class="section level1">
 <h1 class="hasAnchor">
@@ -140,32 +134,30 @@
 <div id="data-preparation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#data-preparation" class="anchor"></a>Data Preparation</h2>
-<p>The <strong>MSnbase</strong> Bioconductor package provides a well defined computational data structures to represent mass spectrometry (MS) experiment data types <span class="citation">(Gatto and Lilley <a href="#ref-MSnbase" role="doc-biblioref">2012</a>)</span><span class="citation">(Huber et al. <a href="#ref-Biobase" role="doc-biblioref">2015</a>)</span>. Since data structures can mean a marked improvement in data analysis, <strong>POMA</strong> functions use <strong>MSnSet</strong> objects from <strong>MSnbase</strong> package, allowing the reusability of existing methods for this class and contributing to the improvement of robust and reproducible workflows.</p>
+<p>The <strong>MSnbase</strong> Bioconductor package provides a well defined computational data structures to represent mass spectrometry (MS) experiment data types <span class="citation">(Gatto and Lilley <a href="#ref-MSnbase">2012</a>)</span><span class="citation">(Huber et al. <a href="#ref-Biobase">2015</a>)</span>. Since data structures can mean a marked improvement in data analysis, <strong>POMA</strong> functions use <strong>MSnSet</strong> objects from <strong>MSnbase</strong> package, allowing the reusability of existing methods for this class and contributing to the improvement of robust and reproducible workflows.</p>
 <p>The first step of workflow will be load or create an <code><a href="https://rdrr.io/pkg/MSnbase/man/MSnSet-class.html">MSnbase::MSnSet()</a></code> object. Often, you will have your data stored in separated matrix and/or data frames and you will have to create your own <code>MSnSet</code> object. <code>PomaMSnSetClass</code> function makes this step fast and easy building this <code>MSnSet</code> object from your independent files.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="co"># create an MSnSet object from two separated data frames</span>
-<span class="kw">target</span> <span class="op">&lt;-</span> <span class="kw">readr</span>::<span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"your_target.csv"</span>)
-<span class="kw">features</span> <span class="op">&lt;-</span> <span class="kw">readr</span>::<span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"your_features.csv"</span>)
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># create an MSnSet object from two separated data frames</span>
+<span class="no">target</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu">read_csv</span>(<span class="st">"your_target.csv"</span>)
+<span class="no">features</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu">read_csv</span>(<span class="st">"your_features.csv"</span>)
 
-<span class="kw">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaMSnSetClass.html">PomaMSnSetClass</a></span>(target = <span class="kw">target</span>, features = <span class="kw">features</span>)
-</pre></div>
+<span class="no">data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaMSnSetClass.html">PomaMSnSetClass</a></span>(<span class="kw">target</span> <span class="kw">=</span> <span class="no">target</span>, <span class="kw">features</span> <span class="kw">=</span> <span class="no">features</span>)</pre></body></html></div>
 <p>Alternatively, if your data is already stored in a <code>MSnSet</code> object, you can skip this step and go directly to the Pre-processing step. In this vignette we will use the example data provided in the package.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># load example data</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">data</span>(<span class="st">"st000336"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>st000336</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">MSnSet</span> (storageMode<span class="op">:</span><span class="st"> </span>lockedEnvironment)</span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="op">&gt;</span><span class="st"> </span>assayData<span class="op">:</span><span class="st"> </span><span class="dv">31</span> features, <span class="dv">57</span> samples </span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="op">&gt;</span><span class="st">   </span>element names<span class="op">:</span><span class="st"> </span>exprs </span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="op">&gt;</span><span class="st"> </span>protocolData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="op">&gt;</span><span class="st"> </span>phenoData</span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="op">&gt;</span><span class="st">   </span>sampleNames<span class="op">:</span><span class="st"> </span>DMD004.<span class="fl">1.</span>U02 DMD005.<span class="fl">1.</span>U02 ... <span class="kw">DMD173.1.U02</span> (<span class="dv">57</span> total)</span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="op">&gt;</span><span class="st">   </span>varLabels<span class="op">:</span><span class="st"> </span>group steroids</span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="op">&gt;</span><span class="st">   </span>varMetadata<span class="op">:</span><span class="st"> </span>labelDescription</span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="op">&gt;</span><span class="st"> </span>featureData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="op">&gt;</span><span class="st"> </span>experimentData<span class="op">:</span><span class="st"> </span>use <span class="st">'experimentData(object)'</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="op">&gt;</span><span class="st"> </span>Annotation<span class="op">:</span><span class="st">  </span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="er">&gt;</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>Processing information <span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="er">&gt;</span><span class="st">  </span>MSnbase version<span class="op">:</span><span class="st"> </span><span class="dv">2</span>.<span class="fl">12.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"># load example data
+data("st000336")
+st000336
+&gt; MSnSet (storageMode: lockedEnvironment)
+&gt; assayData: 31 features, 57 samples 
+&gt;   element names: exprs 
+&gt; protocolData: none
+&gt; phenoData
+&gt;   sampleNames: DMD004.1.U02 DMD005.1.U02 ... DMD173.1.U02 (57 total)
+&gt;   varLabels: group steroids
+&gt;   varMetadata: labelDescription
+&gt; featureData: none
+&gt; experimentData: use 'experimentData(object)'
+&gt; Annotation:  
+&gt; - - - Processing information - - -
+&gt;  MSnbase version: 2.12.0</pre></body></html></div>
 <div id="brief-description-of-example-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#brief-description-of-example-data" class="anchor"></a>Brief Description of Example Data</h3>
@@ -181,46 +173,46 @@
 <div id="missing-value-imputation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#missing-value-imputation" class="anchor"></a>Missing Value Imputation</h3>
-<p>Often, due to biological and technical reasons, some features can not be identified or quantified in some samples in MS <span class="citation">(Armitage et al. <a href="#ref-imputation" role="doc-biblioref">2015</a>)</span>. <strong>POMA</strong> offers 7 different imputation methods to deal with this situation. Just run the following line of code to impute your missings!</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>imputed &lt;-<span class="st"> </span><span class="kw">PomaImpute</span>(st000336, <span class="dt">ZerosAsNA =</span> <span class="ot">TRUE</span>, <span class="dt">RemoveNA =</span> <span class="ot">TRUE</span>, <span class="dt">cutoff =</span> <span class="dv">20</span>, <span class="dt">method =</span> <span class="st">"knn"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>imputed</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">MSnSet</span> (storageMode<span class="op">:</span><span class="st"> </span>lockedEnvironment)</span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="op">&gt;</span><span class="st"> </span>assayData<span class="op">:</span><span class="st"> </span><span class="dv">30</span> features, <span class="dv">57</span> samples </span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="op">&gt;</span><span class="st">   </span>element names<span class="op">:</span><span class="st"> </span>exprs </span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="op">&gt;</span><span class="st"> </span>protocolData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="op">&gt;</span><span class="st"> </span>phenoData</span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="op">&gt;</span><span class="st">   </span>sampleNames<span class="op">:</span><span class="st"> </span>DMD004.<span class="fl">1.</span>U02 DMD005.<span class="fl">1.</span>U02 ... <span class="kw">DMD173.1.U02</span> (<span class="dv">57</span> total)</span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="op">&gt;</span><span class="st">   </span>varLabels<span class="op">:</span><span class="st"> </span>Group steroids</span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="op">&gt;</span><span class="st">   </span>varMetadata<span class="op">:</span><span class="st"> </span>labelDescription</span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="op">&gt;</span><span class="st"> </span>featureData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="op">&gt;</span><span class="st"> </span>experimentData<span class="op">:</span><span class="st"> </span>use <span class="st">'experimentData(object)'</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="op">&gt;</span><span class="st"> </span>Annotation<span class="op">:</span><span class="st">  </span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="er">&gt;</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>Processing information <span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">Imputed</span> (knn)<span class="op">:</span><span class="st"> </span>Sun Jun <span class="dv">21</span> <span class="dv">19</span><span class="op">:</span><span class="dv">39</span><span class="op">:</span><span class="dv">01</span> <span class="dv">2020</span> </span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="op">&gt;</span><span class="st">  </span>MSnbase version<span class="op">:</span><span class="st"> </span><span class="dv">2</span>.<span class="fl">14.2</span></span></code></pre></div>
+<p>Often, due to biological and technical reasons, some features can not be identified or quantified in some samples in MS <span class="citation">(Armitage et al. <a href="#ref-imputation">2015</a>)</span>. <strong>POMA</strong> offers 7 different imputation methods to deal with this situation. Just run the following line of code to impute your missings!</p>
+<div class="sourceCode" id="cb7"><html><body><pre class="r">imputed &lt;- PomaImpute(st000336, ZerosAsNA = TRUE, RemoveNA = TRUE, cutoff = 20, method = "knn")
+imputed
+&gt; MSnSet (storageMode: lockedEnvironment)
+&gt; assayData: 30 features, 57 samples 
+&gt;   element names: exprs 
+&gt; protocolData: none
+&gt; phenoData
+&gt;   sampleNames: DMD004.1.U02 DMD005.1.U02 ... DMD173.1.U02 (57 total)
+&gt;   varLabels: Group steroids
+&gt;   varMetadata: labelDescription
+&gt; featureData: none
+&gt; experimentData: use 'experimentData(object)'
+&gt; Annotation:  
+&gt; - - - Processing information - - -
+&gt; Imputed (knn): Thu Jun 25 17:32:03 2020 
+&gt;  MSnbase version: 2.14.2</pre></body></html></div>
 <p><em>Note that the object has been updated with imputation information.</em></p>
 </div>
 <div id="normalization" class="section level3">
 <h3 class="hasAnchor">
 <a href="#normalization" class="anchor"></a>Normalization</h3>
-<p>The next step of this block is the data normalization. Often, some factors can introduce variability in some types of MS data having a critical influence on the final statistical results, making normalization a key step in the workflow <span class="citation">(Berg et al. <a href="#ref-normalization" role="doc-biblioref">2006</a>)</span>. Again, <strong>POMA</strong> offers several methods to normalize the data by running just the following line of code:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>normalized &lt;-<span class="st"> </span><span class="kw">PomaNorm</span>(imputed, <span class="dt">method =</span> <span class="st">"log_pareto"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>normalized</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">MSnSet</span> (storageMode<span class="op">:</span><span class="st"> </span>lockedEnvironment)</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="op">&gt;</span><span class="st"> </span>assayData<span class="op">:</span><span class="st"> </span><span class="dv">30</span> features, <span class="dv">57</span> samples </span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="op">&gt;</span><span class="st">   </span>element names<span class="op">:</span><span class="st"> </span>exprs </span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="op">&gt;</span><span class="st"> </span>protocolData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="op">&gt;</span><span class="st"> </span>phenoData</span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="op">&gt;</span><span class="st">   </span>sampleNames<span class="op">:</span><span class="st"> </span>DMD004.<span class="fl">1.</span>U02 DMD005.<span class="fl">1.</span>U02 ... <span class="kw">DMD173.1.U02</span> (<span class="dv">57</span> total)</span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="op">&gt;</span><span class="st">   </span>varLabels<span class="op">:</span><span class="st"> </span>Group steroids</span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="op">&gt;</span><span class="st">   </span>varMetadata<span class="op">:</span><span class="st"> </span>labelDescription</span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="op">&gt;</span><span class="st"> </span>featureData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="op">&gt;</span><span class="st"> </span>experimentData<span class="op">:</span><span class="st"> </span>use <span class="st">'experimentData(object)'</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="op">&gt;</span><span class="st"> </span>Annotation<span class="op">:</span><span class="st">  </span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="er">&gt;</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>Processing information <span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">Imputed</span> (knn)<span class="op">:</span><span class="st"> </span>Sun Jun <span class="dv">21</span> <span class="dv">19</span><span class="op">:</span><span class="dv">39</span><span class="op">:</span><span class="dv">01</span> <span class="dv">2020</span> </span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">Normalised</span> (log_pareto)<span class="op">:</span><span class="st"> </span>Sun Jun <span class="dv">21</span> <span class="dv">19</span><span class="op">:</span><span class="dv">39</span><span class="op">:</span><span class="dv">01</span> <span class="dv">2020</span> </span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="op">&gt;</span><span class="st">  </span>MSnbase version<span class="op">:</span><span class="st"> </span><span class="dv">2</span>.<span class="fl">14.2</span></span></code></pre></div>
+<p>The next step of this block is the data normalization. Often, some factors can introduce variability in some types of MS data having a critical influence on the final statistical results, making normalization a key step in the workflow <span class="citation">(Berg et al. <a href="#ref-normalization">2006</a>)</span>. Again, <strong>POMA</strong> offers several methods to normalize the data by running just the following line of code:</p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r">normalized &lt;- PomaNorm(imputed, method = "log_pareto")
+normalized
+&gt; MSnSet (storageMode: lockedEnvironment)
+&gt; assayData: 30 features, 57 samples 
+&gt;   element names: exprs 
+&gt; protocolData: none
+&gt; phenoData
+&gt;   sampleNames: DMD004.1.U02 DMD005.1.U02 ... DMD173.1.U02 (57 total)
+&gt;   varLabels: Group steroids
+&gt;   varMetadata: labelDescription
+&gt; featureData: none
+&gt; experimentData: use 'experimentData(object)'
+&gt; Annotation:  
+&gt; - - - Processing information - - -
+&gt; Imputed (knn): Thu Jun 25 17:32:03 2020 
+&gt; Normalised (log_pareto): Thu Jun 25 17:32:03 2020 
+&gt;  MSnbase version: 2.14.2</pre></body></html></div>
 <p><em>Note that the object has been updated with normalization information.</em></p>
 <div id="normalization-effect" class="section level4">
 <h4 class="hasAnchor">
@@ -228,28 +220,20 @@
 <p>Sometimes, you will be interested in <em>how the normalization process affect your data</em>?</p>
 <p>To answer this question, <strong>POMA</strong> offers two exploratory functions, <code>PomaBoxplots</code> and <code>PomaDensity</code>, that can help to understand the normalization process.</p>
 <p><code>PomaBoxplots</code> generates boxplots for all samples or features (depending on the group factor) of an <code>MSnSet</code> object. Here, we can compare objects before and after normalization step.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="kw">imputed</span>, group = <span class="st">"samples"</span>, jitter = <span class="fl">FALSE</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"none"</span>) <span class="co"># data before normalization</span>
-</pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">imputed</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>) <span class="co"># data before normalization</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-10-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="kw">normalized</span>, group = <span class="st">"samples"</span>, jitter = <span class="fl">FALSE</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Normalized"</span>) <span class="co"># data after normalization</span>
-</pre></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">normalized</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Normalized"</span>) <span class="co"># data after normalization</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-11-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 <p>On the other hand, <code>PomaDensity</code> shows the distribution of all features before and after the normalization process.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="kw">imputed</span>, group = <span class="st">"features"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"none"</span>) <span class="co"># data before normalization</span>
-</pre></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">imputed</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>) <span class="co"># data before normalization</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-12-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="kw">normalized</span>, group = <span class="st">"features"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Normalized"</span>) <span class="co"># data after normalization</span>
-</pre></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">normalized</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Normalized"</span>) <span class="co"># data after normalization</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-13-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -258,28 +242,26 @@
 <a href="#outlier-detection" class="anchor"></a>Outlier Detection</h3>
 <p>Finally, the last step of this block is the Outlier Detection. Outlers are defined as observations that are not concordant with those of the vast majority of the remaining data points. These values can have an enormous influence on the resultant statistical analysis, being a dangerous ground for all required assumptions in the most commonly applied parametric tests in mass spectrometry as well as for all also required assumptions in many regression techniques and predictive modeling approaches. <strong>POMA</strong> allows the analysis of outliers as well as the possibility to remove them from the analysis using different modulable parameters.</p>
 <p>Analyze and remove outliers running the following two lines of code.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/PomaOutliers.html">PomaOutliers</a></span>(<span class="kw">normalized</span>, do = <span class="st">"analyze"</span>)<span class="op">$</span><span class="kw">polygon_plot</span> <span class="co"># to explore</span>
-</pre></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaOutliers.html">PomaOutliers</a></span>(<span class="no">normalized</span>, <span class="kw">do</span> <span class="kw">=</span> <span class="st">"analyze"</span>)$<span class="no">polygon_plot</span> <span class="co"># to explore</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-14-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>pre_processed &lt;-<span class="st"> </span><span class="kw">PomaOutliers</span>(normalized, <span class="dt">do =</span> <span class="st">"clean"</span>) <span class="co"># to remove outliers</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>pre_processed</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">MSnSet</span> (storageMode<span class="op">:</span><span class="st"> </span>lockedEnvironment)</span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="op">&gt;</span><span class="st"> </span>assayData<span class="op">:</span><span class="st"> </span><span class="dv">30</span> features, <span class="dv">50</span> samples </span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="op">&gt;</span><span class="st">   </span>element names<span class="op">:</span><span class="st"> </span>exprs </span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="op">&gt;</span><span class="st"> </span>protocolData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="op">&gt;</span><span class="st"> </span>phenoData</span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="op">&gt;</span><span class="st">   </span>sampleNames<span class="op">:</span><span class="st"> </span>DMD004.<span class="fl">1.</span>U02 DMD005.<span class="fl">1.</span>U02 ... <span class="kw">DMD173.1.U02</span> (<span class="dv">50</span> total)</span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="op">&gt;</span><span class="st">   </span>varLabels<span class="op">:</span><span class="st"> </span>Group steroids</span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="op">&gt;</span><span class="st">   </span>varMetadata<span class="op">:</span><span class="st"> </span>labelDescription</span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="op">&gt;</span><span class="st"> </span>featureData<span class="op">:</span><span class="st"> </span>none</span>
-<span id="cb14-12"><a href="#cb14-12"></a><span class="op">&gt;</span><span class="st"> </span>experimentData<span class="op">:</span><span class="st"> </span>use <span class="st">'experimentData(object)'</span></span>
-<span id="cb14-13"><a href="#cb14-13"></a><span class="op">&gt;</span><span class="st"> </span>Annotation<span class="op">:</span><span class="st">  </span></span>
-<span id="cb14-14"><a href="#cb14-14"></a><span class="er">&gt;</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>Processing information <span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">Imputed</span> (knn)<span class="op">:</span><span class="st"> </span>Sun Jun <span class="dv">21</span> <span class="dv">19</span><span class="op">:</span><span class="dv">39</span><span class="op">:</span><span class="dv">01</span> <span class="dv">2020</span> </span>
-<span id="cb14-16"><a href="#cb14-16"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">Normalised</span> (log_pareto)<span class="op">:</span><span class="st"> </span>Sun Jun <span class="dv">21</span> <span class="dv">19</span><span class="op">:</span><span class="dv">39</span><span class="op">:</span><span class="dv">01</span> <span class="dv">2020</span> </span>
-<span id="cb14-17"><a href="#cb14-17"></a><span class="op">&gt;</span><span class="st"> </span>Outliers <span class="kw">removed</span> (euclidean and median)<span class="op">:</span><span class="st"> </span>Sun Jun <span class="dv">21</span> <span class="dv">19</span><span class="op">:</span><span class="dv">39</span><span class="op">:</span><span class="dv">08</span> <span class="dv">2020</span> </span>
-<span id="cb14-18"><a href="#cb14-18"></a><span class="op">&gt;</span><span class="st">  </span>MSnbase version<span class="op">:</span><span class="st"> </span><span class="dv">2</span>.<span class="fl">14.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><html><body><pre class="r">pre_processed &lt;- PomaOutliers(normalized, do = "clean") # to remove outliers
+pre_processed
+&gt; MSnSet (storageMode: lockedEnvironment)
+&gt; assayData: 30 features, 50 samples 
+&gt;   element names: exprs 
+&gt; protocolData: none
+&gt; phenoData
+&gt;   sampleNames: DMD004.1.U02 DMD005.1.U02 ... DMD173.1.U02 (50 total)
+&gt;   varLabels: Group steroids
+&gt;   varMetadata: labelDescription
+&gt; featureData: none
+&gt; experimentData: use 'experimentData(object)'
+&gt; Annotation:  
+&gt; - - - Processing information - - -
+&gt; Imputed (knn): Thu Jun 25 17:32:03 2020 
+&gt; Normalised (log_pareto): Thu Jun 25 17:32:03 2020 
+&gt; Outliers removed (euclidean and median): Thu Jun 25 17:32:11 2020 
+&gt;  MSnbase version: 2.14.2</pre></body></html></div>
 <p><em>Note that the object has been updated with outlier information.</em></p>
 </div>
 </div>
@@ -294,96 +276,84 @@
 <div id="t-test" class="section level4">
 <h4 class="hasAnchor">
 <a href="#t-test" class="anchor"></a>T-test</h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">PomaUnivariate</span>(pre_processed, <span class="dt">method =</span> <span class="st">"ttest"</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="op">&gt;</span><span class="st">                    </span>mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="op">&gt;</span><span class="st"> </span>x1_methylhistidine         <span class="fl">-0.40</span>     <span class="fl">0.16</span>            <span class="fl">-0.400</span>                <span class="fl">0.56</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="op">&gt;</span><span class="st"> </span>x3_methylhistidine         <span class="fl">-0.42</span>     <span class="fl">0.19</span>            <span class="fl">-0.452</span>                <span class="fl">0.61</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="op">&gt;</span><span class="st"> </span>alanine                    <span class="fl">-0.32</span>     <span class="fl">0.11</span>            <span class="fl">-0.344</span>                <span class="fl">0.43</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="op">&gt;</span><span class="st"> </span>arginine                   <span class="fl">-0.11</span>     <span class="fl">0.06</span>            <span class="fl">-0.545</span>                <span class="fl">0.17</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="op">&gt;</span><span class="st"> </span>asparagine                 <span class="fl">-0.35</span>     <span class="fl">0.13</span>            <span class="fl">-0.371</span>                <span class="fl">0.48</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="op">&gt;</span><span class="st"> </span>aspartic_acid              <span class="fl">-0.25</span>     <span class="fl">0.09</span>            <span class="fl">-0.360</span>                <span class="fl">0.34</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="op">&gt;</span><span class="st">                          </span>pvalue    pvalueAdj</span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="op">&gt;</span><span class="st"> </span>x1_methylhistidine <span class="fl">9.302122e-08</span> <span class="fl">3.100707e-07</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="op">&gt;</span><span class="st"> </span>x3_methylhistidine <span class="fl">7.822367e-03</span> <span class="fl">9.025808e-03</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="op">&gt;</span><span class="st"> </span>alanine            <span class="fl">6.617797e-04</span> <span class="fl">8.631909e-04</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="op">&gt;</span><span class="st"> </span>arginine           <span class="fl">4.796275e-01</span> <span class="fl">4.796275e-01</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="op">&gt;</span><span class="st"> </span>asparagine         <span class="fl">1.279748e-05</span> <span class="fl">2.399528e-05</span></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="op">&gt;</span><span class="st"> </span>aspartic_acid      <span class="fl">3.302402e-02</span> <span class="fl">3.538287e-02</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r">PomaUnivariate(pre_processed, method = "ttest") %&gt;% head()
+&gt;                    mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means
+&gt; x1_methylhistidine         -0.40     0.16            -0.400                0.56
+&gt; x3_methylhistidine         -0.42     0.19            -0.452                0.61
+&gt; alanine                    -0.32     0.11            -0.344                0.43
+&gt; arginine                   -0.11     0.06            -0.545                0.17
+&gt; asparagine                 -0.35     0.13            -0.371                0.48
+&gt; aspartic_acid              -0.25     0.09            -0.360                0.34
+&gt;                          pvalue    pvalueAdj
+&gt; x1_methylhistidine 9.302122e-08 3.100707e-07
+&gt; x3_methylhistidine 7.822367e-03 9.025808e-03
+&gt; alanine            6.617797e-04 8.631909e-04
+&gt; arginine           4.796275e-01 4.796275e-01
+&gt; asparagine         1.279748e-05 2.399528e-05
+&gt; aspartic_acid      3.302402e-02 3.538287e-02</pre></body></html></div>
 <p>You can also compute a volcano plot using the T-test results. <em>Note that we’re using the non-normalized object to avoid negative values in our data.</em></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">PomaVolcano</span>(imputed, <span class="dt">pval =</span> <span class="st">"adjusted"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="op">&gt;</span><span class="st"> </span>Warning <span class="cf">in</span> <span class="kw">PomaVolcano</span>(imputed, <span class="dt">pval =</span> <span class="st">"adjusted"</span>)<span class="op">:</span><span class="st"> </span>adjust argument is empty<span class="op">!</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="er">&gt;</span><span class="st"> </span>FDR will be used</span></code></pre></div>
+<div class="sourceCode" id="cb16"><html><body><pre class="r">PomaVolcano(imputed, pval = "adjusted")
+&gt; Warning in PomaVolcano(imputed, pval = "adjusted"): adjust argument is empty!
+&gt; FDR will be used</pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-16-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 <div id="wilcoxon-test" class="section level4">
 <h4 class="hasAnchor">
 <a href="#wilcoxon-test" class="anchor"></a>Wilcoxon Test</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">PomaUnivariate</span>(pre_processed, <span class="dt">method =</span> <span class="st">"mann"</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="op">&gt;</span><span class="st">                    </span>mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means</span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="op">&gt;</span><span class="st"> </span>x1_methylhistidine         <span class="fl">-0.40</span>     <span class="fl">0.16</span>            <span class="fl">-0.400</span>                <span class="fl">0.56</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="op">&gt;</span><span class="st"> </span>x3_methylhistidine         <span class="fl">-0.42</span>     <span class="fl">0.19</span>            <span class="fl">-0.452</span>                <span class="fl">0.61</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="op">&gt;</span><span class="st"> </span>alanine                    <span class="fl">-0.32</span>     <span class="fl">0.11</span>            <span class="fl">-0.344</span>                <span class="fl">0.43</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="op">&gt;</span><span class="st"> </span>arginine                   <span class="fl">-0.11</span>     <span class="fl">0.06</span>            <span class="fl">-0.545</span>                <span class="fl">0.17</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="op">&gt;</span><span class="st"> </span>asparagine                 <span class="fl">-0.35</span>     <span class="fl">0.13</span>            <span class="fl">-0.371</span>                <span class="fl">0.48</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="op">&gt;</span><span class="st"> </span>aspartic_acid              <span class="fl">-0.25</span>     <span class="fl">0.09</span>            <span class="fl">-0.360</span>                <span class="fl">0.34</span></span>
-<span id="cb17-9"><a href="#cb17-9"></a><span class="op">&gt;</span><span class="st">                          </span>pvalue    pvalueAdj</span>
-<span id="cb17-10"><a href="#cb17-10"></a><span class="op">&gt;</span><span class="st"> </span>x1_methylhistidine <span class="fl">6.206369e-05</span> <span class="fl">0.0001432239</span></span>
-<span id="cb17-11"><a href="#cb17-11"></a><span class="op">&gt;</span><span class="st"> </span>x3_methylhistidine <span class="fl">9.989212e-03</span> <span class="fl">0.0115260136</span></span>
-<span id="cb17-12"><a href="#cb17-12"></a><span class="op">&gt;</span><span class="st"> </span>alanine            <span class="fl">2.152908e-04</span> <span class="fl">0.0004036702</span></span>
-<span id="cb17-13"><a href="#cb17-13"></a><span class="op">&gt;</span><span class="st"> </span>arginine           <span class="fl">1.400885e-01</span> <span class="fl">0.1449191650</span></span>
-<span id="cb17-14"><a href="#cb17-14"></a><span class="op">&gt;</span><span class="st"> </span>asparagine         <span class="fl">2.468467e-04</span> <span class="fl">0.0004356118</span></span>
-<span id="cb17-15"><a href="#cb17-15"></a><span class="op">&gt;</span><span class="st"> </span>aspartic_acid      <span class="fl">5.709276e-03</span> <span class="fl">0.0068511312</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><html><body><pre class="r">PomaUnivariate(pre_processed, method = "mann") %&gt;% head()
+&gt;                    mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means
+&gt; x1_methylhistidine         -0.40     0.16            -0.400                0.56
+&gt; x3_methylhistidine         -0.42     0.19            -0.452                0.61
+&gt; alanine                    -0.32     0.11            -0.344                0.43
+&gt; arginine                   -0.11     0.06            -0.545                0.17
+&gt; asparagine                 -0.35     0.13            -0.371                0.48
+&gt; aspartic_acid              -0.25     0.09            -0.360                0.34
+&gt;                          pvalue    pvalueAdj
+&gt; x1_methylhistidine 6.206369e-05 0.0001432239
+&gt; x3_methylhistidine 9.989212e-03 0.0115260136
+&gt; alanine            2.152908e-04 0.0004036702
+&gt; arginine           1.400885e-01 0.1449191650
+&gt; asparagine         2.468467e-04 0.0004356118
+&gt; aspartic_acid      5.709276e-03 0.0068511312</pre></body></html></div>
 </div>
 </div>
 <div id="limma" class="section level3">
 <h3 class="hasAnchor">
 <a href="#limma" class="anchor"></a>Limma</h3>
-<p>Other of the wide used statistical methods in many different omics, such as epigenomics or transcriptomics, is <strong>limma</strong> <span class="citation">(Ritchie et al. <a href="#ref-limma" role="doc-biblioref">2015</a>)</span>. <strong>POMA</strong> provides an easy use implementation of <em>limma</em> you only have to specify the desired contrast to compute.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">PomaLimma</span>(pre_processed, <span class="dt">contrast =</span> <span class="st">"Controls-DMD"</span>, <span class="dt">adjust =</span> <span class="st">"fdr"</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="op">&gt;</span><span class="st">                 </span>logFC AveExpr         t      P.Value    adj.P.Val         B</span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="op">&gt;</span><span class="st"> </span>tryptophan <span class="fl">-0.7749207</span> <span class="fl">0.00862</span> <span class="fl">-7.006568</span> <span class="fl">2.691438e-09</span> <span class="fl">8.074315e-08</span> <span class="fl">10.982005</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="op">&gt;</span><span class="st"> </span>valine     <span class="fl">-0.7009883</span> <span class="fl">0.01268</span> <span class="fl">-6.631334</span> <span class="fl">1.155051e-08</span> <span class="fl">1.732576e-07</span>  <span class="fl">9.553920</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="op">&gt;</span><span class="st"> </span>ornithine  <span class="fl">-0.6327809</span> <span class="fl">0.03366</span> <span class="fl">-6.262549</span> <span class="fl">4.794292e-08</span> <span class="fl">4.794292e-07</span>  <span class="fl">8.160589</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="op">&gt;</span><span class="st"> </span>isoleucine <span class="fl">-0.6058485</span> <span class="fl">0.00438</span> <span class="fl">-5.948984</span> <span class="fl">1.591994e-07</span> <span class="fl">1.193995e-06</span>  <span class="fl">6.987716</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="op">&gt;</span><span class="st"> </span>lactate    <span class="fl">-0.7853613</span> <span class="fl">0.01840</span> <span class="fl">-5.687122</span> <span class="fl">4.296261e-07</span> <span class="fl">2.577757e-06</span>  <span class="fl">6.019252</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="op">&gt;</span><span class="st"> </span>pyruvate   <span class="fl">-0.6244615</span> <span class="fl">0.01208</span> <span class="fl">-5.432256</span> <span class="fl">1.117445e-06</span> <span class="fl">5.135059e-06</span>  <span class="fl">5.088552</span></span></code></pre></div>
+<p>Other of the wide used statistical methods in many different omics, such as epigenomics or transcriptomics, is <strong>limma</strong> <span class="citation">(Ritchie et al. <a href="#ref-limma">2015</a>)</span>. <strong>POMA</strong> provides an easy use implementation of <em>limma</em> you only have to specify the desired contrast to compute.</p>
+<div class="sourceCode" id="cb18"><html><body><pre class="r">PomaLimma(pre_processed, contrast = "Controls-DMD", adjust = "fdr") %&gt;% head()
+&gt;                 logFC AveExpr         t      P.Value    adj.P.Val         B
+&gt; tryptophan -0.7749207 0.00862 -7.006568 2.691438e-09 8.074315e-08 10.982005
+&gt; valine     -0.7009883 0.01268 -6.631334 1.155051e-08 1.732576e-07  9.553920
+&gt; ornithine  -0.6327809 0.03366 -6.262549 4.794292e-08 4.794292e-07  8.160589
+&gt; isoleucine -0.6058485 0.00438 -5.948984 1.591994e-07 1.193995e-06  6.987716
+&gt; lactate    -0.7853613 0.01840 -5.687122 4.296261e-07 2.577757e-06  6.019252
+&gt; pyruvate   -0.6244615 0.01208 -5.432256 1.117445e-06 5.135059e-06  5.088552</pre></body></html></div>
 </div>
 <div id="multivariate-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#multivariate-analysis" class="anchor"></a>Multivariate Analysis</h3>
-<p>On the other hand, multivariate analysis implemented in <strong>POMA</strong> is quite similar to the univariate approaches. <code>PomaMultivariate</code> allows users to compute a PCA, PLS-DA or sPLS-DA by changing only the “method” parameter. This function is based on <strong>mixOmics</strong> package <span class="citation">(Rohart et al. <a href="#ref-mixOmics" role="doc-biblioref">2017</a>)</span>.</p>
+<p>On the other hand, multivariate analysis implemented in <strong>POMA</strong> is quite similar to the univariate approaches. <code>PomaMultivariate</code> allows users to compute a PCA, PLS-DA or sPLS-DA by changing only the “method” parameter. This function is based on <strong>mixOmics</strong> package <span class="citation">(Rohart et al. <a href="#ref-mixOmics">2017</a>)</span>.</p>
 <div id="principal-component-analysis" class="section level4">
 <h4 class="hasAnchor">
 <a href="#principal-component-analysis" class="anchor"></a>Principal Component Analysis</h4>
-<div class="sourceCode" id="cb19"><pre class="downlit">
-<span class="kw">poma_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaMultivariate.html">PomaMultivariate</a></span>(<span class="kw">pre_processed</span>, method = <span class="st">"pca"</span>)
-</pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="kw">poma_pca</span><span class="op">$</span><span class="kw">screeplot</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Scree Plot"</span>)
-</pre></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="no">poma_pca</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaMultivariate.html">PomaMultivariate</a></span>(<span class="no">pre_processed</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"pca"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="no">poma_pca</span>$<span class="no">screeplot</span> +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Scree Plot"</span>)</pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-20-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit">
-<span class="kw">poma_pca</span><span class="op">$</span><span class="kw">scoresplot</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Scores Plot"</span>)
-</pre></div>
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">poma_pca</span>$<span class="no">scoresplot</span> +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Scores Plot"</span>)</pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-21-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 <div id="pls-da" class="section level4">
 <h4 class="hasAnchor">
 <a href="#pls-da" class="anchor"></a>PLS-DA</h4>
-<div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="kw">poma_plsda</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaMultivariate.html">PomaMultivariate</a></span>(<span class="kw">pre_processed</span>, method = <span class="st">"plsda"</span>)
-</pre></div>
-<div class="sourceCode" id="cb23"><pre class="downlit">
-<span class="kw">poma_plsda</span><span class="op">$</span><span class="kw">scoresplot</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Scores Plot"</span>)
-</pre></div>
+<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">poma_plsda</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaMultivariate.html">PomaMultivariate</a></span>(<span class="no">pre_processed</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"plsda"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">poma_plsda</span>$<span class="no">scoresplot</span> +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Scores Plot"</span>)</pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-23-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb24"><pre class="downlit">
-<span class="kw">poma_plsda</span><span class="op">$</span><span class="kw">errors_plsda_plot</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Error Plot"</span>)
-</pre></div>
+<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="no">poma_plsda</span>$<span class="no">errors_plsda_plot</span> +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Error Plot"</span>)</pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-24-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -391,60 +361,48 @@
 <h3 class="hasAnchor">
 <a href="#correlation-analysis" class="anchor"></a>Correlation Analysis</h3>
 <p>Often, correlation analysis is used to explore and discover relationships and patterns within our data. <code>PomaCorr</code> provides a flexible and easy way to do that providing a table with all pairwise coorelations in the data, a correlogram and a correlation graph.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>poma_cor &lt;-<span class="st"> </span><span class="kw">PomaCorr</span>(pre_processed, <span class="dt">label_size =</span> <span class="dv">8</span>, <span class="dt">coeff =</span> <span class="fl">0.6</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>poma_cor<span class="op">$</span>correlations <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="op">&gt;</span><span class="st">           </span>Var1      Var2      corr</span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">341</span> isoleucine   leucine <span class="fl">0.9631456</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">642</span>    leucine    valine <span class="fl">0.9405392</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">836</span>   fumarate    malate <span class="fl">0.9398663</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">641</span> isoleucine    valine <span class="fl">0.9378129</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">545</span> asparagine threonine <span class="fl">0.9067625</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="op">&gt;</span><span class="st"> </span><span class="dv">558</span>     serine threonine <span class="fl">0.8931187</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a>poma_cor<span class="op">$</span>corrplot</span></code></pre></div>
+<div class="sourceCode" id="cb25"><html><body><pre class="r">poma_cor &lt;- PomaCorr(pre_processed, label_size = 8, coeff = 0.6)
+poma_cor$correlations %&gt;% head()
+&gt;           Var1      Var2      corr
+&gt; 341 isoleucine   leucine 0.9631456
+&gt; 642    leucine    valine 0.9405392
+&gt; 836   fumarate    malate 0.9398663
+&gt; 641 isoleucine    valine 0.9378129
+&gt; 545 asparagine threonine 0.9067625
+&gt; 558     serine threonine 0.8931187
+poma_cor$corrplot</pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-25-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb26"><pre class="downlit">
-<span class="kw">poma_cor</span><span class="op">$</span><span class="kw">graph</span>
-</pre></div>
+<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="no">poma_cor</span>$<span class="no">graph</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-25-2.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<p>Alternatively, if you switch the “corr_type” parameter to “glasso”, this function will compute a <strong>Gaussian Graphical Model</strong> using the <strong>glmnet</strong> package <span class="citation">(Friedman, Hastie, and Tibshirani <a href="#ref-glasso" role="doc-biblioref">2019</a>)</span>.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit">
-<span class="fu"><a href="../reference/PomaCorr.html">PomaCorr</a></span>(<span class="kw">pre_processed</span>, corr_type = <span class="st">"glasso"</span>, coeff = <span class="fl">0.6</span>)<span class="op">$</span><span class="kw">graph</span>
-</pre></div>
+<p>Alternatively, if you switch the “corr_type” parameter to “glasso”, this function will compute a <strong>Gaussian Graphical Model</strong> using the <strong>glmnet</strong> package <span class="citation">(Friedman, Hastie, and Tibshirani <a href="#ref-glasso">2019</a>)</span>.</p>
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaCorr.html">PomaCorr</a></span>(<span class="no">pre_processed</span>, <span class="kw">corr_type</span> <span class="kw">=</span> <span class="st">"glasso"</span>, <span class="kw">coeff</span> <span class="kw">=</span> <span class="fl">0.6</span>)$<span class="no">graph</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-26-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 <div id="lasso-ridge-and-elasticnet" class="section level3">
 <h3 class="hasAnchor">
 <a href="#lasso-ridge-and-elasticnet" class="anchor"></a>Lasso, Ridge and Elasticnet</h3>
-<p><strong>POMA</strong> also provides a function to perform a Lasso, Ridge and Elasticnet regression for binary outcomes in a very intuitive and easy way. <code>PomaLasso</code> is based on <strong>glmnet</strong> package <span class="citation">(Friedman, Hastie, and Tibshirani <a href="#ref-glmnet" role="doc-biblioref">2010</a>)</span>. This function allows you to create a test subset in your data, evaluate the prediction of your models and export the model computed (it could be useful to perform prediction models with MS data). If “ntest” parameter is set to NULL, <code>PomaLasso</code> will use all observations to create the model (useful for feature selection).</p>
-<div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="co"># alpha = 1 for Lasso</span>
-<span class="fu"><a href="../reference/PomaLasso.html">PomaLasso</a></span>(<span class="kw">pre_processed</span>, alpha = <span class="fl">1</span>)<span class="op">$</span><span class="kw">coefficientPlot</span>
-</pre></div>
+<p><strong>POMA</strong> also provides a function to perform a Lasso, Ridge and Elasticnet regression for binary outcomes in a very intuitive and easy way. <code>PomaLasso</code> is based on <strong>glmnet</strong> package <span class="citation">(Friedman, Hastie, and Tibshirani <a href="#ref-glmnet">2010</a>)</span>. This function allows you to create a test subset in your data, evaluate the prediction of your models and export the model computed (it could be useful to perform prediction models with MS data). If “ntest” parameter is set to NULL, <code>PomaLasso</code> will use all observations to create the model (useful for feature selection).</p>
+<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="co"># alpha = 1 for Lasso</span>
+<span class="fu"><a href="../reference/PomaLasso.html">PomaLasso</a></span>(<span class="no">pre_processed</span>, <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">1</span>)$<span class="no">coefficientPlot</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-27-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb29"><pre class="downlit">
-<span class="co"># alpha = 0 for Ridge</span>
-<span class="fu"><a href="../reference/PomaLasso.html">PomaLasso</a></span>(<span class="kw">pre_processed</span>, alpha = <span class="fl">0</span>)<span class="op">$</span><span class="kw">coefficientPlot</span>
-</pre></div>
+<div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="co"># alpha = 0 for Ridge</span>
+<span class="fu"><a href="../reference/PomaLasso.html">PomaLasso</a></span>(<span class="no">pre_processed</span>, <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">0</span>)$<span class="no">coefficientPlot</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-28-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 <div id="random-forest" class="section level3">
 <h3 class="hasAnchor">
 <a href="#random-forest" class="anchor"></a>Random Forest</h3>
-<p>Finally, the random forest algorithm is also implemented in <strong>POMA</strong>. <code>PomaRandForest</code> uses the <strong>randomForest</strong> package <span class="citation">(Liaw and Wiener <a href="#ref-randomForest" role="doc-biblioref">2002</a>)</span> to facilitate the implementation of the algorithm and creates automatically both test and train sets to compute and evaluate the resultant models.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit">
-<span class="kw">poma_rf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaRandForest.html">PomaRandForest</a></span>(<span class="kw">pre_processed</span>, ntest = <span class="fl">10</span>, nvar = <span class="fl">10</span>)
-<span class="kw">poma_rf</span><span class="op">$</span><span class="kw">error_tree</span>
-</pre></div>
+<p>Finally, the random forest algorithm is also implemented in <strong>POMA</strong>. <code>PomaRandForest</code> uses the <strong>randomForest</strong> package <span class="citation">(Liaw and Wiener <a href="#ref-randomForest">2002</a>)</span> to facilitate the implementation of the algorithm and creates automatically both test and train sets to compute and evaluate the resultant models.</p>
+<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="no">poma_rf</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaRandForest.html">PomaRandForest</a></span>(<span class="no">pre_processed</span>, <span class="kw">ntest</span> <span class="kw">=</span> <span class="fl">10</span>, <span class="kw">nvar</span> <span class="kw">=</span> <span class="fl">10</span>)
+<span class="no">poma_rf</span>$<span class="no">error_tree</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-29-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 <p>Resultant random forest model confusion matrix for <strong>test</strong> set:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>poma_rf<span class="op">$</span>confusion_matrix</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="op">&gt;</span><span class="st">          </span>Controls DMD class.error</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="op">&gt;</span><span class="st"> </span>Controls        <span class="dv">1</span>   <span class="dv">1</span>         <span class="fl">0.5</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="op">&gt;</span><span class="st"> </span>DMD             <span class="dv">0</span>   <span class="dv">3</span>         <span class="fl">0.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><html><body><pre class="r">poma_rf$confusion_matrix
+&gt;          Controls DMD class.error
+&gt; Controls        1   1         0.5
+&gt; DMD             0   3         0.0</pre></body></html></div>
 <p>Gini index plot for the top 10 predictors:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit">
-<span class="kw">poma_rf</span><span class="op">$</span><span class="kw">gini_plot</span>
-</pre></div>
+<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="no">poma_rf</span>$<span class="no">gini_plot</span></pre></body></html></div>
 <p><img src="POMA-demo_files/figure-html/unnamed-chunk-31-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -452,81 +410,81 @@
 <div id="session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-information" class="anchor"></a>Session Information</h1>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">sessionInfo</span>()</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="op">&gt;</span><span class="st"> </span>R version <span class="dv">4</span>.<span class="fl">0.1</span> (<span class="dv">2020-06-06</span>)</span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="op">&gt;</span><span class="st"> </span>Platform<span class="op">:</span><span class="st"> </span>x86_<span class="dv">64</span><span class="op">-</span>apple<span class="op">-</span><span class="kw">darwin17.0</span> (<span class="dv">64</span><span class="op">-</span>bit)</span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="op">&gt;</span><span class="st"> </span>Running under<span class="op">:</span><span class="st"> </span>macOS Catalina <span class="dv">10</span>.<span class="fl">15.5</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a><span class="op">&gt;</span><span class="st"> </span></span>
-<span id="cb33-6"><a href="#cb33-6"></a><span class="er">&gt;</span><span class="st"> </span>Matrix products<span class="op">:</span><span class="st"> </span>default</span>
-<span id="cb33-7"><a href="#cb33-7"></a><span class="op">&gt;</span><span class="st"> </span>BLAS<span class="op">:</span><span class="st">   </span><span class="er">/</span>Library<span class="op">/</span>Frameworks<span class="op">/</span>R.framework<span class="op">/</span>Versions<span class="op">/</span><span class="fl">4.0</span><span class="op">/</span>Resources<span class="op">/</span>lib<span class="op">/</span>libRblas.dylib</span>
-<span id="cb33-8"><a href="#cb33-8"></a><span class="op">&gt;</span><span class="st"> </span>LAPACK<span class="op">:</span><span class="st"> </span><span class="er">/</span>Library<span class="op">/</span>Frameworks<span class="op">/</span>R.framework<span class="op">/</span>Versions<span class="op">/</span><span class="fl">4.0</span><span class="op">/</span>Resources<span class="op">/</span>lib<span class="op">/</span>libRlapack.dylib</span>
-<span id="cb33-9"><a href="#cb33-9"></a><span class="op">&gt;</span><span class="st"> </span></span>
-<span id="cb33-10"><a href="#cb33-10"></a><span class="er">&gt;</span><span class="st"> </span>locale<span class="op">:</span></span>
-<span id="cb33-11"><a href="#cb33-11"></a><span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] en_US.UTF<span class="dv">-8</span><span class="op">/</span>en_US.UTF<span class="dv">-8</span><span class="op">/</span>en_US.UTF<span class="dv">-8</span><span class="op">/</span>C<span class="op">/</span>en_US.UTF<span class="dv">-8</span><span class="op">/</span>en_US.UTF<span class="dv">-8</span></span>
-<span id="cb33-12"><a href="#cb33-12"></a><span class="op">&gt;</span><span class="st"> </span></span>
-<span id="cb33-13"><a href="#cb33-13"></a><span class="er">&gt;</span><span class="st"> </span>attached base packages<span class="op">:</span></span>
-<span id="cb33-14"><a href="#cb33-14"></a><span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span id="cb33-15"><a href="#cb33-15"></a><span class="op">&gt;</span><span class="st"> </span></span>
-<span id="cb33-16"><a href="#cb33-16"></a><span class="er">&gt;</span><span class="st"> </span>other attached packages<span class="op">:</span></span>
-<span id="cb33-17"><a href="#cb33-17"></a><span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] ggraph_<span class="dv">2</span>.<span class="fl">0.3</span>     ggplot2_<span class="dv">3</span>.<span class="fl">3.2</span>    POMA_<span class="dv">0</span>.<span class="fl">99.10</span>     BiocStyle_<span class="dv">2</span>.<span class="fl">16.0</span></span>
-<span id="cb33-18"><a href="#cb33-18"></a><span class="op">&gt;</span><span class="st"> </span></span>
-<span id="cb33-19"><a href="#cb33-19"></a><span class="er">&gt;</span><span class="st"> </span>loaded via a <span class="kw">namespace</span> (and not attached)<span class="op">:</span></span>
-<span id="cb33-20"><a href="#cb33-20"></a><span class="er">&gt;</span><span class="st">   </span>[<span class="dv">1</span>] backports_<span class="dv">1</span>.<span class="fl">1.8</span>       circlize_<span class="dv">0</span>.<span class="fl">4.10</span>       plyr_<span class="dv">1</span>.<span class="fl">8.6</span>           </span>
-<span id="cb33-21"><a href="#cb33-21"></a><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">4</span>] igraph_<span class="dv">1</span>.<span class="fl">2.5</span>          lazyeval_<span class="dv">0</span>.<span class="fl">2.2</span>        splines_<span class="dv">4</span>.<span class="fl">0.1</span>        </span>
-<span id="cb33-22"><a href="#cb33-22"></a><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">7</span>] gmp_<span class="fl">0.6</span><span class="dv">-0</span>             BiocParallel_<span class="dv">1</span>.<span class="fl">22.0</span>   digest_<span class="dv">0</span>.<span class="fl">6.25</span>        </span>
-<span id="cb33-23"><a href="#cb33-23"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">10</span>] foreach_<span class="dv">1</span>.<span class="fl">5.0</span>         htmltools_<span class="dv">0</span>.<span class="fl">5.0</span>       viridis_<span class="dv">0</span>.<span class="fl">5.1</span>        </span>
-<span id="cb33-24"><a href="#cb33-24"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">13</span>] magrittr_<span class="fl">1.5</span>          memoise_<span class="dv">1</span>.<span class="fl">1.0</span>         cluster_<span class="dv">2</span>.<span class="fl">1.0</span>        </span>
-<span id="cb33-25"><a href="#cb33-25"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">16</span>] doParallel_<span class="dv">1</span>.<span class="fl">0.15</span>     limma_<span class="dv">3</span>.<span class="fl">44.3</span>          recipes_<span class="dv">0</span>.<span class="fl">1.12</span>       </span>
-<span id="cb33-26"><a href="#cb33-26"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">19</span>] ComplexHeatmap_<span class="dv">2</span>.<span class="fl">4.2</span>  graphlayouts_<span class="dv">0</span>.<span class="fl">7.0</span>    gower_<span class="dv">0</span>.<span class="fl">2.1</span>          </span>
-<span id="cb33-27"><a href="#cb33-27"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">22</span>] matrixStats_<span class="dv">0</span>.<span class="fl">56.0</span>    rARPACK_<span class="fl">0.11</span><span class="dv">-0</span>        pkgdown_<span class="dv">1</span>.<span class="dv">5</span>.<span class="fl">1.9000</span>   </span>
-<span id="cb33-28"><a href="#cb33-28"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">25</span>] colorspace_<span class="fl">1.4</span><span class="dv">-1</span>      ggrepel_<span class="dv">0</span>.<span class="fl">8.2</span>         xfun_<span class="fl">0.15</span>            </span>
-<span id="cb33-29"><a href="#cb33-29"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">28</span>] dplyr_<span class="dv">1</span>.<span class="fl">0.0</span>           crayon_<span class="dv">1</span>.<span class="fl">3.4</span>          jsonlite_<span class="dv">1</span>.<span class="fl">6.1</span>       </span>
-<span id="cb33-30"><a href="#cb33-30"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">31</span>] impute_<span class="dv">1</span>.<span class="fl">62.0</span>         survival_<span class="fl">3.1</span><span class="dv">-12</span>       iterators_<span class="dv">1</span>.<span class="fl">0.12</span>     </span>
-<span id="cb33-31"><a href="#cb33-31"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">34</span>] glue_<span class="dv">1</span>.<span class="fl">4.1</span>            polyclip_<span class="fl">1.10</span><span class="dv">-0</span>       gtable_<span class="dv">0</span>.<span class="fl">3.0</span>         </span>
-<span id="cb33-32"><a href="#cb33-32"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">37</span>] ipred_<span class="fl">0.9</span><span class="dv">-9</span>           zlibbioc_<span class="dv">1</span>.<span class="fl">34.0</span>       GetoptLong_<span class="dv">1</span>.<span class="fl">0.0</span>     </span>
-<span id="cb33-33"><a href="#cb33-33"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">40</span>] RankProd_<span class="dv">3</span>.<span class="fl">14.0</span>       shape_<span class="dv">1</span>.<span class="fl">4.4</span>           Rmpfr_<span class="fl">0.8</span><span class="dv">-1</span>          </span>
-<span id="cb33-34"><a href="#cb33-34"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">43</span>] BiocGenerics_<span class="dv">0</span>.<span class="fl">34.0</span>   scales_<span class="dv">1</span>.<span class="fl">1.1</span>          vsn_<span class="dv">3</span>.<span class="fl">56.0</span>           </span>
-<span id="cb33-35"><a href="#cb33-35"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">46</span>] Rcpp_<span class="dv">1</span>.<span class="dv">0</span>.<span class="fl">4.6</span>          mzR_<span class="dv">2</span>.<span class="fl">22.0</span>            viridisLite_<span class="dv">0</span>.<span class="fl">3.0</span>    </span>
-<span id="cb33-36"><a href="#cb33-36"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">49</span>] clue_<span class="fl">0.3</span><span class="dv">-57</span>           preprocessCore_<span class="dv">1</span>.<span class="fl">50.0</span> clisymbols_<span class="dv">1</span>.<span class="fl">2.0</span>     </span>
-<span id="cb33-37"><a href="#cb33-37"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">52</span>] stats4_<span class="dv">4</span>.<span class="fl">0.1</span>          lava_<span class="dv">1</span>.<span class="fl">6.7</span>            prodlim_<span class="dv">2019</span>.<span class="fl">11.13</span>   </span>
-<span id="cb33-38"><a href="#cb33-38"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">55</span>] glmnet_<span class="fl">4.0</span><span class="dv">-2</span>          htmlwidgets_<span class="dv">1</span>.<span class="fl">5.1</span>     httr_<span class="dv">1</span>.<span class="fl">4.1</span>           </span>
-<span id="cb33-39"><a href="#cb33-39"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">58</span>] RColorBrewer_<span class="fl">1.1</span><span class="dv">-2</span>    ellipsis_<span class="dv">0</span>.<span class="fl">3.1</span>        pkgconfig_<span class="dv">2</span>.<span class="fl">0.3</span>      </span>
-<span id="cb33-40"><a href="#cb33-40"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">61</span>] XML_<span class="fl">3.99-0.3</span>          farver_<span class="dv">2</span>.<span class="fl">0.3</span>          nnet_<span class="fl">7.3</span><span class="dv">-14</span>          </span>
-<span id="cb33-41"><a href="#cb33-41"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">64</span>] caret_<span class="fl">6.0</span><span class="dv">-86</span>          labeling_<span class="fl">0.3</span>          tidyselect_<span class="dv">1</span>.<span class="fl">1.0</span>     </span>
-<span id="cb33-42"><a href="#cb33-42"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">67</span>] rlang_<span class="dv">0</span>.<span class="fl">4.6</span>           reshape2_<span class="dv">1</span>.<span class="fl">4.4</span>        ggcorrplot_<span class="dv">0</span>.<span class="fl">1.3</span>     </span>
-<span id="cb33-43"><a href="#cb33-43"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">70</span>] munsell_<span class="dv">0</span>.<span class="fl">5.0</span>         tools_<span class="dv">4</span>.<span class="fl">0.1</span>           generics_<span class="dv">0</span>.<span class="fl">0.2</span>       </span>
-<span id="cb33-44"><a href="#cb33-44"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">73</span>] broom_<span class="dv">0</span>.<span class="fl">5.6</span>           evaluate_<span class="fl">0.14</span>         stringr_<span class="dv">1</span>.<span class="fl">4.0</span>        </span>
-<span id="cb33-45"><a href="#cb33-45"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">76</span>] mzID_<span class="dv">1</span>.<span class="fl">26.0</span>           yaml_<span class="dv">2</span>.<span class="fl">2.1</span>            ModelMetrics_<span class="dv">1</span>.<span class="dv">2</span>.<span class="fl">2.2</span> </span>
-<span id="cb33-46"><a href="#cb33-46"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">79</span>] knitr_<span class="fl">1.28</span>            fs_<span class="dv">1</span>.<span class="fl">4.1</span>              tidygraph_<span class="dv">1</span>.<span class="fl">2.0</span>      </span>
-<span id="cb33-47"><a href="#cb33-47"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">82</span>] randomForest_<span class="fl">4.6</span><span class="dv">-14</span>   purrr_<span class="dv">0</span>.<span class="fl">3.4</span>           ncdf4_<span class="fl">1.17</span>           </span>
-<span id="cb33-48"><a href="#cb33-48"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">85</span>] glasso_<span class="fl">1.11</span>           nlme_<span class="fl">3.1</span><span class="dv">-148</span>          compiler_<span class="dv">4</span>.<span class="fl">0.1</span>       </span>
-<span id="cb33-49"><a href="#cb33-49"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">88</span>] plotly_<span class="dv">4</span>.<span class="dv">9</span>.<span class="fl">2.1</span>        png_<span class="fl">0.1</span><span class="dv">-7</span>             affyio_<span class="dv">1</span>.<span class="fl">58.0</span>        </span>
-<span id="cb33-50"><a href="#cb33-50"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">91</span>] tibble_<span class="dv">3</span>.<span class="fl">0.1</span>          tweenr_<span class="dv">1</span>.<span class="fl">0.1</span>          stringi_<span class="dv">1</span>.<span class="fl">4.6</span>        </span>
-<span id="cb33-51"><a href="#cb33-51"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">94</span>] desc_<span class="dv">1</span>.<span class="fl">2.0</span>            RSpectra_<span class="fl">0.16</span><span class="dv">-0</span>       MSnbase_<span class="dv">2</span>.<span class="fl">14.2</span>       </span>
-<span id="cb33-52"><a href="#cb33-52"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">97</span>] lattice_<span class="fl">0.20</span><span class="dv">-41</span>       ProtGenerics_<span class="dv">1</span>.<span class="fl">20.0</span>   Matrix_<span class="fl">1.2</span><span class="dv">-18</span>        </span>
-<span id="cb33-53"><a href="#cb33-53"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">100</span>] permute_<span class="fl">0.9</span><span class="dv">-5</span>         vegan_<span class="fl">2.5</span><span class="dv">-6</span>           vctrs_<span class="dv">0</span>.<span class="fl">3.1</span>          </span>
-<span id="cb33-54"><a href="#cb33-54"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">103</span>] pillar_<span class="dv">1</span>.<span class="fl">4.4</span>          lifecycle_<span class="dv">0</span>.<span class="fl">2.0</span>       BiocManager_<span class="dv">1</span>.<span class="fl">30.10</span>  </span>
-<span id="cb33-55"><a href="#cb33-55"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">106</span>] MALDIquant_<span class="dv">1</span>.<span class="fl">19.3</span>     GlobalOptions_<span class="dv">0</span>.<span class="fl">1.2</span>   data.table_<span class="dv">1</span>.<span class="fl">12.8</span>    </span>
-<span id="cb33-56"><a href="#cb33-56"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">109</span>] corpcor_<span class="dv">1</span>.<span class="fl">6.9</span>         patchwork_<span class="dv">1</span>.<span class="fl">0.0</span>       R6_<span class="dv">2</span>.<span class="fl">4.1</span>             </span>
-<span id="cb33-57"><a href="#cb33-57"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">112</span>] pcaMethods_<span class="dv">1</span>.<span class="fl">80.0</span>     affy_<span class="dv">1</span>.<span class="fl">66.0</span>           bookdown_<span class="fl">0.19</span>        </span>
-<span id="cb33-58"><a href="#cb33-58"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">115</span>] gridExtra_<span class="fl">2.3</span>         IRanges_<span class="dv">2</span>.<span class="fl">22.2</span>        codetools_<span class="fl">0.2</span><span class="dv">-16</span>     </span>
-<span id="cb33-59"><a href="#cb33-59"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">118</span>] MASS_<span class="fl">7.3-51.6</span>         assertthat_<span class="dv">0</span>.<span class="fl">2.1</span>      rprojroot_<span class="fl">1.3</span><span class="dv">-2</span>      </span>
-<span id="cb33-60"><a href="#cb33-60"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">121</span>] rjson_<span class="dv">0</span>.<span class="fl">2.20</span>          withr_<span class="dv">2</span>.<span class="fl">2.0</span>           S4Vectors_<span class="dv">0</span>.<span class="fl">26.1</span>     </span>
-<span id="cb33-61"><a href="#cb33-61"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">124</span>] mgcv_<span class="fl">1.8</span><span class="dv">-31</span>           parallel_<span class="dv">4</span>.<span class="fl">0.1</span>        mixOmics_<span class="dv">6</span>.<span class="fl">12.1</span>      </span>
-<span id="cb33-62"><a href="#cb33-62"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">127</span>] grid_<span class="dv">4</span>.<span class="fl">0.1</span>            rpart_<span class="fl">4.1</span><span class="dv">-15</span>          timeDate_<span class="fl">3043.102</span>    </span>
-<span id="cb33-63"><a href="#cb33-63"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">130</span>] tidyr_<span class="dv">1</span>.<span class="fl">1.0</span>           class_<span class="fl">7.3</span><span class="dv">-17</span>          rmarkdown_<span class="dv">2</span>.<span class="fl">3.1</span>      </span>
-<span id="cb33-64"><a href="#cb33-64"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">133</span>] ggforce_<span class="dv">0</span>.<span class="fl">3.1</span>         pROC_<span class="dv">1</span>.<span class="fl">16.2</span>           Biobase_<span class="dv">2</span>.<span class="fl">48.0</span>       </span>
-<span id="cb33-65"><a href="#cb33-65"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">136</span>] lubridate_<span class="dv">1</span>.<span class="fl">7.9</span>       ellipse_<span class="dv">0</span>.<span class="fl">4.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><html><body><pre class="r">sessionInfo()
+&gt; R version 4.0.1 (2020-06-06)
+&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+&gt; Running under: macOS Catalina 10.15.4
+&gt; 
+&gt; Matrix products: default
+&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+&gt; 
+&gt; locale:
+&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+&gt; 
+&gt; attached base packages:
+&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+&gt; 
+&gt; other attached packages:
+&gt; [1] ggraph_2.0.3     ggplot2_3.3.2    POMA_0.99.15     BiocStyle_2.16.0
+&gt; 
+&gt; loaded via a namespace (and not attached):
+&gt;   [1] backports_1.1.8       circlize_0.4.10       plyr_1.8.6           
+&gt;   [4] igraph_1.2.5          lazyeval_0.2.2        splines_4.0.1        
+&gt;   [7] gmp_0.6-0             BiocParallel_1.22.0   digest_0.6.25        
+&gt;  [10] foreach_1.5.0         htmltools_0.5.0       viridis_0.5.1        
+&gt;  [13] magrittr_1.5          memoise_1.1.0         cluster_2.1.0        
+&gt;  [16] doParallel_1.0.15     limma_3.44.3          recipes_0.1.13       
+&gt;  [19] ComplexHeatmap_2.4.2  graphlayouts_0.7.0    gower_0.2.2          
+&gt;  [22] matrixStats_0.56.0    rARPACK_0.11-0        pkgdown_1.5.1        
+&gt;  [25] colorspace_1.4-1      ggrepel_0.8.2         xfun_0.15            
+&gt;  [28] dplyr_1.0.0           jsonlite_1.7.0        crayon_1.3.4         
+&gt;  [31] impute_1.62.0         survival_3.2-3        iterators_1.0.12     
+&gt;  [34] glue_1.4.1            polyclip_1.10-0       gtable_0.3.0         
+&gt;  [37] ipred_0.9-9           zlibbioc_1.34.0       GetoptLong_1.0.0     
+&gt;  [40] RankProd_3.14.0       shape_1.4.4           Rmpfr_0.8-1          
+&gt;  [43] BiocGenerics_0.34.0   scales_1.1.1          vsn_3.56.0           
+&gt;  [46] Rcpp_1.0.4.6          mzR_2.22.0            viridisLite_0.3.0    
+&gt;  [49] clue_0.3-57           preprocessCore_1.50.0 clisymbols_1.2.0     
+&gt;  [52] stats4_4.0.1          lava_1.6.7            prodlim_2019.11.13   
+&gt;  [55] glmnet_4.0-2          httr_1.4.1            htmlwidgets_1.5.1    
+&gt;  [58] RColorBrewer_1.1-2    ellipsis_0.3.1        pkgconfig_2.0.3      
+&gt;  [61] XML_3.99-0.3          farver_2.0.3          nnet_7.3-14          
+&gt;  [64] caret_6.0-86          labeling_0.3          tidyselect_1.1.0     
+&gt;  [67] rlang_0.4.6           reshape2_1.4.4        ggcorrplot_0.1.3     
+&gt;  [70] munsell_0.5.0         tools_4.0.1           generics_0.0.2       
+&gt;  [73] broom_0.5.6           evaluate_0.14         stringr_1.4.0        
+&gt;  [76] mzID_1.26.0           yaml_2.2.1            ModelMetrics_1.2.2.2 
+&gt;  [79] knitr_1.29            fs_1.4.1              tidygraph_1.2.0      
+&gt;  [82] randomForest_4.6-14   purrr_0.3.4           ncdf4_1.17           
+&gt;  [85] glasso_1.11           nlme_3.1-148          compiler_4.0.1       
+&gt;  [88] rstudioapi_0.11       plotly_4.9.2.1        png_0.1-7            
+&gt;  [91] affyio_1.58.0         tibble_3.0.1          tweenr_1.0.1         
+&gt;  [94] stringi_1.4.6         desc_1.2.0            RSpectra_0.16-0      
+&gt;  [97] MSnbase_2.14.2        lattice_0.20-41       ProtGenerics_1.20.0  
+&gt; [100] Matrix_1.2-18         permute_0.9-5         vegan_2.5-6          
+&gt; [103] vctrs_0.3.1           pillar_1.4.4          lifecycle_0.2.0      
+&gt; [106] BiocManager_1.30.10   MALDIquant_1.19.3     GlobalOptions_0.1.2  
+&gt; [109] data.table_1.12.8     corpcor_1.6.9         patchwork_1.0.1      
+&gt; [112] R6_2.4.1              pcaMethods_1.80.0     affy_1.66.0          
+&gt; [115] bookdown_0.20         gridExtra_2.3         IRanges_2.22.2       
+&gt; [118] codetools_0.2-16      MASS_7.3-51.6         assertthat_0.2.1     
+&gt; [121] rprojroot_1.3-2       rjson_0.2.20          withr_2.2.0          
+&gt; [124] S4Vectors_0.26.1      mgcv_1.8-31           parallel_4.0.1       
+&gt; [127] mixOmics_6.12.1       grid_4.0.1            rpart_4.1-15         
+&gt; [130] timeDate_3043.102     tidyr_1.1.0           class_7.3-17         
+&gt; [133] rmarkdown_2.3         ggforce_0.3.2         pROC_1.16.2          
+&gt; [136] Biobase_2.48.0        lubridate_1.7.9       ellipse_0.4.2</pre></body></html></div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
 <div id="ref-imputation">
-<p>Armitage, Emily Grace, Joanna Godzien, Vanesa Alonso-Herranz, Ángeles López-Gonzálvez, and Coral Barbas. 2015. “Missing Value Imputation Strategies for Metabolomics Data.” <em>Electrophoresis</em> 36 (24): 3050–60.</p>
+<p>Armitage, Emily Grace, Joanna Godzien, Vanesa Alonso-Herranz, Ángeles López-Gonzálvez, and Coral Barbas. 2015. “Missing Value Imputation Strategies for Metabolomics Data.” <em>Electrophoresis</em> 36 (24). Wiley Online Library: 3050–60.</p>
 </div>
 <div id="ref-normalization">
-<p>Berg, Robert A van den, Huub CJ Hoefsloot, Johan A Westerhuis, Age K Smilde, and Mariët J van der Werf. 2006. “Centering, Scaling, and Transformations: Improving the Biological Information Content of Metabolomics Data.” <em>BMC Genomics</em> 7 (1): 142.</p>
+<p>Berg, Robert A van den, Huub CJ Hoefsloot, Johan A Westerhuis, Age K Smilde, and Mariët J van der Werf. 2006. “Centering, Scaling, and Transformations: Improving the Biological Information Content of Metabolomics Data.” <em>BMC Genomics</em> 7 (1). Springer: 142.</p>
 </div>
 <div id="ref-glasso">
 <p>Friedman, Jerome, Trevor Hastie, and Rob Tibshirani. 2019. <em>Glasso: Graphical Lasso: Estimation of Gaussian Graphical Models</em>. <a href="https://CRAN.R-project.org/package=glasso">https://CRAN.R-project.org/package=glasso</a>.</p>
@@ -547,7 +505,7 @@
 <p>Ritchie, Matthew E, Belinda Phipson, Di Wu, Yifang Hu, Charity W Law, Wei Shi, and Gordon K Smyth. 2015. “limma Powers Differential Expression Analyses for RNA-Sequencing and Microarray Studies.” <em>Nucleic Acids Research</em> 43 (7): e47. <a href="https://doi.org/10.1093/nar/gkv007">https://doi.org/10.1093/nar/gkv007</a>.</p>
 </div>
 <div id="ref-mixOmics">
-<p>Rohart, Florian, Benoît Gautier, Amrit Singh, and Kim-Anh Lê Cao. 2017. “MixOmics: An R Package for ’Omics Feature Selection and Multiple Data Integration.” <em>PLoS Computational Biology</em> 13 (11): e1005752. <a href="http://www.mixOmics.org">http://www.mixOmics.org</a>.</p>
+<p>Rohart, Florian, Benoît Gautier, Amrit Singh, and Kim-Anh Lê Cao. 2017. “MixOmics: An R Package for ’Omics Feature Selection and Multiple Data Integration.” <em>PLoS Computational Biology</em> 13 (11). Public Library of Science: e1005752. <a href="http://www.mixOmics.org">http://www.mixOmics.org</a>.</p>
 </div>
 </div>
 </div>
@@ -568,7 +526,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

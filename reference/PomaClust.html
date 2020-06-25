@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.16</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,10 +103,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/POMA-demo.html">POMA Workflow Overview</a>
+      <a href="../articles/POMA-demo.html">`POMA` Demo
+</a>
     </li>
     <li>
-      <a href="../articles/POMA-normalization.html">POMA Normalization Methods</a>
+      <a href="../articles/POMA-normalization.html">`POMA` Normalization
+</a>
     </li>
   </ul>
 </li>
@@ -116,7 +118,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/pcastellanoescuder/POMA/">
+  <a href="https://github.com/pcastellanoescuder/POMA">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -144,12 +146,12 @@
     </div>
 
     <pre class="usage"><span class='fu'>PomaClust</span>(
-  <span class='kw'>data</span>,
-  method = <span class='st'>"euclidean"</span>,
-  k = <span class='fl'>3</span>,
-  show_clusters = <span class='fl'>TRUE</span>,
-  labels = <span class='fl'>FALSE</span>,
-  show_group = <span class='fl'>FALSE</span>
+  <span class='no'>data</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>show_clusters</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>show_group</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,14 +186,11 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list with the results.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
 
-<span class='fu'>PomaClust</span>(<span class='kw'>st000284</span>)</div><div class='output co'>#&gt; $mds_values
+<span class='fu'>PomaClust</span>(<span class='no'>st000284</span>)</div><div class='output co'>#&gt; $mds_values
 #&gt;         sample   group clust         Dim1         Dim2
 #&gt; 1   sample_109     CRC     2  52627576.62   6620959.61
 #&gt; 2    sample_11     CRC     3 -24155373.97 -17495281.78
@@ -434,7 +433,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

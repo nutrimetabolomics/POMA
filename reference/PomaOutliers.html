@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.16</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,10 +103,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/POMA-demo.html">POMA Workflow Overview</a>
+      <a href="../articles/POMA-demo.html">`POMA` Demo
+</a>
     </li>
     <li>
-      <a href="../articles/POMA-normalization.html">POMA Normalization Methods</a>
+      <a href="../articles/POMA-normalization.html">`POMA` Normalization
+</a>
     </li>
   </ul>
 </li>
@@ -116,7 +118,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/pcastellanoescuder/POMA/">
+  <a href="https://github.com/pcastellanoescuder/POMA">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -144,12 +146,12 @@
     </div>
 
     <pre class="usage"><span class='fu'>PomaOutliers</span>(
-  <span class='kw'>data</span>,
-  do = <span class='st'>"clean"</span>,
-  method = <span class='st'>"euclidean"</span>,
-  type = <span class='st'>"median"</span>,
-  coef = <span class='fl'>1.5</span>,
-  labels = <span class='fl'>FALSE</span>
+  <span class='no'>data</span>,
+  <span class='kw'>do</span> <span class='kw'>=</span> <span class='st'>"clean"</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"median"</span>,
+  <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,17 +186,14 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A MSnSet object with cleaned data or different exploratory plots for the detailed analysis of outliers (depending on "do" parameter).</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
 
 <span class='co'># clean outliers</span>
-<span class='kw'>st000336</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>PomaImpute</span>() <span class='op'>%&gt;%</span>
-  <span class='fu'>PomaNorm</span>() <span class='op'>%&gt;%</span>
+<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'>PomaOutliers</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
 #&gt; assayData: 30 features, 50 samples 
 #&gt;   element names: exprs 
@@ -207,15 +206,15 @@
 #&gt; experimentData: use 'experimentData(object)'
 #&gt; Annotation:  
 #&gt; - - - Processing information - - -
-#&gt; Imputed (knn): Sun Jun 21 19:38:46 2020 
-#&gt; Normalised (log_pareto): Sun Jun 21 19:38:46 2020 
-#&gt; Outliers removed (euclidean and median): Sun Jun 21 19:38:46 2020 
+#&gt; Imputed (knn): Thu Jun 25 17:31:48 2020 
+#&gt; Normalised (log_pareto): Thu Jun 25 17:31:48 2020 
+#&gt; Outliers removed (euclidean and median): Thu Jun 25 17:31:49 2020 
 #&gt;  MSnbase version: 2.14.2 </div><div class='input'>
 <span class='co'># analyze outliers</span>
-<span class='kw'>st000336</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>PomaImpute</span>() <span class='op'>%&gt;%</span>
-  <span class='fu'>PomaNorm</span>() <span class='op'>%&gt;%</span>
-  <span class='fu'>PomaOutliers</span>(do = <span class='st'>"analyze"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $polygon_plot</div><div class='img'><img src='PomaOutliers-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>PomaOutliers</span>(<span class='kw'>do</span> <span class='kw'>=</span> <span class='st'>"analyze"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $polygon_plot</div><div class='img'><img src='PomaOutliers-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $distance_boxplot</div><div class='img'><img src='PomaOutliers-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $outliers
 #&gt;          sample    group distance_to_centroid limit_distance
@@ -242,7 +241,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.16</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,10 +103,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/POMA-demo.html">POMA Workflow Overview</a>
+      <a href="../articles/POMA-demo.html">`POMA` Demo
+</a>
     </li>
     <li>
-      <a href="../articles/POMA-normalization.html">POMA Normalization Methods</a>
+      <a href="../articles/POMA-normalization.html">`POMA` Normalization
+</a>
     </li>
   </ul>
 </li>
@@ -116,7 +118,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/pcastellanoescuder/POMA/">
+  <a href="https://github.com/pcastellanoescuder/POMA">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -144,11 +146,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>PomaLimma</span>(
-  <span class='kw'>data</span>,
-  contrast = <span class='kw'>NULL</span>,
-  covariates = <span class='fl'>FALSE</span>,
-  adjust = <span class='st'>"fdr"</span>,
-  cutoff = <span class='kw'>NULL</span>
+  <span class='no'>data</span>,
+  <span class='kw'>contrast</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>covariates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>adjust</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>,
+  <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -182,16 +184,13 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Matthew E. Ritchie, Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi, Gordon K. Smyth, limma powers differential expression analyses for RNA-sequencing and microarray studies, Nucleic Acids Research, Volume 43, Issue 7, 20 April 2015, Page e47, https://doi.org/10.1093/nar/gkv007</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
 
-<span class='kw'>st000284</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>PomaNorm</span>() <span class='op'>%&gt;%</span>
-  <span class='fu'>PomaLimma</span>(contrast = <span class='st'>"Healthy-CRC"</span>, adjust = <span class='st'>"fdr"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                        logFC       AveExpr             t
+<span class='no'>st000284</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>PomaLimma</span>(<span class='kw'>contrast</span> <span class='kw'>=</span> <span class='st'>"Healthy-CRC"</span>, <span class='kw'>adjust</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                        logFC       AveExpr             t
 #&gt; linolenic_acid                  3.338705e-01  3.125000e-05  5.0311801527
 #&gt; histidine                       2.641183e-01  2.678571e-05  4.9870408119
 #&gt; glyceraldehyde                 -2.927024e-01  2.678571e-05 -4.9840219812
@@ -434,7 +433,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
