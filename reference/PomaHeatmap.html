@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.18</span>
       </span>
     </div>
 
@@ -145,7 +145,12 @@
     <p>This function returns a basic heatmap plot made with base R.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaHeatmap</span>(<span class='no'>data</span>, <span class='kw'>sample_names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>feature_names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>PomaHeatmap</span>(
+  <span class='no'>data</span>,
+  <span class='kw'>sample_names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>feature_names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>show_legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,6 +166,10 @@
     <tr>
       <th>feature_names</th>
       <td><p>Logical indicating if feature names should be plotted or not. Default is FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>show_legend</th>
+      <td><p>Logical indicating if legend should be plotted or not. Default is TRUE.</p></td>
     </tr>
     </table>
 

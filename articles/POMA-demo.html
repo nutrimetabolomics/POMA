@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.18</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
       University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
       </address>
                   
-            <h4 class="date">2020-06-25</h4>
+            <h4 class="date">2020-06-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-demo.Rmd"><code>vignettes/POMA-demo.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-demo.Rmd</code></div>
@@ -137,8 +137,8 @@
 <p>The <strong>MSnbase</strong> Bioconductor package provides a well defined computational data structures to represent mass spectrometry (MS) experiment data types <span class="citation">(Gatto and Lilley <a href="#ref-MSnbase">2012</a>)</span><span class="citation">(Huber et al. <a href="#ref-Biobase">2015</a>)</span>. Since data structures can mean a marked improvement in data analysis, <strong>POMA</strong> functions use <strong>MSnSet</strong> objects from <strong>MSnbase</strong> package, allowing the reusability of existing methods for this class and contributing to the improvement of robust and reproducible workflows.</p>
 <p>The first step of workflow will be load or create an <code><a href="https://rdrr.io/pkg/MSnbase/man/MSnSet-class.html">MSnbase::MSnSet()</a></code> object. Often, you will have your data stored in separated matrix and/or data frames and you will have to create your own <code>MSnSet</code> object. <code>PomaMSnSetClass</code> function makes this step fast and easy building this <code>MSnSet</code> object from your independent files.</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># create an MSnSet object from two separated data frames</span>
-<span class="no">target</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu">read_csv</span>(<span class="st">"your_target.csv"</span>)
-<span class="no">features</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu">read_csv</span>(<span class="st">"your_features.csv"</span>)
+<span class="no">target</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"your_target.csv"</span>)
+<span class="no">features</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"your_features.csv"</span>)
 
 <span class="no">data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaMSnSetClass.html">PomaMSnSetClass</a></span>(<span class="kw">target</span> <span class="kw">=</span> <span class="no">target</span>, <span class="kw">features</span> <span class="kw">=</span> <span class="no">features</span>)</pre></body></html></div>
 <p>Alternatively, if your data is already stored in a <code>MSnSet</code> object, you can skip this step and go directly to the Pre-processing step. In this vignette we will use the example data provided in the package.</p>
@@ -188,7 +188,7 @@ imputed
 &gt; experimentData: use 'experimentData(object)'
 &gt; Annotation:  
 &gt; - - - Processing information - - -
-&gt; Imputed (knn): Thu Jun 25 17:32:03 2020 
+&gt; Imputed (knn): Fri Jun 26 14:19:09 2020 
 &gt;  MSnbase version: 2.14.2</pre></body></html></div>
 <p><em>Note that the object has been updated with imputation information.</em></p>
 </div>
@@ -210,8 +210,8 @@ normalized
 &gt; experimentData: use 'experimentData(object)'
 &gt; Annotation:  
 &gt; - - - Processing information - - -
-&gt; Imputed (knn): Thu Jun 25 17:32:03 2020 
-&gt; Normalised (log_pareto): Thu Jun 25 17:32:03 2020 
+&gt; Imputed (knn): Fri Jun 26 14:19:09 2020 
+&gt; Normalised (log_pareto): Fri Jun 26 14:19:09 2020 
 &gt;  MSnbase version: 2.14.2</pre></body></html></div>
 <p><em>Note that the object has been updated with normalization information.</em></p>
 <div id="normalization-effect" class="section level4">
@@ -258,9 +258,9 @@ pre_processed
 &gt; experimentData: use 'experimentData(object)'
 &gt; Annotation:  
 &gt; - - - Processing information - - -
-&gt; Imputed (knn): Thu Jun 25 17:32:03 2020 
-&gt; Normalised (log_pareto): Thu Jun 25 17:32:03 2020 
-&gt; Outliers removed (euclidean and median): Thu Jun 25 17:32:11 2020 
+&gt; Imputed (knn): Fri Jun 26 14:19:09 2020 
+&gt; Normalised (log_pareto): Fri Jun 26 14:19:09 2020 
+&gt; Outliers removed (euclidean and median): Fri Jun 26 14:19:16 2020 
 &gt;  MSnbase version: 2.14.2</pre></body></html></div>
 <p><em>Note that the object has been updated with outlier information.</em></p>
 </div>
@@ -272,7 +272,7 @@ pre_processed
 <div id="univariate-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#univariate-analysis" class="anchor"></a>Univariate Analysis</h3>
-<p><strong>POMA</strong> allows you to perform all of the most used univariate statistical methods in MS by using only one function! <code>PomaUnivariate</code> wrap 4 different univariate methods (ttest, ANOVA and ANCOVA, Wilcoxon test and Kruskal-Wallis Rank Sum Test) that you can perform changing only the “method argument”.</p>
+<p><strong>POMA</strong> allows you to perform all of the most used univariate statistical methods in MS by using only one function! <code>PomaUnivariate</code> wrap 4 different univariate methods (ttest, ANOVA and ANCOVA, Wilcoxon test and Kruskal-Wallis Rank Sum Test) that you can perform changing only the “method” argument.</p>
 <div id="t-test" class="section level4">
 <h4 class="hasAnchor">
 <a href="#t-test" class="anchor"></a>T-test</h4>
