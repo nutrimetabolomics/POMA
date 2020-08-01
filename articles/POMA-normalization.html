@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.22</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
       University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
       </address>
                   
-            <h4 class="date">2020-06-26</h4>
+            <h4 class="date">2020-08-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-normalization.Rmd"><code>vignettes/POMA-normalization.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-normalization.Rmd</code></div>
@@ -109,10 +109,17 @@
 
     
     
+<div id="installation" class="section level1">
+<h1 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h1>
+<p>Run the following code to install the Bioconductor version of package.</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># install.packages("BiocManager")</span>
+<span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"POMA"</span>)</pre></body></html></div>
+</div>
 <div id="load-packages" class="section level1">
 <h1 class="hasAnchor">
 <a href="#load-packages" class="anchor"></a>Load Packages</h1>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">POMA</span>)
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">POMA</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Biobase</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)</pre></body></html></div>
 </div>
@@ -120,7 +127,7 @@
 <h1 class="hasAnchor">
 <a href="#load-data-and-imputation" class="anchor"></a>Load Data and Imputation</h1>
 <p>Let’s create a cleaned <code>MSnSet</code> object from example <code>st000336</code> data to explore the normalization effects.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"># load example data
+<div class="sourceCode" id="cb3"><html><body><pre class="r"># load example data
 data("st000336")
 
 # imputation using the default method KNN
@@ -138,14 +145,14 @@ example_data
 &gt; experimentData: use 'experimentData(object)'
 &gt; Annotation:  
 &gt; - - - Processing information - - -
-&gt; Imputed (knn): Fri Jun 26 15:01:00 2020 
+&gt; Imputed (knn): Sat Aug  1 21:44:41 2020 
 &gt;  MSnbase version: 2.14.2</pre></body></html></div>
 </div>
 <div id="normalization" class="section level1">
 <h1 class="hasAnchor">
 <a href="#normalization" class="anchor"></a>Normalization</h1>
 <p>Here we will evaluate ALL normalization methods that POMA offers on the same <code>MSnSet</code> object to compare them <span class="citation">(Berg et al. <a href="#ref-normalization">2006</a>)</span>.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">none</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">none</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"none"</span>)
 <span class="no">auto_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"auto_scaling"</span>)
 <span class="no">level_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"level_scaling"</span>)
 <span class="no">log_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"log_scaling"</span>)
@@ -156,7 +163,7 @@ example_data
 <h2 class="hasAnchor">
 <a href="#normalization-effect-on-data-dimensions" class="anchor"></a>Normalization effect on data dimensions</h2>
 <p>When we check for the dimension of the data after normalization we can see that ALL methods have the same effect on data dimension. <code>PomaNorm</code> <strong>only</strong> change the data dimension when the data have <strong>features that only have zeros</strong> and when the data have <strong>features with 0 variance</strong>. Only in these two cases <code>PomaNorm</code> will remove features of the data, changing the data dimensions.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">dim(Biobase::exprs(none))
+<div class="sourceCode" id="cb5"><html><body><pre class="r">dim(Biobase::exprs(none))
 &gt; [1] 30 57
 dim(Biobase::exprs(auto_scaling))
 &gt; [1] 30 57
@@ -175,71 +182,71 @@ dim(Biobase::exprs(log_pareto))
 <h2 class="hasAnchor">
 <a href="#normalization-effect-on-samples" class="anchor"></a>Normalization effect on samples</h2>
 <p>Here we can evaluate the different normalization effects on samples <span class="citation">(Berg et al. <a href="#ref-normalization">2006</a>)</span>.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">none</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">none</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb7"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">auto_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Auto Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-2.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-2.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">level_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Level Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-3.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-3.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">log_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-4.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-4.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb10"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">log_transformation</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Transformation"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-5.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-5.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb11"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">vast_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Vast Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-6.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-6.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb12"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">log_pareto</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Pareto"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-6-7.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-7.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 <div id="normalization-effect-on-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#normalization-effect-on-features" class="anchor"></a>Normalization effect on features</h2>
 <p>Here we can evaluate the different normalization effects on features.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">none</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">none</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-1.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb14"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">auto_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Auto Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-2.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-2.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb15"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">level_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Level Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-3.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-3.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb16"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">log_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-4.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-4.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb17"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">log_transformation</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Transformation"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-5.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-5.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb18"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">vast_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Vast Scaling"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-6.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r">
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-6.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb19"><html><body><pre class="r">
 <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">log_pareto</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Pareto"</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-7.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-7.png" width="1458.33333333333" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div id="session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-information" class="anchor"></a>Session Information</h1>
-<div class="sourceCode" id="cb19"><html><body><pre class="r">sessionInfo()
+<div class="sourceCode" id="cb20"><html><body><pre class="r">sessionInfo()
 &gt; R version 4.0.1 (2020-06-06)
 &gt; Platform: x86_64-apple-darwin17.0 (64-bit)
 &gt; Running under: macOS Catalina 10.15.4
@@ -268,35 +275,35 @@ dim(Biobase::exprs(log_pareto))
 &gt;  [16] doParallel_1.0.15     limma_3.44.3          recipes_0.1.13       
 &gt;  [19] ComplexHeatmap_2.4.2  graphlayouts_0.7.0    gower_0.2.2          
 &gt;  [22] matrixStats_0.56.0    rARPACK_0.11-0        pkgdown_1.5.1        
-&gt;  [25] colorspace_1.4-1      ggrepel_0.8.2         xfun_0.15            
+&gt;  [25] colorspace_1.4-1      ggrepel_0.8.2         xfun_0.16            
 &gt;  [28] dplyr_1.0.0           jsonlite_1.7.0        crayon_1.3.4         
 &gt;  [31] impute_1.62.0         survival_3.2-3        iterators_1.0.12     
 &gt;  [34] glue_1.4.1            polyclip_1.10-0       gtable_0.3.0         
-&gt;  [37] ipred_0.9-9           zlibbioc_1.34.0       GetoptLong_1.0.0     
+&gt;  [37] ipred_0.9-9           zlibbioc_1.34.0       GetoptLong_1.0.2     
 &gt;  [40] RankProd_3.14.0       shape_1.4.4           Rmpfr_0.8-1          
-&gt;  [43] scales_1.1.1          vsn_3.56.0            Rcpp_1.0.4.6         
+&gt;  [43] scales_1.1.1          vsn_3.56.0            Rcpp_1.0.5           
 &gt;  [46] mzR_2.22.0            viridisLite_0.3.0     clue_0.3-57          
 &gt;  [49] preprocessCore_1.50.0 clisymbols_1.2.0      stats4_4.0.1         
 &gt;  [52] lava_1.6.7            prodlim_2019.11.13    glmnet_4.0-2         
-&gt;  [55] httr_1.4.1            htmlwidgets_1.5.1     RColorBrewer_1.1-2   
-&gt;  [58] ellipsis_0.3.1        pkgconfig_2.0.3       XML_3.99-0.3         
+&gt;  [55] httr_1.4.2            htmlwidgets_1.5.1     RColorBrewer_1.1-2   
+&gt;  [58] ellipsis_0.3.1        pkgconfig_2.0.3       XML_3.99-0.5         
 &gt;  [61] farver_2.0.3          nnet_7.3-14           caret_6.0-86         
-&gt;  [64] labeling_0.3          tidyselect_1.1.0      rlang_0.4.6          
+&gt;  [64] labeling_0.3          tidyselect_1.1.0      rlang_0.4.7          
 &gt;  [67] reshape2_1.4.4        ggcorrplot_0.1.3      munsell_0.5.0        
-&gt;  [70] tools_4.0.1           generics_0.0.2        broom_0.5.6          
+&gt;  [70] tools_4.0.1           generics_0.0.2        broom_0.7.0          
 &gt;  [73] evaluate_0.14         stringr_1.4.0         mzID_1.26.0          
 &gt;  [76] yaml_2.2.1            ModelMetrics_1.2.2.2  knitr_1.29           
-&gt;  [79] fs_1.4.1              tidygraph_1.2.0       randomForest_4.6-14  
+&gt;  [79] fs_1.4.2              tidygraph_1.2.0       randomForest_4.6-14  
 &gt;  [82] purrr_0.3.4           ggraph_2.0.3          ncdf4_1.17           
 &gt;  [85] glasso_1.11           nlme_3.1-148          compiler_4.0.1       
 &gt;  [88] rstudioapi_0.11       plotly_4.9.2.1        png_0.1-7            
-&gt;  [91] affyio_1.58.0         tibble_3.0.1          tweenr_1.0.1         
+&gt;  [91] affyio_1.58.0         tibble_3.0.3          tweenr_1.0.1         
 &gt;  [94] stringi_1.4.6         desc_1.2.0            RSpectra_0.16-0      
 &gt;  [97] MSnbase_2.14.2        lattice_0.20-41       ProtGenerics_1.20.0  
 &gt; [100] Matrix_1.2-18         permute_0.9-5         vegan_2.5-6          
-&gt; [103] vctrs_0.3.1           pillar_1.4.4          lifecycle_0.2.0      
+&gt; [103] vctrs_0.3.2           pillar_1.4.6          lifecycle_0.2.0      
 &gt; [106] BiocManager_1.30.10   MALDIquant_1.19.3     GlobalOptions_0.1.2  
-&gt; [109] data.table_1.12.8     corpcor_1.6.9         patchwork_1.0.1      
+&gt; [109] data.table_1.12.9     corpcor_1.6.9         patchwork_1.0.1      
 &gt; [112] R6_2.4.1              pcaMethods_1.80.0     affy_1.66.0          
 &gt; [115] bookdown_0.20         gridExtra_2.3         IRanges_2.22.2       
 &gt; [118] codetools_0.2-16      MASS_7.3-51.6         assertthat_0.2.1     
@@ -329,7 +336,7 @@ dim(Biobase::exprs(log_pareto))
 
 
       <footer><div class="copyright">
-  <p>Developed by Pol Castellano-Escuder.</p>
+  <p>Developed by Pol Castellano-Escuder, Alex Sánchez-Pla.</p>
 </div>
 
 <div class="pkgdown">
