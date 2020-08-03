@@ -3,6 +3,7 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   POMA-demo: POMA-demo.html
+  POMA-eda: POMA-eda.html
   POMA-normalization: POMA-normalization.html
-last_built: 2020-08-01T19:42Z
+last_built: 2020-08-03T13:05Z
 

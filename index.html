@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.33</span>
       </span>
     </div>
 
@@ -65,11 +65,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/POMA-demo.html">`POMA` Demo
+      <a href="articles/POMA-demo.html">POMA Workflow
 </a>
     </li>
     <li>
-      <a href="articles/POMA-normalization.html">`POMA` Normalization
+      <a href="articles/POMA-normalization.html">POMA Normalization
+</a>
+    </li>
+    <li>
+      <a href="articles/POMA-eda.html">POMA EDA Example
 </a>
     </li>
   </ul>
@@ -108,17 +112,23 @@
 <p><code>POMA</code> also offers two different Shiny app modules both for Exploratory Data Analysis and Statistical Analysis that implements all <code>POMA</code> functions in a easy use web interface.</p>
 <ul>
 <li>
-<strong>POMA Shiny</strong>: Shiny version of this package. <a href="https://github.com/pcastellanoescuder/POMA_Shiny" class="uri">https://github.com/pcastellanoescuder/POMA_Shiny</a><br>
+<strong>POMA Shiny</strong>: Shiny version of this package. <a href="https://github.com/pcastellanoescuder/POMAShiny" class="uri">https://github.com/pcastellanoescuder/POMAShiny</a><br>
 </li>
 <li>
 <strong>POMAcounts</strong>: Shiny version for mass spectrometry spectral counts data based on <a href="https://bioconductor.org">Bioconductor</a> packages <a href="https://bioconductor.org/packages/release/bioc/html/msmsEDA.html">msmsEDA</a> and <a href="https://bioconductor.org/packages/release/bioc/html/msmsTests.html">msmsTests</a>. <a href="https://github.com/pcastellanoescuder/POMAcounts" class="uri">https://github.com/pcastellanoescuder/POMAcounts</a>
 </li>
 </ul>
-<p>The <a href="https://github.com/pcastellanoescuder/POMA">github page</a> is for active development, issue tracking and forking/pulling purposes. To get an overview of the package, see the <a href="https://pcastellanoescuder.github.io/POMA/articles/POMA-demo.html"><em>POMA-demo</em></a> vignette.</p>
+<p>The <a href="https://github.com/pcastellanoescuder/POMA">github page</a> is for active development, issue tracking and forking/pulling purposes. To get an overview of the package, see the <a href="https://pcastellanoescuder.github.io/POMA/articles/POMA-demo.html"><em>POMA Workflow</em></a> vignette.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
+<p>To install Bioconductor version:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("BiocManager")</span>
+<span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"POMA"</span>)</pre></div>
+<p>If you need the GitHub version (not recommended unless you know what you are doing), use:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"pcastellanoescuder/POMA"</span>)</pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"pcastellanoescuder/POMA"</span>)</pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
