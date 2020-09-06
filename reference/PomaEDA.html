@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.39</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
       </span>
     </div>
 
@@ -154,7 +154,8 @@
   <span class='kw'>imputation</span> <span class='kw'>=</span> <span class='st'>"knn"</span>,
   <span class='kw'>normalization</span> <span class='kw'>=</span> <span class='st'>"log_pareto"</span>,
   <span class='kw'>clean_outliers</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>coeff_outliers</span> <span class='kw'>=</span> <span class='fl'>1.5</span>
+  <span class='kw'>coeff_outliers</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
+  <span class='kw'>username</span> <span class='kw'>=</span> <span class='st'>"Username"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -179,6 +180,10 @@
     <tr>
       <th>coeff_outliers</th>
       <td><p>This value corresponds to the classical 1.5 in \(Q3 + 1.5*IQR\) formula to detect outliers. By changing this value, the permissiveness in outlier detection will change.</p></td>
+    </tr>
+    <tr>
+      <th>username</th>
+      <td><p>This name will be included as a report subtitle.</p></td>
     </tr>
     </table>
 
