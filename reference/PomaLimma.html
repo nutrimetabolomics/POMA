@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,13 +149,13 @@
     <p>PomaLimma() uses the classical limma package for MS data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaLimma</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>contrast</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>covariates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>adjust</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>,
-  <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>PomaLimma</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  contrast <span class='op'>=</span> <span class='cn'>NULL</span>,
+  covariates <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  adjust <span class='op'>=</span> <span class='st'>"fdr"</span>,
+  cutoff <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,13 +188,17 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Matthew E. Ritchie, Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi, Gordon K. Smyth, limma powers differential expression analyses for RNA-sequencing and microarray studies, Nucleic Acids Research, Volume 43, Issue 7, 20 April 2015, Page e47, https://doi.org/10.1093/nar/gkv007</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000284"</span><span class='op'>)</span>
 
-<span class='no'>st000284</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaLimma</span>(<span class='kw'>contrast</span> <span class='kw'>=</span> <span class='st'>"Healthy-CRC"</span>, <span class='kw'>adjust</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                        logFC       AveExpr             t
+<span class='va'>st000284</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaLimma</span><span class='op'>(</span>contrast <span class='op'>=</span> <span class='st'>"Healthy-CRC"</span>, adjust <span class='op'>=</span> <span class='st'>"fdr"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                        logFC       AveExpr             t
 #&gt; linolenic_acid                  3.338705e-01  3.125000e-05  5.0311801527
 #&gt; histidine                       2.641183e-01  2.678571e-05  4.9870408119
 #&gt; glyceraldehyde                 -2.927024e-01  2.678571e-05 -4.9840219812
@@ -437,7 +441,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

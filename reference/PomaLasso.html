@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,14 +149,14 @@
     <p>PomaLasso() is an implementation of the lasso, ridge and elasticnet regression from <code>glmnet</code> package for binary outcomes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaLasso</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>ntest</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>PomaLasso</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  alpha <span class='op'>=</span> <span class='fl'>1</span>,
+  ntest <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nfolds <span class='op'>=</span> <span class='fl'>10</span>,
+  lambda <span class='op'>=</span> <span class='cn'>NULL</span>,
+  labels <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,16 +193,20 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Jerome Friedman, Trevor Hastie, Robert Tibshirani (2010). Regularization Paths for Generalized Linear Models via Coordinate Descent. Journal of Statistical Software, 33(1), 1-22. URL http://www.jstatsoft.org/v33/i01/.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000336"</span><span class='op'>)</span>
 
 <span class='co'># lasso</span>
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaLasso</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $coefficients
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaLasso</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $coefficients
 #&gt;         feature coefficient
 #&gt; 1   (Intercept)  4.14314732
 #&gt; 2 glutamic_acid  0.61277598
@@ -226,11 +230,12 @@
 #&gt; 1se 0.04265  0.3808 0.1115       6
 #&gt; </div><div class='input'>
 <span class='co'># elasticnet</span>
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaLasso</span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $coefficients
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaLasso</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $coefficients
 #&gt;               feature coefficient
 #&gt; 1         (Intercept)  11.6161830
 #&gt; 2  x1_methylhistidine   3.6980407
@@ -273,11 +278,12 @@
 #&gt; 1se 0.011016  0.2044 0.08210      17
 #&gt; </div><div class='input'>
 <span class='co'># ridge</span>
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaLasso</span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $coefficients
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaLasso</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $coefficients
 #&gt;               feature coefficient
 #&gt; 1         (Intercept)  4.21592957
 #&gt; 2  x1_methylhistidine  0.89040946
@@ -338,7 +344,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

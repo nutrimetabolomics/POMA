@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,14 +149,14 @@
     <p>This function allows users to analyze outliers by different plots and remove them from an MSnSet object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaOutliers</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>do</span> <span class='kw'>=</span> <span class='st'>"clean"</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"median"</span>,
-  <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>PomaOutliers</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  do <span class='op'>=</span> <span class='st'>"clean"</span>,
+  method <span class='op'>=</span> <span class='st'>"euclidean"</span>,
+  type <span class='op'>=</span> <span class='st'>"median"</span>,
+  coef <span class='op'>=</span> <span class='fl'>1.5</span>,
+  labels <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,15 +190,19 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A MSnSet object with cleaned data or different exploratory plots for the detailed analysis of outliers (depending on "do" parameter).</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000336"</span><span class='op'>)</span>
 
 <span class='co'># clean outliers</span>
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaOutliers</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaOutliers</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
 #&gt; assayData: 30 features, 50 samples 
 #&gt;   element names: exprs 
 #&gt; protocolData: none
@@ -210,15 +214,16 @@
 #&gt; experimentData: use 'experimentData(object)'
 #&gt; Annotation:  
 #&gt; - - - Processing information - - -
-#&gt; Imputed (knn): Sun Sep  6 15:14:10 2020 
-#&gt; Normalised (log_pareto): Sun Sep  6 15:14:10 2020 
-#&gt; Outliers removed (euclidean and median): Sun Sep  6 15:14:10 2020 
+#&gt; Imputed (knn): Sat Oct 17 12:04:03 2020 
+#&gt; Normalised (log_pareto): Sat Oct 17 12:04:03 2020 
+#&gt; Outliers removed (euclidean and median): Sat Oct 17 12:04:04 2020 
 #&gt;  MSnbase version: 2.14.2 </div><div class='input'>
 <span class='co'># analyze outliers</span>
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaOutliers</span>(<span class='kw'>do</span> <span class='kw'>=</span> <span class='st'>"analyze"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $polygon_plot</div><div class='img'><img src='PomaOutliers-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaOutliers</span><span class='op'>(</span>do <span class='op'>=</span> <span class='st'>"analyze"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $polygon_plot</div><div class='img'><img src='PomaOutliers-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $distance_boxplot</div><div class='img'><img src='PomaOutliers-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $outliers
 #&gt;          sample    group distance_to_centroid limit_distance
@@ -245,7 +250,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

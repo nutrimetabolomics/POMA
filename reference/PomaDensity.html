@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,7 +149,7 @@
     <p>PomaDensity() generates a density plot of not normalized and normalized MS data. This plot can help in the comparison between pre and post normalized data and in the "validation" of the normalization process.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaDensity</span>(<span class='no'>data</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='st'>"samples"</span>, <span class='kw'>feature_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>PomaDensity</span><span class='op'>(</span><span class='va'>data</span>, group <span class='op'>=</span> <span class='st'>"samples"</span>, feature_name <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,17 +171,23 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A ggplot2 object.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000284"</span><span class='op'>)</span>
 
 <span class='co'># samples</span>
-<span class='fu'>PomaDensity</span>(<span class='no'>st000284</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: group argument is empty! samples will be used</span></div><div class='output co'>#&gt; <span class='message'>Using ID, Group as id variables</span></div><div class='img'><img src='PomaDensity-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>PomaDensity</span><span class='op'>(</span><span class='va'>st000284</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: group argument is empty! samples will be used</span></div><div class='output co'>#&gt; <span class='message'>Using ID, Group as id variables</span></div><div class='img'><img src='PomaDensity-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># features</span>
-<span class='fu'>PomaDensity</span>(<span class='no'>st000284</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='st'>"features"</span>)</div><div class='output co'>#&gt; <span class='message'>Using Group as id variables</span></div><div class='img'><img src='PomaDensity-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>PomaDensity</span><span class='op'>(</span><span class='va'>st000284</span>, group <span class='op'>=</span> <span class='st'>"features"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Using Group as id variables</span></div><div class='img'><img src='PomaDensity-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># concrete features</span>
-<span class='fu'>PomaDensity</span>(<span class='no'>st000284</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='st'>"features"</span>,
-            <span class='kw'>feature_name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ornithine"</span>, <span class='st'>"orotate"</span>))</div><div class='output co'>#&gt; <span class='message'>Using Group as id variables</span></div><div class='img'><img src='PomaDensity-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>PomaDensity</span><span class='op'>(</span><span class='va'>st000284</span>, group <span class='op'>=</span> <span class='st'>"features"</span>, 
+            feature_name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ornithine"</span>, <span class='st'>"orotate"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Using Group as id variables</span></div><div class='img'><img src='PomaDensity-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -197,7 +203,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

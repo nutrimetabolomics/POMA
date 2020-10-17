@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,14 +149,14 @@
     <p>PomaUnivariate() allows users to perform different univariate statistical analysis on MS data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaUnivariate</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>covariates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"ttest"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>var_equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>adjust</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>
-)</pre>
+    <pre class="usage"><span class='fu'>PomaUnivariate</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  covariates <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  method <span class='op'>=</span> <span class='st'>"ttest"</span>,
+  paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  var_equal <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  adjust <span class='op'>=</span> <span class='st'>"fdr"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,17 +190,21 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A data frame with results.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000284"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000336"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000284"</span><span class='op'>)</span>
 
 <span class='co'># ttest</span>
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaUnivariate</span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"ttest"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                    mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaUnivariate</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"ttest"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                    mean_Controls mean_DMD Fold_Change_Ratio Difference_Of_Means
 #&gt; x1_methylhistidine         -0.40     0.16            -0.400                0.56
 #&gt; x3_methylhistidine         -0.42     0.19            -0.452                0.61
 #&gt; alanine                    -0.32     0.11            -0.344                0.43
@@ -263,11 +267,12 @@
 #&gt; pyruvate           8.744639e-08 3.100707e-07
 #&gt; succinate          6.246847e-03 7.496217e-03</div><div class='input'>
 <span class='co'># ANOVA</span>
-<span class='no'>st000284</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaUnivariate</span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"anova"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No missing values detected in your data</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                mean_CRC mean_Healthy mean_Polyp       pvalue
+<span class='va'>st000284</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaUnivariate</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"anova"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No missing values detected in your data</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt;                                mean_CRC mean_Healthy mean_Polyp       pvalue
 #&gt; x1_methyladenosine                 0.06        -0.06      -0.04 4.536408e-02
 #&gt; x1_methylhistamine                -0.04         0.01       0.07 1.580891e-01
 #&gt; x2_aminoadipate                   -0.15         0.00      -0.03 5.326932e-02
@@ -510,7 +515,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

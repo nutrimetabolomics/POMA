@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,13 +149,13 @@
     <p>PomaImpute() offers different methods to impute missing values in MS data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaImpute</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>ZerosAsNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>RemoveNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"knn"</span>
-)</pre>
+    <pre class="usage"><span class='fu'>PomaImpute</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  ZerosAsNA <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  RemoveNA <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  cutoff <span class='op'>=</span> <span class='fl'>20</span>,
+  method <span class='op'>=</span> <span class='st'>"knn"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,11 +188,15 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Armitage, E. G., Godzien, J., Alonso‐Herranz, V., López‐Gonzálvez, Á., &amp; Barbas, C. (2015). Missing value imputation strategies for metabolomics data. Electrophoresis, 36(24), 3050-3060.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000336"</span><span class='op'>)</span>
 
-<span class='fu'>PomaImpute</span>(<span class='no'>st000336</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"knn"</span>)</div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
+<span class='fu'>PomaImpute</span><span class='op'>(</span><span class='va'>st000336</span>, method <span class='op'>=</span> <span class='st'>"knn"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; MSnSet (storageMode: lockedEnvironment)
 #&gt; assayData: 30 features, 57 samples 
 #&gt;   element names: exprs 
 #&gt; protocolData: none
@@ -204,7 +208,7 @@
 #&gt; experimentData: use 'experimentData(object)'
 #&gt; Annotation:  
 #&gt; - - - Processing information - - -
-#&gt; Imputed (knn): Sun Sep  6 15:13:41 2020 
+#&gt; Imputed (knn): Sat Oct 17 12:03:43 2020 
 #&gt;  MSnbase version: 2.14.2 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -221,7 +225,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

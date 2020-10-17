@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -149,14 +149,14 @@
     <p>PomaRandForest() allows users to perform a classification Random Forest with a MS data matrix using the classical <code>randomForest</code> R package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PomaRandForest</span>(
-  <span class='no'>data</span>,
-  <span class='kw'>ntest</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>ntree</span> <span class='kw'>=</span> <span class='fl'>500</span>,
-  <span class='kw'>mtry</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span>(<span class='kw pkg'>Biobase</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Biobase/man/exprs.html'>exprs</a></span>(<span class='no'>data</span>))))),
-  <span class='kw'>nodesize</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>nvar</span> <span class='kw'>=</span> <span class='fl'>20</span>
-)</pre>
+    <pre class="usage"><span class='fu'>PomaRandForest</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  ntest <span class='op'>=</span> <span class='fl'>20</span>,
+  ntree <span class='op'>=</span> <span class='fl'>500</span>,
+  mtry <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'>Biobase</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Biobase/man/exprs.html'>exprs</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  nodesize <span class='op'>=</span> <span class='fl'>1</span>,
+  nvar <span class='op'>=</span> <span class='fl'>20</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,13 +193,17 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>A. Liaw and M. Wiener (2002). Classification and Regression by randomForest. R News 2(3), 18--22.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Pol Castellano-Escuder</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"st000336"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"st000336"</span><span class='op'>)</span>
 
-<span class='no'>st000336</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>PomaRandForest</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; $importance_pred
+<span class='va'>st000336</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='PomaImpute.html'>PomaImpute</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>PomaRandForest</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; $importance_pred
 #&gt;              Variable MeanDecreaseGini
 #&gt; 13         tryptophan           1.3611
 #&gt; 7           ornithine           1.2445
@@ -776,7 +780,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

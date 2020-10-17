@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.40</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.45</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="POMA-normalization_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>POMA Normalization Methods</h1>
@@ -104,7 +104,7 @@
       University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
       </address>
                   
-            <h4 class="date">6 September 2020</h4>
+            <h4 class="date">17 octubre 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-normalization.Rmd"><code>vignettes/POMA-normalization.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-normalization.Rmd</code></div>
@@ -113,241 +113,249 @@
 
     
     
-<p><strong>Compiled date</strong>: 2020-09-06</p>
+<p><strong>Compiled date</strong>: 2020-10-17</p>
 <p><strong>Last edited</strong>: 2020-08-01</p>
 <p><strong>License</strong>: GPL-3</p>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>Run the following code to install the Bioconductor version of package.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># install.packages("BiocManager")</span>
-<span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"POMA"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># install.packages("BiocManager")</span>
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"POMA"</span><span class="op">)</span></pre></div>
 </div>
 <div id="load-packages" class="section level1">
 <h1 class="hasAnchor">
 <a href="#load-packages" class="anchor"></a>Load Packages</h1>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">POMA</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Biobase</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">patchwork</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pcastellanoescuder/POMA">POMA</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">Biobase</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></pre></div>
 </div>
 <div id="load-data-and-imputation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#load-data-and-imputation" class="anchor"></a>Load Data and Imputation</h1>
 <p>Let’s create a cleaned <code>MSnSet</code> object from example <code>st000336</code> data to explore the normalization effects.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"># load example data
-data("st000336")
-
-# imputation using the default method KNN
-example_data &lt;- st000336 %&gt;% PomaImpute()
-example_data
-&gt; MSnSet (storageMode: lockedEnvironment)
-&gt; assayData: 30 features, 57 samples 
-&gt;   element names: exprs 
-&gt; protocolData: none
-&gt; phenoData
-&gt;   sampleNames: DMD004.1.U02 DMD005.1.U02 ... DMD173.1.U02 (57 total)
-&gt;   varLabels: Group steroids
-&gt;   varMetadata: labelDescription
-&gt; featureData: none
-&gt; experimentData: use 'experimentData(object)'
-&gt; Annotation:  
-&gt; - - - Processing information - - -
-&gt; Imputed (knn): Sun Sep  6 15:15:13 2020 
-&gt;  MSnbase version: 2.14.2</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># load example data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">data</span>(<span class="st">"st000336"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># imputation using the default method KNN</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>example_data &lt;-<span class="st"> </span>st000336 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">PomaImpute</span>()</span>
+<span id="cb3-6"><a href="#cb3-6"></a>example_data</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">MSnSet</span> (storageMode<span class="op">:</span><span class="st"> </span>lockedEnvironment)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="op">&gt;</span><span class="st"> </span>assayData<span class="op">:</span><span class="st"> </span><span class="dv">30</span> features, <span class="dv">57</span> samples </span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="op">&gt;</span><span class="st">   </span>element names<span class="op">:</span><span class="st"> </span>exprs </span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="op">&gt;</span><span class="st"> </span>protocolData<span class="op">:</span><span class="st"> </span>none</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="op">&gt;</span><span class="st"> </span>phenoData</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="op">&gt;</span><span class="st">   </span>sampleNames<span class="op">:</span><span class="st"> </span>DMD004.<span class="fl">1.</span>U02 DMD005.<span class="fl">1.</span>U02 ... <span class="kw">DMD173.1.U02</span> (<span class="dv">57</span> total)</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="op">&gt;</span><span class="st">   </span>varLabels<span class="op">:</span><span class="st"> </span>Group steroids</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="op">&gt;</span><span class="st">   </span>varMetadata<span class="op">:</span><span class="st"> </span>labelDescription</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="op">&gt;</span><span class="st"> </span>featureData<span class="op">:</span><span class="st"> </span>none</span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="op">&gt;</span><span class="st"> </span>experimentData<span class="op">:</span><span class="st"> </span>use <span class="st">'experimentData(object)'</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="op">&gt;</span><span class="st"> </span>Annotation<span class="op">:</span><span class="st">  </span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="er">&gt;</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>Processing information <span class="op">-</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="op">-</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="er">&gt;</span><span class="st"> </span><span class="kw">Imputed</span> (knn)<span class="op">:</span><span class="st"> </span>Sat Oct <span class="dv">17</span> <span class="dv">12</span><span class="op">:</span><span class="dv">04</span><span class="op">:</span><span class="dv">43</span> <span class="dv">2020</span> </span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="op">&gt;</span><span class="st">  </span>MSnbase version<span class="op">:</span><span class="st"> </span><span class="dv">2</span>.<span class="fl">14.2</span></span></code></pre></div>
 </div>
 <div id="normalization" class="section level1">
 <h1 class="hasAnchor">
 <a href="#normalization" class="anchor"></a>Normalization</h1>
-<p>Here we will evaluate ALL normalization methods that POMA offers on the same <code>MSnSet</code> object to compare them <span class="citation">(Berg et al. <a href="#ref-normalization">2006</a>)</span>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">none</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"none"</span>)
-<span class="no">auto_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"auto_scaling"</span>)
-<span class="no">level_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"level_scaling"</span>)
-<span class="no">log_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"log_scaling"</span>)
-<span class="no">log_transformation</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"log_transformation"</span>)
-<span class="no">vast_scaling</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"vast_scaling"</span>)
-<span class="no">log_pareto</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span>(<span class="no">example_data</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"log_pareto"</span>)</pre></body></html></div>
+<p>Here we will evaluate ALL normalization methods that POMA offers on the same <code>MSnSet</code> object to compare them <span class="citation">(Berg et al. <a href="#ref-normalization" role="doc-biblioref">2006</a>)</span>.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">none</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
+<span class="va">auto_scaling</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"auto_scaling"</span><span class="op">)</span>
+<span class="va">level_scaling</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"level_scaling"</span><span class="op">)</span>
+<span class="va">log_scaling</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"log_scaling"</span><span class="op">)</span>
+<span class="va">log_transformation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"log_transformation"</span><span class="op">)</span>
+<span class="va">vast_scaling</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"vast_scaling"</span><span class="op">)</span>
+<span class="va">log_pareto</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaNorm.html">PomaNorm</a></span><span class="op">(</span><span class="va">example_data</span>, method <span class="op">=</span> <span class="st">"log_pareto"</span><span class="op">)</span></pre></div>
 <div id="normalization-effect-on-data-dimensions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#normalization-effect-on-data-dimensions" class="anchor"></a>Normalization effect on data dimensions</h2>
 <p>When we check for the dimension of the data after normalization we can see that ALL methods have the same effect on data dimension. <code>PomaNorm</code> <strong>only</strong> change the data dimension when the data have <strong>features that only have zeros</strong> and when the data have <strong>features with 0 variance</strong>. Only in these two cases <code>PomaNorm</code> will remove features of the data, changing the data dimensions.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r">dim(Biobase::exprs(none))
-&gt; [1] 30 57
-dim(Biobase::exprs(auto_scaling))
-&gt; [1] 30 57
-dim(Biobase::exprs(level_scaling))
-&gt; [1] 30 57
-dim(Biobase::exprs(log_scaling))
-&gt; [1] 30 57
-dim(Biobase::exprs(log_transformation))
-&gt; [1] 30 57
-dim(Biobase::exprs(vast_scaling))
-&gt; [1] 30 57
-dim(Biobase::exprs(log_pareto))
-&gt; [1] 30 57</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(none))</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(auto_scaling))</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(level_scaling))</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(log_scaling))</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(log_transformation))</span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(vast_scaling))</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="kw">dim</span>(Biobase<span class="op">::</span><span class="kw">exprs</span>(log_pareto))</span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] <span class="dv">30</span> <span class="dv">57</span></span></code></pre></div>
 </div>
 <div id="normalization-effect-on-samples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#normalization-effect-on-samples" class="anchor"></a>Normalization effect on samples</h2>
-<p>Here we can evaluate the different normalization effects on samples <span class="citation">(Berg et al. <a href="#ref-normalization">2006</a>)</span>.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">a</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">none</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>)
+<p>Here we can evaluate the different normalization effects on samples <span class="citation">(Berg et al. <a href="#ref-normalization" role="doc-biblioref">2006</a>)</span>.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">none</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Not Normalized"</span><span class="op">)</span>
 
-<span class="no">b</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">auto_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Auto Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">auto_scaling</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Auto Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 
-<span class="no">c</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">level_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Level Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<span class="va">c</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">level_scaling</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Level Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 
-<span class="no">d</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">log_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">log_scaling</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Log Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 
-<span class="no">e</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">log_transformation</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Transformation"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">log_transformation</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Log Transformation"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 
-<span class="no">f</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">vast_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Vast Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">vast_scaling</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Vast Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 
-<span class="no">g</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span>(<span class="no">log_pareto</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"samples"</span>, <span class="kw">jitter</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Pareto"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)
+<span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaBoxplots.html">PomaBoxplots</a></span><span class="op">(</span><span class="va">log_pareto</span>, group <span class="op">=</span> <span class="st">"samples"</span>, jitter <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Log Pareto"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>
 
-<span class="no">a</span></pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-1.png" width="700" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">(<span class="no">b</span> + <span class="no">c</span> + <span class="no">d</span>) / (<span class="no">e</span> + <span class="no">f</span> + <span class="no">g</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-2.png" width="700" style="display: block; margin: auto;"></p>
+<span class="va">a</span>  </pre></div>
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="op">(</span><span class="va">b</span> <span class="op">+</span> <span class="va">c</span> <span class="op">+</span> <span class="va">d</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">e</span> <span class="op">+</span> <span class="va">f</span> <span class="op">+</span> <span class="va">g</span><span class="op">)</span></pre></div>
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-7-2.png" width="700"></p>
 </div>
 <div id="normalization-effect-on-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#normalization-effect-on-features" class="anchor"></a>Normalization effect on features</h2>
 <p>Here we can evaluate the different normalization effects on features.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">h</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">none</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Not Normalized"</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">none</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Not Normalized"</span><span class="op">)</span>
 
-<span class="no">i</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">auto_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Auto Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">axis.title.y</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())
+<span class="va">i</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">auto_scaling</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Auto Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">j</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">level_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Level Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">axis.title.y</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())
+<span class="va">j</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">level_scaling</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Level Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">k</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">log_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">axis.title.y</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())
+<span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">log_scaling</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Log Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">l</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">log_transformation</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Transformation"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">axis.title.y</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())
+<span class="va">l</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">log_transformation</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Log Transformation"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">vast_scaling</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Vast Scaling"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">axis.title.y</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())
+<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">vast_scaling</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Vast Scaling"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span>(<span class="no">log_pareto</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="st">"features"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Log Pareto"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(),
-        <span class="kw">axis.title.y</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>())
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PomaDensity.html">PomaDensity</a></span><span class="op">(</span><span class="va">log_pareto</span>, group <span class="op">=</span> <span class="st">"features"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Log Pareto"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">h</span></pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-1.png" width="700" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">(<span class="no">i</span> + <span class="no">j</span> + <span class="no">k</span>) / (<span class="no">l</span> + <span class="no">m</span> + <span class="no">n</span>)</pre></body></html></div>
-<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-2.png" width="700" style="display: block; margin: auto;"></p>
+<span class="va">h</span>  </pre></div>
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="op">(</span><span class="va">i</span> <span class="op">+</span> <span class="va">j</span> <span class="op">+</span> <span class="va">k</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">l</span> <span class="op">+</span> <span class="va">m</span> <span class="op">+</span> <span class="va">n</span><span class="op">)</span></pre></div>
+<p><img src="POMA-normalization_files/figure-html/unnamed-chunk-8-2.png" width="700"></p>
 </div>
 </div>
 <div id="session-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#session-information" class="anchor"></a>Session Information</h1>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">sessionInfo()
-&gt; R version 4.0.1 (2020-06-06)
-&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
-&gt; Running under: macOS Catalina 10.15.4
-&gt; 
-&gt; Matrix products: default
-&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
-&gt; 
-&gt; locale:
-&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-&gt; 
-&gt; attached base packages:
-&gt; [1] parallel  stats     graphics  grDevices utils     datasets  methods  
-&gt; [8] base     
-&gt; 
-&gt; other attached packages:
-&gt; [1] patchwork_1.0.1     ggplot2_3.3.2       Biobase_2.48.0     
-&gt; [4] BiocGenerics_0.34.0 POMA_0.99.38        BiocStyle_2.16.0   
-&gt; 
-&gt; loaded via a namespace (and not attached):
-&gt;   [1] backports_1.1.9       circlize_0.4.10       plyr_1.8.6           
-&gt;   [4] igraph_1.2.5          lazyeval_0.2.2        splines_4.0.1        
-&gt;   [7] gmp_0.6-0             BiocParallel_1.22.0   digest_0.6.25        
-&gt;  [10] foreach_1.5.0         htmltools_0.5.0       viridis_0.5.1        
-&gt;  [13] magrittr_1.5          memoise_1.1.0         cluster_2.1.0        
-&gt;  [16] doParallel_1.0.15     limma_3.44.3          recipes_0.1.13       
-&gt;  [19] ComplexHeatmap_2.4.3  graphlayouts_0.7.0    gower_0.2.2          
-&gt;  [22] matrixStats_0.56.0    rARPACK_0.11-0        pkgdown_1.5.1        
-&gt;  [25] colorspace_1.4-1      ggrepel_0.8.2         xfun_0.16            
-&gt;  [28] dplyr_1.0.2           jsonlite_1.7.0        crayon_1.3.4         
-&gt;  [31] impute_1.62.0         survival_3.2-3        iterators_1.0.12     
-&gt;  [34] glue_1.4.2            polyclip_1.10-0       gtable_0.3.0         
-&gt;  [37] ipred_0.9-9           zlibbioc_1.34.0       GetoptLong_1.0.2     
-&gt;  [40] RankProd_3.14.0       shape_1.4.4           Rmpfr_0.8-1          
-&gt;  [43] scales_1.1.1          vsn_3.56.0            Rcpp_1.0.5           
-&gt;  [46] mzR_2.22.0            viridisLite_0.3.0     clue_0.3-57          
-&gt;  [49] preprocessCore_1.50.0 clisymbols_1.2.0      stats4_4.0.1         
-&gt;  [52] lava_1.6.7            prodlim_2019.11.13    glmnet_4.0-2         
-&gt;  [55] httr_1.4.2            htmlwidgets_1.5.1     RColorBrewer_1.1-2   
-&gt;  [58] ellipsis_0.3.1        pkgconfig_2.0.3       XML_3.99-0.5         
-&gt;  [61] farver_2.0.3          nnet_7.3-14           caret_6.0-86         
-&gt;  [64] labeling_0.3          tidyselect_1.1.0      rlang_0.4.7          
-&gt;  [67] reshape2_1.4.4        ggcorrplot_0.1.3      munsell_0.5.0        
-&gt;  [70] tools_4.0.1           generics_0.0.2        broom_0.7.0          
-&gt;  [73] evaluate_0.14         stringr_1.4.0         mzID_1.26.0          
-&gt;  [76] yaml_2.2.1            ModelMetrics_1.2.2.2  knitr_1.29           
-&gt;  [79] fs_1.5.0              tidygraph_1.2.0       randomForest_4.6-14  
-&gt;  [82] purrr_0.3.4           ggraph_2.0.3          ncdf4_1.17           
-&gt;  [85] glasso_1.11           nlme_3.1-148          compiler_4.0.1       
-&gt;  [88] rstudioapi_0.11       plotly_4.9.2.1        png_0.1-7            
-&gt;  [91] e1071_1.7-3           affyio_1.58.0         tibble_3.0.3         
-&gt;  [94] tweenr_1.0.1          stringi_1.4.6         desc_1.2.0           
-&gt;  [97] RSpectra_0.16-0       MSnbase_2.14.2        lattice_0.20-41      
-&gt; [100] ProtGenerics_1.20.0   Matrix_1.2-18         permute_0.9-5        
-&gt; [103] vegan_2.5-6           vctrs_0.3.4           pillar_1.4.6         
-&gt; [106] lifecycle_0.2.0       BiocManager_1.30.10   MALDIquant_1.19.3    
-&gt; [109] GlobalOptions_0.1.2   data.table_1.13.1     corpcor_1.6.9        
-&gt; [112] R6_2.4.1              pcaMethods_1.80.0     affy_1.66.0          
-&gt; [115] bookdown_0.20         gridExtra_2.3         IRanges_2.22.2       
-&gt; [118] codetools_0.2-16      MASS_7.3-51.6         assertthat_0.2.1     
-&gt; [121] rprojroot_1.3-2       rjson_0.2.20          withr_2.2.0          
-&gt; [124] S4Vectors_0.26.1      mgcv_1.8-31           mixOmics_6.12.2      
-&gt; [127] grid_4.0.1            rpart_4.1-15          timeDate_3043.102    
-&gt; [130] tidyr_1.1.2           class_7.3-17          rmarkdown_2.3        
-&gt; [133] ggforce_0.3.2         pROC_1.16.2           lubridate_1.7.9      
-&gt; [136] ellipse_0.4.2</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">sessionInfo</span>()</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">&gt;</span><span class="st"> </span>R version <span class="dv">4</span>.<span class="fl">0.2</span> (<span class="dv">2020-06-22</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">&gt;</span><span class="st"> </span>Platform<span class="op">:</span><span class="st"> </span>x86_<span class="dv">64</span><span class="op">-</span>apple<span class="op">-</span><span class="kw">darwin17.0</span> (<span class="dv">64</span><span class="op">-</span>bit)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="op">&gt;</span><span class="st"> </span>Running under<span class="op">:</span><span class="st"> </span>macOS Catalina <span class="dv">10</span>.<span class="fl">15.6</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="er">&gt;</span><span class="st"> </span>Matrix products<span class="op">:</span><span class="st"> </span>default</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="op">&gt;</span><span class="st"> </span>BLAS<span class="op">:</span><span class="st">   </span><span class="er">/</span>Library<span class="op">/</span>Frameworks<span class="op">/</span>R.framework<span class="op">/</span>Versions<span class="op">/</span><span class="fl">4.0</span><span class="op">/</span>Resources<span class="op">/</span>lib<span class="op">/</span>libRblas.dylib</span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="op">&gt;</span><span class="st"> </span>LAPACK<span class="op">:</span><span class="st"> </span><span class="er">/</span>Library<span class="op">/</span>Frameworks<span class="op">/</span>R.framework<span class="op">/</span>Versions<span class="op">/</span><span class="fl">4.0</span><span class="op">/</span>Resources<span class="op">/</span>lib<span class="op">/</span>libRlapack.dylib</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="er">&gt;</span><span class="st"> </span>locale<span class="op">:</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] es_ES.UTF<span class="dv">-8</span><span class="op">/</span>es_ES.UTF<span class="dv">-8</span><span class="op">/</span>es_ES.UTF<span class="dv">-8</span><span class="op">/</span>C<span class="op">/</span>es_ES.UTF<span class="dv">-8</span><span class="op">/</span>es_ES.UTF<span class="dv">-8</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="er">&gt;</span><span class="st"> </span>attached base packages<span class="op">:</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] parallel  stats     graphics  grDevices utils     datasets  methods  </span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">8</span>] base     </span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="er">&gt;</span><span class="st"> </span>other attached packages<span class="op">:</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a><span class="er">&gt;</span><span class="st"> </span>[<span class="dv">1</span>] patchwork_<span class="dv">1</span>.<span class="fl">0.1</span>     ggplot2_<span class="dv">3</span>.<span class="fl">3.2</span>       Biobase_<span class="dv">2</span>.<span class="fl">48.0</span>     </span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">4</span>] BiocGenerics_<span class="dv">0</span>.<span class="fl">34.0</span> POMA_<span class="dv">0</span>.<span class="fl">99.44</span>        BiocStyle_<span class="dv">2</span>.<span class="fl">16.0</span>   </span>
+<span id="cb10-20"><a href="#cb10-20"></a><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="er">&gt;</span><span class="st"> </span>loaded via a <span class="kw">namespace</span> (and not attached)<span class="op">:</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a><span class="er">&gt;</span><span class="st">   </span>[<span class="dv">1</span>] backports_<span class="dv">1</span>.<span class="fl">1.10</span>      circlize_<span class="dv">0</span>.<span class="fl">4.10</span>       systemfonts_<span class="dv">0</span>.<span class="fl">3.1</span>    </span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">4</span>] plyr_<span class="dv">1</span>.<span class="fl">8.6</span>            igraph_<span class="dv">1</span>.<span class="fl">2.6</span>          lazyeval_<span class="dv">0</span>.<span class="fl">2.2</span>       </span>
+<span id="cb10-24"><a href="#cb10-24"></a><span class="op">&gt;</span><span class="st">   </span>[<span class="dv">7</span>] splines_<span class="dv">4</span>.<span class="fl">0.2</span>         gmp_<span class="fl">0.6</span><span class="dv">-1</span>             BiocParallel_<span class="dv">1</span>.<span class="fl">22.0</span>  </span>
+<span id="cb10-25"><a href="#cb10-25"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">10</span>] digest_<span class="dv">0</span>.<span class="fl">6.25</span>         foreach_<span class="dv">1</span>.<span class="fl">5.1</span>         htmltools_<span class="dv">0</span>.<span class="fl">5.0</span>      </span>
+<span id="cb10-26"><a href="#cb10-26"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">13</span>] viridis_<span class="dv">0</span>.<span class="fl">5.1</span>         magrittr_<span class="fl">1.5</span>          memoise_<span class="dv">1</span>.<span class="fl">1.0</span>        </span>
+<span id="cb10-27"><a href="#cb10-27"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">16</span>] cluster_<span class="dv">2</span>.<span class="fl">1.0</span>         doParallel_<span class="dv">1</span>.<span class="fl">0.15</span>     limma_<span class="dv">3</span>.<span class="fl">44.3</span>         </span>
+<span id="cb10-28"><a href="#cb10-28"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">19</span>] recipes_<span class="dv">0</span>.<span class="fl">1.13</span>        ComplexHeatmap_<span class="dv">2</span>.<span class="fl">4.3</span>  graphlayouts_<span class="dv">0</span>.<span class="fl">7.0</span>   </span>
+<span id="cb10-29"><a href="#cb10-29"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">22</span>] gower_<span class="dv">0</span>.<span class="fl">2.2</span>           matrixStats_<span class="dv">0</span>.<span class="fl">57.0</span>    rARPACK_<span class="fl">0.11</span><span class="dv">-0</span>       </span>
+<span id="cb10-30"><a href="#cb10-30"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">25</span>] pkgdown_<span class="dv">1</span>.<span class="fl">6.1</span>         colorspace_<span class="fl">1.4</span><span class="dv">-1</span>      ggrepel_<span class="dv">0</span>.<span class="fl">8.2</span>        </span>
+<span id="cb10-31"><a href="#cb10-31"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">28</span>] xfun_<span class="fl">0.18</span>             dplyr_<span class="dv">1</span>.<span class="fl">0.2</span>           jsonlite_<span class="dv">1</span>.<span class="fl">7.1</span>       </span>
+<span id="cb10-32"><a href="#cb10-32"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">31</span>] crayon_<span class="dv">1</span>.<span class="fl">3.4</span>          impute_<span class="dv">1</span>.<span class="fl">62.0</span>         survival_<span class="fl">3.2</span><span class="dv">-3</span>       </span>
+<span id="cb10-33"><a href="#cb10-33"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">34</span>] iterators_<span class="dv">1</span>.<span class="fl">0.13</span>      glue_<span class="dv">1</span>.<span class="fl">4.2</span>            polyclip_<span class="fl">1.10</span><span class="dv">-0</span>      </span>
+<span id="cb10-34"><a href="#cb10-34"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">37</span>] gtable_<span class="dv">0</span>.<span class="fl">3.0</span>          ipred_<span class="fl">0.9</span><span class="dv">-9</span>           zlibbioc_<span class="dv">1</span>.<span class="fl">34.0</span>      </span>
+<span id="cb10-35"><a href="#cb10-35"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">40</span>] GetoptLong_<span class="dv">1</span>.<span class="fl">0.3</span>      RankProd_<span class="dv">3</span>.<span class="fl">14.0</span>       shape_<span class="dv">1</span>.<span class="fl">4.5</span>          </span>
+<span id="cb10-36"><a href="#cb10-36"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">43</span>] Rmpfr_<span class="fl">0.8</span><span class="dv">-1</span>           scales_<span class="dv">1</span>.<span class="fl">1.1</span>          vsn_<span class="dv">3</span>.<span class="fl">56.0</span>           </span>
+<span id="cb10-37"><a href="#cb10-37"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">46</span>] cpp11_<span class="dv">0</span>.<span class="fl">2.3</span>           Rcpp_<span class="dv">1</span>.<span class="fl">0.5</span>            mzR_<span class="dv">2</span>.<span class="fl">22.0</span>           </span>
+<span id="cb10-38"><a href="#cb10-38"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">49</span>] viridisLite_<span class="dv">0</span>.<span class="fl">3.0</span>     clue_<span class="fl">0.3</span><span class="dv">-57</span>           preprocessCore_<span class="dv">1</span>.<span class="fl">50.0</span></span>
+<span id="cb10-39"><a href="#cb10-39"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">52</span>] clisymbols_<span class="dv">1</span>.<span class="fl">2.0</span>      stats4_<span class="dv">4</span>.<span class="fl">0.2</span>          lava_<span class="dv">1</span>.<span class="fl">6.8</span>           </span>
+<span id="cb10-40"><a href="#cb10-40"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">55</span>] prodlim_<span class="dv">2019</span>.<span class="fl">11.13</span>    glmnet_<span class="fl">4.0</span><span class="dv">-2</span>          httr_<span class="dv">1</span>.<span class="fl">4.2</span>           </span>
+<span id="cb10-41"><a href="#cb10-41"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">58</span>] htmlwidgets_<span class="dv">1</span>.<span class="fl">5.2</span>     RColorBrewer_<span class="fl">1.1</span><span class="dv">-2</span>    ellipsis_<span class="dv">0</span>.<span class="fl">3.1</span>       </span>
+<span id="cb10-42"><a href="#cb10-42"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">61</span>] pkgconfig_<span class="dv">2</span>.<span class="fl">0.3</span>       XML_<span class="fl">3.99-0.5</span>          farver_<span class="dv">2</span>.<span class="fl">0.3</span>         </span>
+<span id="cb10-43"><a href="#cb10-43"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">64</span>] nnet_<span class="fl">7.3</span><span class="dv">-14</span>           caret_<span class="fl">6.0</span><span class="dv">-86</span>          labeling_<span class="fl">0.3</span>         </span>
+<span id="cb10-44"><a href="#cb10-44"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">67</span>] tidyselect_<span class="dv">1</span>.<span class="fl">1.0</span>      rlang_<span class="dv">0</span>.<span class="fl">4.8</span>           reshape2_<span class="dv">1</span>.<span class="fl">4.4</span>       </span>
+<span id="cb10-45"><a href="#cb10-45"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">70</span>] ggcorrplot_<span class="dv">0</span>.<span class="fl">1.3</span>      munsell_<span class="dv">0</span>.<span class="fl">5.0</span>         tools_<span class="dv">4</span>.<span class="fl">0.2</span>          </span>
+<span id="cb10-46"><a href="#cb10-46"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">73</span>] generics_<span class="dv">0</span>.<span class="fl">0.2</span>        broom_<span class="dv">0</span>.<span class="fl">7.1</span>           evaluate_<span class="fl">0.14</span>        </span>
+<span id="cb10-47"><a href="#cb10-47"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">76</span>] stringr_<span class="dv">1</span>.<span class="fl">4.0</span>         mzID_<span class="dv">1</span>.<span class="fl">26.0</span>           yaml_<span class="dv">2</span>.<span class="fl">2.1</span>           </span>
+<span id="cb10-48"><a href="#cb10-48"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">79</span>] ragg_<span class="dv">0</span>.<span class="fl">3.1</span>            ModelMetrics_<span class="dv">1</span>.<span class="dv">2</span>.<span class="fl">2.2</span>  knitr_<span class="fl">1.30</span>           </span>
+<span id="cb10-49"><a href="#cb10-49"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">82</span>] fs_<span class="dv">1</span>.<span class="fl">5.0</span>              tidygraph_<span class="dv">1</span>.<span class="fl">2.0</span>       randomForest_<span class="fl">4.6</span><span class="dv">-14</span>  </span>
+<span id="cb10-50"><a href="#cb10-50"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">85</span>] purrr_<span class="dv">0</span>.<span class="fl">3.4</span>           ggraph_<span class="dv">2</span>.<span class="fl">0.3</span>          ncdf4_<span class="fl">1.17</span>           </span>
+<span id="cb10-51"><a href="#cb10-51"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">88</span>] glasso_<span class="fl">1.11</span>           nlme_<span class="fl">3.1</span><span class="dv">-149</span>          compiler_<span class="dv">4</span>.<span class="fl">0.2</span>       </span>
+<span id="cb10-52"><a href="#cb10-52"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">91</span>] rstudioapi_<span class="fl">0.11</span>       plotly_<span class="dv">4</span>.<span class="dv">9</span>.<span class="fl">2.1</span>        png_<span class="fl">0.1</span><span class="dv">-7</span>            </span>
+<span id="cb10-53"><a href="#cb10-53"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">94</span>] e1071_<span class="fl">1.7</span><span class="dv">-4</span>           affyio_<span class="dv">1</span>.<span class="fl">58.0</span>         tibble_<span class="dv">3</span>.<span class="fl">0.4</span>         </span>
+<span id="cb10-54"><a href="#cb10-54"></a><span class="op">&gt;</span><span class="st">  </span>[<span class="dv">97</span>] tweenr_<span class="dv">1</span>.<span class="fl">0.1</span>          stringi_<span class="dv">1</span>.<span class="fl">5.3</span>         RSpectra_<span class="fl">0.16</span><span class="dv">-0</span>      </span>
+<span id="cb10-55"><a href="#cb10-55"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">100</span>] desc_<span class="dv">1</span>.<span class="fl">2.0</span>            MSnbase_<span class="dv">2</span>.<span class="fl">14.2</span>        lattice_<span class="fl">0.20</span><span class="dv">-41</span>      </span>
+<span id="cb10-56"><a href="#cb10-56"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">103</span>] ProtGenerics_<span class="dv">1</span>.<span class="fl">20.0</span>   Matrix_<span class="fl">1.2</span><span class="dv">-18</span>         permute_<span class="fl">0.9</span><span class="dv">-5</span>        </span>
+<span id="cb10-57"><a href="#cb10-57"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">106</span>] vegan_<span class="fl">2.5</span><span class="dv">-6</span>           vctrs_<span class="dv">0</span>.<span class="fl">3.4</span>           pillar_<span class="dv">1</span>.<span class="fl">4.6</span>         </span>
+<span id="cb10-58"><a href="#cb10-58"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">109</span>] lifecycle_<span class="dv">0</span>.<span class="fl">2.0</span>       BiocManager_<span class="dv">1</span>.<span class="fl">30.10</span>   MALDIquant_<span class="dv">1</span>.<span class="fl">19.3</span>    </span>
+<span id="cb10-59"><a href="#cb10-59"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">112</span>] GlobalOptions_<span class="dv">0</span>.<span class="fl">1.2</span>   data.table_<span class="dv">1</span>.<span class="fl">13.0</span>     corpcor_<span class="dv">1</span>.<span class="fl">6.9</span>        </span>
+<span id="cb10-60"><a href="#cb10-60"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">115</span>] R6_<span class="dv">2</span>.<span class="fl">4.1</span>              pcaMethods_<span class="dv">1</span>.<span class="fl">80.0</span>     affy_<span class="dv">1</span>.<span class="fl">66.0</span>          </span>
+<span id="cb10-61"><a href="#cb10-61"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">118</span>] bookdown_<span class="fl">0.20</span>         gridExtra_<span class="fl">2.3</span>         IRanges_<span class="dv">2</span>.<span class="fl">22.2</span>       </span>
+<span id="cb10-62"><a href="#cb10-62"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">121</span>] codetools_<span class="fl">0.2</span><span class="dv">-16</span>      MASS_<span class="fl">7.3</span><span class="dv">-53</span>           assertthat_<span class="dv">0</span>.<span class="fl">2.1</span>     </span>
+<span id="cb10-63"><a href="#cb10-63"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">124</span>] rprojroot_<span class="fl">1.3</span><span class="dv">-2</span>       rjson_<span class="dv">0</span>.<span class="fl">2.20</span>          withr_<span class="dv">2</span>.<span class="fl">3.0</span>          </span>
+<span id="cb10-64"><a href="#cb10-64"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">127</span>] S4Vectors_<span class="dv">0</span>.<span class="fl">26.1</span>      mgcv_<span class="fl">1.8</span><span class="dv">-33</span>           mixOmics_<span class="dv">6</span>.<span class="fl">12.2</span>      </span>
+<span id="cb10-65"><a href="#cb10-65"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">130</span>] grid_<span class="dv">4</span>.<span class="fl">0.2</span>            rpart_<span class="fl">4.1</span><span class="dv">-15</span>          timeDate_<span class="fl">3043.102</span>    </span>
+<span id="cb10-66"><a href="#cb10-66"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">133</span>] tidyr_<span class="dv">1</span>.<span class="fl">1.2</span>           class_<span class="fl">7.3</span><span class="dv">-17</span>          rmarkdown_<span class="fl">2.4</span>        </span>
+<span id="cb10-67"><a href="#cb10-67"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">136</span>] ggforce_<span class="dv">0</span>.<span class="fl">3.2</span>         pROC_<span class="dv">1</span>.<span class="fl">16.2</span>           lubridate_<span class="dv">1</span>.<span class="fl">7.9</span>      </span>
+<span id="cb10-68"><a href="#cb10-68"></a><span class="op">&gt;</span><span class="st"> </span>[<span class="dv">139</span>] ellipse_<span class="dv">0</span>.<span class="fl">4.2</span></span></code></pre></div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
 <div id="ref-normalization">
-<p>Berg, Robert A van den, Huub CJ Hoefsloot, Johan A Westerhuis, Age K Smilde, and Mariët J van der Werf. 2006. “Centering, Scaling, and Transformations: Improving the Biological Information Content of Metabolomics Data.” <em>BMC Genomics</em> 7 (1). Springer: 142.</p>
+<p>Berg, Robert A van den, Huub CJ Hoefsloot, Johan A Westerhuis, Age K Smilde, and Mariët J van der Werf. 2006. “Centering, Scaling, and Transformations: Improving the Biological Information Content of Metabolomics Data.” <em>BMC Genomics</em> 7 (1): 142.</p>
 </div>
 </div>
 </div>
@@ -368,7 +376,7 @@ dim(Biobase::exprs(log_pareto))
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
