@@ -20,7 +20,7 @@
 <script src="pkgdown.js"></script><meta property="og:title" content="User-friendly Workflow for Pre-processing and Statistical Analysis of Mass Spectrometry Data   ">
 <meta property="og:description" content="
     POMA introduces a structured, reproducible and easy-to-use workflow for the visualization, pre-processing, 
-    exploratory and statistical analysis of mass spectrometry data. The main aim of POMA is to enable a flexible 
+    exploratory data analysis and statistical analysis of mass spectrometry data. The main aim of POMA is to enable a flexible 
     data cleaning and statistical analysis processes in one comprehensible and user-friendly R package. This package also 
     has a Shiny app version that implements all POMA functions. See https://github.com/pcastellanoescuder/POMAShiny.">
 <meta property="og:image" content="/logo.png">
@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -108,8 +108,8 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="http://pcastellanoescuder.github.io/POMA/"><strong>POMA</strong></a> introduces a structured, reproducible and easy-to-use workflow for the visualization, pre-processing, exploratory and statistical analysis of mass spectrometry data. The main aim of <code>POMA</code> is to enable a flexible data cleaning and statistical analysis processes in one comprehensible and user-friendly R package. This package uses the standardized <a href="http://lgatto.github.io/MSnbase/"><strong>MSnbase</strong></a> data structures, developed by <a href="http://lgatto.github.io/">Laurent Gatto</a>, to achieve the maximum flexibility and reproducibility and makes <code>POMA</code> compatible with other <a href="https://bioconductor.org">Bioconductor</a> packages.</p>
-<p><code>POMA</code> also has two different Shiny app modules both for Exploratory Data Analysis and Statistical Analysis that implement all <code>POMA</code> functions in two user-friendly web interfaces.</p>
+<p><a href="http://pcastellanoescuder.github.io/POMA/"><strong>POMA</strong></a> introduces a structured, reproducible and easy-to-use workflow for the visualization, pre-processing, exploratory data analysis and statistical analysis of mass spectrometry data. The main aim of <code>POMA</code> is to enable a flexible data cleaning and statistical analysis processes in one comprehensible and user-friendly R package. This package uses the standardized <a href="http://lgatto.github.io/MSnbase/"><strong>MSnbase</strong></a> data structures, to achieve the maximum flexibility and reproducibility and makes <code>POMA</code> compatible with other <a href="https://bioconductor.org">Bioconductor</a> packages.</p>
+<p><code>POMA</code> also has two different Shiny app modules both for exploratory data analysis and statistical analysis that implement all <code>POMA</code> functions in two user-friendly web interfaces.</p>
 <ul>
 <li>
 <strong>POMAShiny</strong>: Shiny version of this package. <a href="https://github.com/pcastellanoescuder/POMAShiny" class="uri">https://github.com/pcastellanoescuder/POMAShiny</a><br>
@@ -123,13 +123,13 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>To install Bioconductor version:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("BiocManager")</span>
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"POMA"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("BiocManager")</span>
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"POMA"</span><span class="op">)</span></code></pre></div>
 <p>If you need the GitHub version (not recommended unless you know what you are doing), use:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"pcastellanoescuder/POMA"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"pcastellanoescuder/POMA"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
@@ -181,9 +181,13 @@
 <li><a href="https://travis-ci.org/pcastellanoescuder/POMA"><img src="https://travis-ci.org/pcastellanoescuder/POMA.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/pcastellanoescuder/POMA"><img src="https://ci.appveyor.com/api/projects/status/github/pcastellanoescuder/POMA?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://github.com/pcastellanoescuder/POMA/actions"><img src="https://github.com/pcastellanoescuder/POMA/workflows/R-CMD-check/badge.svg" alt="Actions Status"></a></li>
-<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/POMA/"><img src="https://bioconductor.org/shields/build/devel/bioc/POMA.svg" alt="Bioc Status"></a></li>
+<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/POMA/"><img src="https://bioconductor.org/shields/build/release/bioc/POMA.svg" alt="Bioc release status"></a></li>
+<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/POMA/"><img src="https://bioconductor.org/shields/build/devel/bioc/POMA.svg" alt="Bioc devel status"></a></li>
 <li><a href="https://codecov.io/gh/pcastellanoescuder/POMA?branch=master"><img src="https://codecov.io/gh/pcastellanoescuder/POMA/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/pcastellanoescuder/POMA"><img src="https://www.codefactor.io/repository/github/pcastellanoescuder/POMA/badge" alt="CodeFactor"></a></li>
 <li><a href="https://github.com/pcastellanoescuder/POMA/commits/master"><img src="https://img.shields.io/github/last-commit/pcastellanoescuder/POMA.svg" alt="Last Commit"></a></li>
+<li><a href="https://www.bioconductor.org/packages/POMA"><img src="https://img.shields.io/badge/release%20version-1.0.0-blue.svg" alt="BioC released version"></a></li>
+<li><a href="https://bioconductor.org/packages/stats/bioc/POMA"><img src="https://img.shields.io/badge/download-33/month-blue.svg" alt="Downloads month"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
 </ul>
 </div>

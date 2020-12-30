@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@
       University of Barcelona, Spain.<br><a class="author_email" href="mailto:#"></a><a href="mailto:polcaes@gmail.com" class="email">polcaes@gmail.com</a>
       </address>
                   
-            <h4 class="date">29 octubre 2020</h4>
+            <h4 class="date">30 diciembre 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pcastellanoescuder/POMA/blob/master/vignettes/POMA-eda.Rmd"><code>vignettes/POMA-eda.Rmd</code></a></small>
       <div class="hidden name"><code>POMA-eda.Rmd</code></div>
@@ -114,30 +114,30 @@
 
     
     
-<p><strong>Compiled date</strong>: 2020-10-29</p>
+<p><strong>Compiled date</strong>: 2020-12-30</p>
 <p><strong>Last edited</strong>: 2020-08-03</p>
 <p><strong>License</strong>: GPL-3</p>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>Run the following code to install the Bioconductor version of package.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("BiocManager")</span>
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"POMA"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("BiocManager")</span>
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"POMA"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="load-poma" class="section level1">
 <h1 class="hasAnchor">
 <a href="#load-poma" class="anchor"></a>Load POMA</h1>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pcastellanoescuder/POMA">POMA</a></span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pcastellanoescuder/POMA">POMA</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="automatic-eda-report" class="section level1">
 <h1 class="hasAnchor">
 <a href="#automatic-eda-report" class="anchor"></a>Automatic EDA Report</h1>
 <p>The following function will return an Exploratory Data Analysis (EDA) PDF report. The input object must be an <strong>MSnSet</strong> object.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"st000336"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/PomaEDA.html">PomaEDA</a></span><span class="op">(</span><span class="va">st000336</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"st000336"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/PomaEDA.html">PomaEDA</a></span><span class="op">(</span><span class="va">st000336</span><span class="op">)</span></code></pre></div>
 <p><strong>Generated EDA PDF report starts here.</strong></p>
 </div>
 <div id="know-your-data" class="section level1">
