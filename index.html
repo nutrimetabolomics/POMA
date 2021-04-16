@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User-friendly Workflow for Pre-processing and Statistical Analysis of Mass Spectrometry Data    • POMA</title>
+<title>User-friendly Workflow for Metabolomics and Proteomics Data Analysis    • POMA</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -17,10 +17,10 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="User-friendly Workflow for Pre-processing and Statistical Analysis of Mass Spectrometry Data   ">
+<script src="pkgdown.js"></script><meta property="og:title" content="User-friendly Workflow for Metabolomics and Proteomics Data Analysis   ">
 <meta property="og:description" content="
     A structured, reproducible and easy-to-use workflow for the visualization, pre-processing, exploratory data analysis, 
-    and statistical analysis of mass spectrometry data. The main aim of POMA is to enable a flexible data cleaning and 
+    and statistical analysis of metabolomics and proteomics data. The main aim of POMA is to enable a flexible data cleaning and 
     statistical analysis processes in one comprehensible and user-friendly R package. This package also has a Shiny app 
     version that implements all POMA functions. See https://github.com/pcastellanoescuder/POMAShiny.">
 <meta property="og:image" content="/logo.png">
@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.14</span>
       </span>
     </div>
 
@@ -50,7 +50,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -85,7 +85,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/pcastellanoescuder/POMA">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -107,7 +107,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end --><p><a href="http://pcastellanoescuder.github.io/POMA/"><strong>POMA</strong></a> introduces a structured, reproducible and easy-to-use workflow for the visualization, pre-processing, exploratory data analysis and statistical analysis of mass spectrometry data. The main aim of <code>POMA</code> is to enable a flexible data cleaning and statistical analysis processes in one comprehensible and user-friendly R package. This package uses the standardized <a href="http://lgatto.github.io/MSnbase/"><strong>MSnbase</strong></a> data structures, to achieve the maximum flexibility and reproducibility and makes <code>POMA</code> compatible with other <a href="https://bioconductor.org">Bioconductor</a> packages.</p>
+<!-- badges: end --><p><a href="http://pcastellanoescuder.github.io/POMA/"><strong>POMA</strong></a> introduces a structured, reproducible and easy-to-use workflow for the visualization, pre-processing, exploration, and statistical analysis of metabolomics and proteomics data. The main aim of <code>POMA</code> is to enable a flexible data cleaning and statistical analysis processes in one comprehensible and user-friendly R package. This package uses the standardized <a href="http://lgatto.github.io/MSnbase/"><strong>MSnbase</strong></a> data structures, to achieve the maximum flexibility and reproducibility and makes <code>POMA</code> compatible with other <a href="https://bioconductor.org">Bioconductor</a> packages.</p>
 <p><code>POMA</code> also has two different Shiny app modules both for exploratory data analysis and statistical analysis that implement all <code>POMA</code> functions in two user-friendly web interfaces.</p>
 <ul>
 <li>
@@ -188,6 +188,7 @@
 <li><a href="http://bioconductor.org/packages/release/bioc/html/POMA.html#since"><img src="http://bioconductor.org/shields/dependencies/release/POMA.svg" alt="Dependencies"></a></li>
 <li><a href="https://bioconductor.org/packages/stats/bioc/POMA"><img src="http://www.bioconductor.org/shields/downloads/release/POMA.svg" alt="Rank"></a></li>
 <li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/POMA/"><img src="https://bioconductor.org/shields/build/devel/bioc/POMA.svg" alt="Bioc devel status"></a></li>
+<li><a href="https://bioconductor.org/packages/devel/bioc/html/POMA.html"><img src="https://img.shields.io/badge/devel%20version-1.1.14-blue.svg" alt="BioC devel version"></a></li>
 <li><a href="http://bioconductor.org/packages/devel/bioc/html/POMA.html#since"><img src="http://bioconductor.org/shields/dependencies/devel/POMA.svg" alt="Dependencies"></a></li>
 <li><a href="https://bioconductor.org/packages/stats/bioc/POMA"><img src="http://www.bioconductor.org/shields/downloads/devel/POMA.svg" alt="Rank"></a></li>
 </ul>

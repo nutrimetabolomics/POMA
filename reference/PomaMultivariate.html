@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">POMA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.14</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -123,7 +123,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/pcastellanoescuder/POMA">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -162,7 +162,8 @@
   folds <span class='op'>=</span> <span class='fl'>5</span>,
   nrepeat <span class='op'>=</span> <span class='fl'>10</span>,
   vip <span class='op'>=</span> <span class='fl'>1.5</span>,
-  num_features <span class='op'>=</span> <span class='fl'>10</span>
+  num_features <span class='op'>=</span> <span class='fl'>10</span>,
+  legend_position <span class='op'>=</span> <span class='st'>"bottom"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -220,6 +221,10 @@
       <th>num_features</th>
       <td><p>(Only for "splsda" method) Numeric. Number of variables selected to discriminate groups.</p></td>
     </tr>
+    <tr>
+      <th>legend_position</th>
+      <td><p>Character indicating the legend position. Options are "none", "top", "bottom", "left", and "right".</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -238,7 +243,7 @@
   <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>PomaMultivariate</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"pca"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $screeplot</div><div class='img'><img src='PomaMultivariate-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
+</div><div class='output co'>#&gt; <span class='message'>method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='message'>method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; $screeplot</div><div class='img'><img src='PomaMultivariate-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $scoresplot</div><div class='img'><img src='PomaMultivariate-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $score_data
 #&gt;        PC1     PC2     PC3     PC4     PC5
@@ -295,11 +300,11 @@
 #&gt; 
 #&gt; $eigenvalues
 #&gt;   Principal_Component Percent_Variance_Explained
-#&gt; 1                 PC1                    45.6327
-#&gt; 2                 PC2                    10.1436
-#&gt; 3                 PC3                     8.9303
-#&gt; 4                 PC4                     6.8329
-#&gt; 5                 PC5                     5.5929
+#&gt; 1                 PC1                     45.633
+#&gt; 2                 PC2                     10.144
+#&gt; 3                 PC3                      8.930
+#&gt; 4                 PC4                      6.833
+#&gt; 5                 PC5                      5.593
 #&gt; 
 #&gt; $biplot</div><div class='img'><img src='PomaMultivariate-3.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; </div><div class='input'>
 <span class='co'># PLSDA</span>
@@ -308,7 +313,7 @@
   <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>PomaMultivariate</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"plsda"</span>, vip <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: validation argument is empty! Mfold will be used</span></div><div class='output co'>#&gt; 
+</div><div class='output co'>#&gt; <span class='message'>method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='message'>method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; <span class='message'>validation argument is empty! Mfold will be used</span></div><div class='output co'>#&gt; 
 #&gt; comp 1 
 #&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |===                                                                   |   4%  |                                                                              |====                                                                  |   6%  |                                                                              |======                                                                |   8%  |                                                                              |=======                                                               |  10%  |                                                                              |========                                                              |  12%  |                                                                              |==========                                                            |  14%  |                                                                              |===========                                                           |  16%  |                                                                              |=============                                                         |  18%  |                                                                              |==============                                                        |  20%  |                                                                              |===============                                                       |  22%  |                                                                              |=================                                                     |  24%  |                                                                              |==================                                                    |  26%  |                                                                              |====================                                                  |  28%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  32%  |                                                                              |========================                                              |  34%  |                                                                              |=========================                                             |  36%  |                                                                              |===========================                                           |  38%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  42%  |                                                                              |===============================                                       |  44%  |                                                                              |================================                                      |  46%  |                                                                              |==================================                                    |  48%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================                                  |  52%  |                                                                              |======================================                                |  54%  |                                                                              |=======================================                               |  56%  |                                                                              |=========================================                             |  58%  |                                                                              |==========================================                            |  60%  |                                                                              |===========================================                           |  62%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  66%  |                                                                              |================================================                      |  68%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  72%  |                                                                              |====================================================                  |  74%  |                                                                              |=====================================================                 |  76%  |                                                                              |=======================================================               |  78%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  82%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  88%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  92%  |                                                                              |==================================================================    |  94%  |                                                                              |===================================================================   |  96%  |                                                                              |===================================================================== |  98%  |                                                                              |======================================================================| 100%
 #&gt; comp 2 
@@ -320,37 +325,20 @@
 #&gt; comp 5 
 #&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |===                                                                   |   4%  |                                                                              |====                                                                  |   6%  |                                                                              |======                                                                |   8%  |                                                                              |=======                                                               |  10%  |                                                                              |========                                                              |  12%  |                                                                              |==========                                                            |  14%  |                                                                              |===========                                                           |  16%  |                                                                              |=============                                                         |  18%  |                                                                              |==============                                                        |  20%  |                                                                              |===============                                                       |  22%  |                                                                              |=================                                                     |  24%  |                                                                              |==================                                                    |  26%  |                                                                              |====================                                                  |  28%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  32%  |                                                                              |========================                                              |  34%  |                                                                              |=========================                                             |  36%  |                                                                              |===========================                                           |  38%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  42%  |                                                                              |===============================                                       |  44%  |                                                                              |================================                                      |  46%  |                                                                              |==================================                                    |  48%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================                                  |  52%  |                                                                              |======================================                                |  54%  |                                                                              |=======================================                               |  56%  |                                                                              |=========================================                             |  58%  |                                                                              |==========================================                            |  60%  |                                                                              |===========================================                           |  62%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  66%  |                                                                              |================================================                      |  68%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  72%  |                                                                              |====================================================                  |  74%  |                                                                              |=====================================================                 |  76%  |                                                                              |=======================================================               |  78%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  82%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  88%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  92%  |                                                                              |==================================================================    |  94%  |                                                                              |===================================================================   |  96%  |                                                                              |===================================================================== |  98%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; $scoresplot</div><div class='img'><img src='PomaMultivariate-4.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $errors_plsda
-#&gt;    Component                 variable  value
-#&gt; 1      comp1             BER.max.dist 0.1338
-#&gt; 2      comp2             BER.max.dist 0.0582
-#&gt; 3      comp3             BER.max.dist 0.0923
-#&gt; 4      comp4             BER.max.dist 0.0871
-#&gt; 5      comp5             BER.max.dist 0.1127
-#&gt; 6      comp1       BER.centroids.dist 0.0987
-#&gt; 7      comp2       BER.centroids.dist 0.1013
-#&gt; 8      comp3       BER.centroids.dist 0.1000
-#&gt; 9      comp4       BER.centroids.dist 0.1000
-#&gt; 10     comp5       BER.centroids.dist 0.1000
-#&gt; 11     comp1     BER.mahalanobis.dist 0.0987
-#&gt; 12     comp2     BER.mahalanobis.dist 0.0718
-#&gt; 13     comp3     BER.mahalanobis.dist 0.0797
-#&gt; 14     comp4     BER.mahalanobis.dist 0.0810
-#&gt; 15     comp5     BER.mahalanobis.dist 0.1022
-#&gt; 16     comp1         overall.max.dist 0.1120
-#&gt; 17     comp2         overall.max.dist 0.0500
-#&gt; 18     comp3         overall.max.dist 0.0880
-#&gt; 19     comp4         overall.max.dist 0.0900
-#&gt; 20     comp5         overall.max.dist 0.1300
-#&gt; 21     comp1   overall.centroids.dist 0.1540
-#&gt; 22     comp2   overall.centroids.dist 0.1580
-#&gt; 23     comp3   overall.centroids.dist 0.1560
-#&gt; 24     comp4   overall.centroids.dist 0.1560
-#&gt; 25     comp5   overall.centroids.dist 0.1560
-#&gt; 26     comp1 overall.mahalanobis.dist 0.1540
-#&gt; 27     comp2 overall.mahalanobis.dist 0.1120
-#&gt; 28     comp3 overall.mahalanobis.dist 0.1040
-#&gt; 29     comp4 overall.mahalanobis.dist 0.1060
-#&gt; 30     comp5 overall.mahalanobis.dist 0.1340
+#&gt; <span style='color: #949494;'># A tibble: 30 x 3</span><span>
+#&gt;    Component name                  value
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> comp1     BER.max.dist         0.134 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> comp1     BER.centroids.dist   0.098</span><span style='text-decoration: underline;'>7</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> comp1     BER.mahalanobis.dist 0.098</span><span style='text-decoration: underline;'>7</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> comp2     BER.max.dist         0.058</span><span style='text-decoration: underline;'>2</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> comp2     BER.centroids.dist   0.101 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> comp2     BER.mahalanobis.dist 0.071</span><span style='text-decoration: underline;'>8</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> comp3     BER.max.dist         0.092</span><span style='text-decoration: underline;'>3</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> comp3     BER.centroids.dist   0.1   
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> comp3     BER.mahalanobis.dist 0.079</span><span style='text-decoration: underline;'>7</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> comp4     BER.max.dist         0.087</span><span style='text-decoration: underline;'>1</span><span>
+#&gt; </span><span style='color: #949494;'># … with 20 more rows</span><span>
 #&gt; 
 #&gt; $errors_plsda_plot</div><div class='img'><img src='PomaMultivariate-5.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $plsda_vip_table
@@ -446,7 +434,7 @@
   <span class='fu'><a href='PomaNorm.html'>PomaNorm</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='PomaOutliers.html'>PomaOutliers</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>PomaMultivariate</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"splsda"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; <span class='warning'>Warning: validation argument is empty! Mfold will be used</span></div><div class='output co'>#&gt; 
+</div><div class='output co'>#&gt; <span class='message'>method argument is empty! KNN will be used</span></div><div class='output co'>#&gt; <span class='message'>method argument is empty! log_pareto will be used</span></div><div class='output co'>#&gt; <span class='message'>validation argument is empty! Mfold will be used</span></div><div class='output co'>#&gt; 
 #&gt; comp 1 
 #&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |===                                                                   |   4%  |                                                                              |====                                                                  |   6%  |                                                                              |======                                                                |   8%  |                                                                              |=======                                                               |  10%  |                                                                              |========                                                              |  12%  |                                                                              |==========                                                            |  14%  |                                                                              |===========                                                           |  16%  |                                                                              |=============                                                         |  18%  |                                                                              |==============                                                        |  20%  |                                                                              |===============                                                       |  22%  |                                                                              |=================                                                     |  24%  |                                                                              |==================                                                    |  26%  |                                                                              |====================                                                  |  28%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  32%  |                                                                              |========================                                              |  34%  |                                                                              |=========================                                             |  36%  |                                                                              |===========================                                           |  38%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  42%  |                                                                              |===============================                                       |  44%  |                                                                              |================================                                      |  46%  |                                                                              |==================================                                    |  48%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================                                  |  52%  |                                                                              |======================================                                |  54%  |                                                                              |=======================================                               |  56%  |                                                                              |=========================================                             |  58%  |                                                                              |==========================================                            |  60%  |                                                                              |===========================================                           |  62%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  66%  |                                                                              |================================================                      |  68%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  72%  |                                                                              |====================================================                  |  74%  |                                                                              |=====================================================                 |  76%  |                                                                              |=======================================================               |  78%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  82%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  86%  |                                                                              |==============================================================        |  88%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  92%  |                                                                              |==================================================================    |  94%  |                                                                              |===================================================================   |  96%  |                                                                              |===================================================================== |  98%  |                                                                              |======================================================================| 100%
 #&gt; comp 2 
@@ -464,57 +452,57 @@
 #&gt;     3 
 #&gt; 
 #&gt; $errors_splsda
-#&gt;    features variable  value         sd
-#&gt; 1         1    comp1 0.1136 0.05466202
-#&gt; 2         2    comp1 0.0821 0.04001818
-#&gt; 3         3    comp1 0.0756 0.03353931
-#&gt; 4         4    comp1 0.0756 0.02580210
-#&gt; 5         5    comp1 0.0769 0.02586958
-#&gt; 6         6    comp1 0.0828 0.02596857
-#&gt; 7         7    comp1 0.0873 0.02762699
-#&gt; 8         8    comp1 0.0944 0.02273972
-#&gt; 9         9    comp1 0.0828 0.02339405
-#&gt; 10       10    comp1 0.0840 0.02569072
-#&gt; 11        1    comp2 0.1572 0.04421896
-#&gt; 12        2    comp2 0.1442 0.04016820
-#&gt; 13        3    comp2 0.1364 0.03155236
-#&gt; 14        4    comp2 0.1214 0.03170887
-#&gt; 15        5    comp2 0.1286 0.03804944
-#&gt; 16        6    comp2 0.1227 0.04281637
-#&gt; 17        7    comp2 0.1129 0.03401298
-#&gt; 18        8    comp2 0.1110 0.03715331
-#&gt; 19        9    comp2 0.1097 0.03689097
-#&gt; 20       10    comp2 0.0948 0.02831019
-#&gt; 21        1    comp3 0.0852 0.05437188
-#&gt; 22        2    comp3 0.0774 0.05258751
-#&gt; 23        3    comp3 0.0871 0.04884935
-#&gt; 24        4    comp3 0.0987 0.04477052
-#&gt; 25        5    comp3 0.0987 0.04539657
-#&gt; 26        6    comp3 0.0987 0.05393038
-#&gt; 27        7    comp3 0.0929 0.05146435
-#&gt; 28        8    comp3 0.1020 0.04739147
-#&gt; 29        9    comp3 0.0962 0.04503673
-#&gt; 30       10    comp3 0.0974 0.04294010
-#&gt; 31        1    comp4 0.1188 0.04686690
-#&gt; 32        2    comp4 0.1233 0.03552942
-#&gt; 33        3    comp4 0.1188 0.04211764
-#&gt; 34        4    comp4 0.1097 0.03448015
-#&gt; 35        5    comp4 0.1110 0.03653061
-#&gt; 36        6    comp4 0.1155 0.03560856
-#&gt; 37        7    comp4 0.1168 0.03661315
-#&gt; 38        8    comp4 0.1135 0.03141909
-#&gt; 39        9    comp4 0.1122 0.03185727
-#&gt; 40       10    comp4 0.1135 0.03286539
-#&gt; 41        1    comp5 0.1252 0.03610003
-#&gt; 42        2    comp5 0.1297 0.05367791
-#&gt; 43        3    comp5 0.1272 0.04970817
-#&gt; 44        4    comp5 0.1330 0.05725723
-#&gt; 45        5    comp5 0.1355 0.05517813
-#&gt; 46        6    comp5 0.1381 0.05610906
-#&gt; 47        7    comp5 0.1368 0.05697382
-#&gt; 48        8    comp5 0.1452 0.06476011
-#&gt; 49        9    comp5 0.1478 0.06667011
-#&gt; 50       10    comp5 0.1510 0.06593345
+#&gt;    features  name  value         sd
+#&gt; 1         1 comp1 0.1136 0.05466202
+#&gt; 2         1 comp2 0.1572 0.04421896
+#&gt; 3         1 comp3 0.0852 0.05437188
+#&gt; 4         1 comp4 0.1188 0.04686690
+#&gt; 5         1 comp5 0.1252 0.03610003
+#&gt; 6         2 comp1 0.0821 0.04001818
+#&gt; 7         2 comp2 0.1442 0.04016820
+#&gt; 8         2 comp3 0.0774 0.05258751
+#&gt; 9         2 comp4 0.1233 0.03552942
+#&gt; 10        2 comp5 0.1297 0.05367791
+#&gt; 11        3 comp1 0.0756 0.03353931
+#&gt; 12        3 comp2 0.1364 0.03155236
+#&gt; 13        3 comp3 0.0871 0.04884935
+#&gt; 14        3 comp4 0.1188 0.04211764
+#&gt; 15        3 comp5 0.1272 0.04970817
+#&gt; 16        4 comp1 0.0756 0.02580210
+#&gt; 17        4 comp2 0.1214 0.03170887
+#&gt; 18        4 comp3 0.0987 0.04477052
+#&gt; 19        4 comp4 0.1097 0.03448015
+#&gt; 20        4 comp5 0.1330 0.05725723
+#&gt; 21        5 comp1 0.0769 0.02586958
+#&gt; 22        5 comp2 0.1286 0.03804944
+#&gt; 23        5 comp3 0.0987 0.04539657
+#&gt; 24        5 comp4 0.1110 0.03653061
+#&gt; 25        5 comp5 0.1355 0.05517813
+#&gt; 26        6 comp1 0.0828 0.02596857
+#&gt; 27        6 comp2 0.1227 0.04281637
+#&gt; 28        6 comp3 0.0987 0.05393038
+#&gt; 29        6 comp4 0.1155 0.03560856
+#&gt; 30        6 comp5 0.1381 0.05610906
+#&gt; 31        7 comp1 0.0873 0.02762699
+#&gt; 32        7 comp2 0.1129 0.03401298
+#&gt; 33        7 comp3 0.0929 0.05146435
+#&gt; 34        7 comp4 0.1168 0.03661315
+#&gt; 35        7 comp5 0.1368 0.05697382
+#&gt; 36        8 comp1 0.0944 0.02273972
+#&gt; 37        8 comp2 0.1110 0.03715331
+#&gt; 38        8 comp3 0.1020 0.04739147
+#&gt; 39        8 comp4 0.1135 0.03141909
+#&gt; 40        8 comp5 0.1452 0.06476011
+#&gt; 41        9 comp1 0.0828 0.02339405
+#&gt; 42        9 comp2 0.1097 0.03689097
+#&gt; 43        9 comp3 0.0962 0.04503673
+#&gt; 44        9 comp4 0.1122 0.03185727
+#&gt; 45        9 comp5 0.1478 0.06667011
+#&gt; 46       10 comp1 0.0840 0.02569072
+#&gt; 47       10 comp2 0.0948 0.02831019
+#&gt; 48       10 comp3 0.0974 0.04294010
+#&gt; 49       10 comp4 0.1135 0.03286539
+#&gt; 50       10 comp5 0.1510 0.06593345
 #&gt; 
 #&gt; $scoresplot</div><div class='img'><img src='PomaMultivariate-7.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; $bal_error_rate</div><div class='img'><img src='PomaMultivariate-8.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
@@ -576,7 +564,7 @@
 #&gt; 1 tryptophan -0.7702
 #&gt; 2     valine -0.5495
 #&gt; 3  ornithine -0.3239
-#&gt; </div></pre>
+#&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
